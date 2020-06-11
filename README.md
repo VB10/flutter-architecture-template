@@ -2,7 +2,7 @@
 
 This project craeeted for proffesionel application arhitecture.
 
-# Architecture
+## Architecture
 
 1. Feature Based Folder Structre
 2. [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)
