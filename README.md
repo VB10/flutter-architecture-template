@@ -1,16 +1,18 @@
-# fluttermvvmtemplate
+# Flutter Architecture Template
 
-A new Flutter project.
+This project craeeted for proffesionel application arhitecture.
 
-## Getting Started
+# Architecture
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Feature Based Folder Structre
+2. [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)
+3. [CDD](https://blog.hichroma.com/component-driven-development-ce1109d56c8e)
+4. [Mobx](https://mobx.js.org/README.html)
+5. Theme Management & Localization
+6. [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/)
+7. [Extensions](https://dart.dev/guides/language/extension-methods)
+8. Network Architecture
+9. Base Widget
+10. Local Data Management
+11. Singleton Principles
+12. Test
