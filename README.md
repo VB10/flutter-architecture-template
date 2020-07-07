@@ -16,3 +16,4 @@ This project craeeted for proffesionel application arhitecture.
 10. Local Data Management
 11. Singleton Principles
 12. Test
+13. Project Gist Architecture [Gist File](https://gist.github.com/VB10/aa6b604b5be3500b3dbf2d45990fd2ee)
