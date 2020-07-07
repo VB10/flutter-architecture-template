@@ -23,6 +23,7 @@ class _TestsViewState extends BaseState<TestsView> {
     return BaseView<TestViewModel>(
       viewModel: TestViewModel(),
       onModelReady: (model) {
+        model.setContext(context);
         viewModel = model;
       },
       onPageBuilder: (context, value) => scaffoldBody,
@@ -31,8 +32,7 @@ class _TestsViewState extends BaseState<TestsView> {
 
   Widget get scaffoldBody => Scaffold(
         appBar: AppBar(
-          leading: Text(
-              LocaleManager.instance.getStringValue(PreferencesKeys.TOKEN)),
+          leading: Text(LocaleManager.instance.getStringValue(PreferencesKeys.TOKEN)),
           title: textWelcomeWidget(),
           actions: [iconButtonChangeTheme()],
         ),
