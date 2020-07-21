@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttermvvmtemplate/core/init/cache/locale_manager.dart';
 import 'package:provider/provider.dart';
 
 import 'core/constants/app/app_constants.dart';
+import 'core/init/cache/locale_manager.dart';
 import 'core/init/lang/language_manager.dart';
 import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';

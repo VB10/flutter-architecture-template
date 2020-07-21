@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermvvmtemplate/core/base/view/base_widget.dart';
-import 'package:fluttermvvmtemplate/core/extension/context_extension.dart';
-import 'package:fluttermvvmtemplate/view/authenticate/login/viewmodel/login_view_model.dart';
+
+import '../../../../core/base/view/base_widget.dart';
+import '../../../../core/extension/context_extension.dart';
+import '../viewmodel/login_view_model.dart';
 
 class LoginView extends StatelessWidget {
   @override

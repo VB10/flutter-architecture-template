@@ -1,10 +1,11 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:fluttermvvmtemplate/core/base/model/base_error.dart';
-import 'package:fluttermvvmtemplate/core/base/model/base_model.dart';
-import 'package:fluttermvvmtemplate/core/constants/enums/locale_keys_enum.dart';
-import 'package:fluttermvvmtemplate/core/init/cache/locale_manager.dart';
+
+import '../../base/model/base_error.dart';
+import '../../base/model/base_model.dart';
+import '../../constants/enums/locale_keys_enum.dart';
+import '../cache/locale_manager.dart';
 
 class NetworkManager {
   static NetworkManager _instance;
@@ -16,9 +17,7 @@ class NetworkManager {
   NetworkManager._init() {
     final baseOptions = BaseOptions(
       baseUrl: "https://jsonplaceholder.typicode.com/",
-      headers: {
-        "val": LocaleManager.instance.getStringValue(PreferencesKeys.TOKEN)
-      },
+      headers: {"val": LocaleManager.instance.getStringValue(PreferencesKeys.TOKEN)},
     );
     _dio = Dio(baseOptions);
 
