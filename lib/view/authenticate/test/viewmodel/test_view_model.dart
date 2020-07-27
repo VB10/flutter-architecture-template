@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:fluttermvvmtemplate/core/constants/enums/http_request_enum.dart';
+import 'package:fluttermvvmtemplate/core/init/network/IResponseModel.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 
@@ -38,9 +40,13 @@ abstract class _TestViewModelBase with Store, BaseViewModel {
   @action
   Future<void> getSampleRequest() async {
     isLoading = true;
-    final list = await NetworkManager.instance.dioGet<TestModel>("x", TestModel());
-    if (list is List) {
+    // final list = await NetworkManager.instance.dioGet<TestModel>("x", TestModel());
+
+    final response = await coreDio.fetch<List<TestModel>, TestModel>("x", type: HttpTypes.GET, parseModel: TestModel());
+    if (response.data is List<TestModel>) {
       //print true
+    } else {
+      // response.error;
     }
     isLoading = false;
   }
