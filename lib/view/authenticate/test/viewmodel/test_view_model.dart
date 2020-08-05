@@ -15,7 +15,9 @@ part 'test_view_model.g.dart';
 class TestViewModel = _TestViewModelBase with _$TestViewModel;
 
 abstract class _TestViewModelBase with Store, BaseViewModel {
-  void setContext(BuildContext context) => this.context = context;
+  void setContext(BuildContext context) {
+    this.context = context;
+  }
 
   void init() {}
 
@@ -40,14 +42,10 @@ abstract class _TestViewModelBase with Store, BaseViewModel {
   @action
   Future<void> getSampleRequest() async {
     isLoading = true;
-    // final list = await NetworkManager.instance.dioGet<TestModel>("x", TestModel());
 
     final response = await coreDio.fetch<List<TestModel>, TestModel>("x", type: HttpTypes.GET, parseModel: TestModel());
     if (response.data is List<TestModel>) {
-      //print true
-    } else {
-      // response.error;
-    }
+    } else {}
     isLoading = false;
   }
 }
