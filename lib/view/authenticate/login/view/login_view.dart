@@ -1,33 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermvvmtemplate/core/components/button/icon_button.dart';
+import 'package:fluttermvvmtemplate/view/_widgets/button/face_book_button.dart';
+import 'package:fluttermvvmtemplate/view/_widgets/button/login_button.dart';
 
 import '../../../../core/base/view/base_widget.dart';
 import '../../../../core/extension/context_extension.dart';
 import '../viewmodel/login_view_model.dart';
 
 class LoginView extends StatelessWidget {
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+
+  LoginViewModel viewModel;
   @override
   Widget build(BuildContext context) {
     return BaseView<LoginViewModel>(
       viewModel: LoginViewModel(),
       onModelReady: (model) {
         model.setContext(context);
+        model.init();
+        viewModel = model;
       },
       onPageBuilder: (BuildContext context, LoginViewModel value) => buildScaffold(context),
     );
   }
 
   Scaffold buildScaffold(BuildContext context) => Scaffold(
-        body: ListView(
+        key: scaffoldKey,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-              padding: context.paddingLow,
-              height: context.height * .4,
-              color: Theme.of(context).buttonTheme.colorScheme.onPrimary,
-              child: buildText(context),
+            TextField(
+              decoration: InputDecoration(enabledBorder: OutlineInputBorder()),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: context.lowValue),
-              child: Placeholder(),
+            FaceBookButton(
+              onComplete: (data, {errorMessage}) {
+                if (data != null) {
+                } else {
+                  scaffoldKey.currentState.showSnackBar(SnackBar(content: Text(errorMessage)));
+                }
+              },
             )
           ],
         ),
