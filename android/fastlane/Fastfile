@@ -1,0 +1,82 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+ENV_PATH = "../asset/app/.env"
+ANDROID_VERSION_NAME = "androidVersionName"
+APP_BUNDLE_PATH = "../build/app/outputs/bundle/release/app-release.aab"
+INTERNAL = "internal"
+
+platform :android do
+  desc "Deploy to internal test application"
+  lane :internal do |options|
+    versionNumberArrayLength = google_play_track_version_codes(track:INTERNAL)
+    versionNumber = (versionNumberArrayLength.length > 0 ? versionNumberArrayLength[0] : 0).to_i + 1
+    incerementVersion version: options[:version]
+    setVersionNumber versionNumber: options[:versionNumber]
+    versionName = getVersionName()
+    flutter_build(versionName,versionNumber)
+    buildStore(INTERNAL)
+  end
+
+  private_lane :setVersionNumber do |options|
+      if options[:versionNumber] != nil
+       set_properties_value(
+        key: ANDROID_VERSION_NAME,
+        path: ENV_PATH,
+        value: options[:versionNumber]
+        )
+    end
+  end
+
+  def buildStore(track)
+    upload_to_play_store(
+      track: track,
+      aab: APP_BUNDLE_PATH
+      )
+  end
+
+  private_lane :incerementVersion do |options|
+       if options[:version] != nil 
+       increment_version_name_in_properties_file(
+        key: ANDROID_VERSION_NAME,
+        path: ENV_PATH,
+        update_type: options[:version]
+        ) 
+    end
+  end
+
+  def getVersionName
+    return get_properties_value(
+      key: ANDROID_VERSION_NAME,
+      path: ENV_PATH
+    )
+  end
+
+  def flutter_build(versionName,number)
+  
+    Dir.chdir '../../' do
+      sh('flutter', 'packages', 'get')
+      sh('flutter', 'clean')
+      sh(
+        "flutter build appbundle --build-name=#{
+          versionName
+        } --build-number=#{number.to_s}"
+      )
+    end
+  end
+
+end

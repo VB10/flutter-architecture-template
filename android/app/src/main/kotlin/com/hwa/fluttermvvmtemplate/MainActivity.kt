@@ -1,4 +1,4 @@
-package com.example.fluttermvvmtemplate
+package com.hwa.fluttermvvmtemplate
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,0 +1,79 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+    build_app(workspace: "Runner.xcworkspace", scheme: "Runner")
+    upload_to_testflight
+  end
+
+  desc "Push a new artifact build internal"
+  lane :internal do |options|
+      buildNumber = latest_testflight_build_number
+      incrementBuildNumber(buildNumber)
+      increment_version_number( bump_type: options[:versionType] )
+      build_ios_app
+      upload_to_testflight
+      # sendMessageSlack()
+
+  end
+
+  desc "Private build"
+  private_lane :build do |options|
+    # 
+  end
+
+
+  def incrementBuildNumber(val)
+      if val != nil
+        increment_build_number({
+       build_number: val + 1
+      })
+      end
+  end
+
+  def sendMessageSlack
+    slack(
+  message: "App successfully released!",
+  channel: "#channel",  # Optional, by default will post to the default channel configured for the POST URL.
+  success: true,        # Optional, defaults to true.
+  payload: {  # Optional, lets you specify any number of your own Slack attachments.
+    "Build Date" => Time.new.to_s,
+    "Built by" => "Jenkins",
+  },
+  default_payloads: [:git_branch, :git_author], # Optional, lets you specify an allowlist of default payloads to include. Pass an empty array to suppress all the default payloads.
+        # Don't add this key, or pass nil, if you want all the default payloads. The available default payloads are: `lane`, `test_result`, `git_branch`, `git_author`, `last_git_commit`, `last_git_commit_hash`.
+  attachment_properties: { # Optional, lets you specify any other properties available for attachments in the slack API (see https://api.slack.com/docs/attachments).
+       # This hash is deep merged with the existing properties set using the other properties above. This allows your own fields properties to be appended to the existing fields that were created using the `payload` property for instance.
+    thumb_url: "http://example.com/path/to/thumb.png",
+    fields: [{
+      title: "My Field",
+      value: "My Value",
+      short: true
+    }]
+  }
+)
+  end
+
+
+  def incerementVersionNumber(versionType)
+    if versionType != nil
+      increment_version_number( bump_type: options[:versionType] )
+    end
+  end
+end
