@@ -9,6 +9,15 @@ abstract class ICoreDio {
       {@required HttpTypes type,
       @required T parseModel,
       dynamic data,
-      Map<String, dynamic> queryParameters,
+      Map<String, Object> queryParameters,
+      void Function(int, int) onReceiveProgress});
+}
+
+abstract class ICoreDioFull extends ICoreDio {
+  Future<IResponseModel<R>> fetchNoNetwork<R, T extends BaseModel>(String path,
+      {@required HttpTypes type,
+      @required T parseModel,
+      dynamic data,
+      Map<String, Object> queryParameters,
       void Function(int, int) onReceiveProgress});
 }
