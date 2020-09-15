@@ -8,10 +8,8 @@ main() {
   IStringHelper stringHelper;
   setUp(() {
     SharedPreferences.setMockInitialValues({"token": "asdasd"}); //set values here
-
     mockViewModel = OnBoardMockViewModel();
     stringHelper = MockStringHelper();
-
     mockViewModel.init();
   });
   test("String Helper Upper Case", () {
