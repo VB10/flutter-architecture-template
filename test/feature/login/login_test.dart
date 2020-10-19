@@ -1,7 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fluttermvvmtemplate/core/base/model/base_error.dart';
-import 'package:fluttermvvmtemplate/core/base/model/base_model.dart';
-import 'package:fluttermvvmtemplate/view/authenticate/test/model/test_model.dart';
 
 main() {
   setUp(() {
