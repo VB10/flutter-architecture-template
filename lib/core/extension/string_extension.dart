@@ -5,5 +5,12 @@ import '../constants/app/app_constants.dart';
 extension StringLocalization on String {
   String get locale => this.tr();
 
-  String get isValidEmail => this.contains(RegExp(ApplicationConstants.EMAIL_REGIEX)) ? null : "Email does not valid";
+  String get isValidEmail =>
+      this.contains(RegExp(ApplicationConstants.EMAIL_REGIEX))
+          ? null
+          : "Email does not valid";
+}
+
+extension ImagePathExtension on String {
+  String get toSVG => "asset/svg/$this.svg";
 }
