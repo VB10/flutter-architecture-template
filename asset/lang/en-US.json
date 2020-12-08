@@ -1,3 +1,11 @@
 {
-    "welcome": "Welcome to My App"
+    "welcome": "Welcome to My App",
+    "onBoard":{
+        "page1":
+        {"title":"Make It Good","desc":"You are not alone. You have unique abiltiyto go to anther world"},
+        "page2":
+        {"title":"Make It Good","desc":"You are not alone. You have unique abiltiyto go to anther world"},
+        "page3":
+        {"title":"Make It Good","desc":"You are not alone. You have unique abiltiyto go to anther world"}
+    }
 }

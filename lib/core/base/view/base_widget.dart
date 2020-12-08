@@ -7,7 +7,12 @@ class BaseView<T extends Store> extends StatefulWidget {
   final Function(T model) onModelReady;
   final VoidCallback onDispose;
 
-  const BaseView({Key key, @required this.viewModel, @required this.onPageBuilder, this.onModelReady, this.onDispose})
+  const BaseView(
+      {Key key,
+      @required this.viewModel,
+      @required this.onPageBuilder,
+      this.onModelReady,
+      this.onDispose})
       : super(key: key);
 
   @override
@@ -31,6 +36,6 @@ class _BaseViewState<T extends Store> extends State<BaseView<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.onPageBuilder(context, widget.viewModel);
+    return widget.onPageBuilder(context, model);
   }
 }

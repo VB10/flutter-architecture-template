@@ -1,5 +1,7 @@
 class OnBoardModel {
-  final String text;
+  final String title;
+  final String description;
+  final String imagePath;
 
-  OnBoardModel(this.text);
+  OnBoardModel(this.title, this.description, this.imagePath);
 }

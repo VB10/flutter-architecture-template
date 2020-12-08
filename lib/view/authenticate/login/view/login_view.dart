@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermvvmtemplate/core/components/button/icon_button.dart';
-import 'package:fluttermvvmtemplate/view/_widgets/button/face_book_button.dart';
-import 'package:fluttermvvmtemplate/view/_widgets/button/login_button.dart';
+import 'package:fluttermvvmtemplate/view/_product/_widgets/button/face_book_button.dart';
 
 import '../../../../core/base/view/base_widget.dart';
 import '../../../../core/extension/context_extension.dart';
@@ -20,7 +19,8 @@ class LoginView extends StatelessWidget {
         model.init();
         viewModel = model;
       },
-      onPageBuilder: (BuildContext context, LoginViewModel value) => buildScaffold(context),
+      onPageBuilder: (BuildContext context, LoginViewModel value) =>
+          buildScaffold(context),
     );
   }
 
@@ -36,7 +36,8 @@ class LoginView extends StatelessWidget {
               onComplete: (data, {errorMessage}) {
                 if (data != null) {
                 } else {
-                  scaffoldKey.currentState.showSnackBar(SnackBar(content: Text(errorMessage)));
+                  scaffoldKey.currentState
+                      .showSnackBar(SnackBar(content: Text(errorMessage)));
                 }
               },
             )
@@ -47,7 +48,8 @@ class LoginView extends StatelessWidget {
   Text buildText(BuildContext context) {
     return Text(
       "Hello",
-      style: context.textTheme.headline1.copyWith(color: context.theme.primaryColor, fontWeight: FontWeight.w100),
+      style: context.textTheme.headline1.copyWith(
+          color: context.theme.primaryColor, fontWeight: FontWeight.w100),
     );
   }
 }
