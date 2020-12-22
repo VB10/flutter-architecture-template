@@ -9,30 +9,64 @@ part of 'login_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$LoginViewModel on _LoginViewModelBase, Store {
-  final _$nameAtom = Atom(name: '_LoginViewModelBase.name');
+  final _$isLoadingAtom = Atom(name: '_LoginViewModelBase.isLoading');
 
   @override
-  String get name {
-    _$nameAtom.reportRead();
-    return super.name;
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
   }
 
   @override
-  set name(String value) {
-    _$nameAtom.reportWrite(value, super.name, () {
-      super.name = value;
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
     });
+  }
+
+  final _$isLockOpenAtom = Atom(name: '_LoginViewModelBase.isLockOpen');
+
+  @override
+  bool get isLockOpen {
+    _$isLockOpenAtom.reportRead();
+    return super.isLockOpen;
+  }
+
+  @override
+  set isLockOpen(bool value) {
+    _$isLockOpenAtom.reportWrite(value, super.isLockOpen, () {
+      super.isLockOpen = value;
+    });
+  }
+
+  final _$fetchLoginSeviceAsyncAction =
+      AsyncAction('_LoginViewModelBase.fetchLoginSevice');
+
+  @override
+  Future<void> fetchLoginSevice() {
+    return _$fetchLoginSeviceAsyncAction.run(() => super.fetchLoginSevice());
   }
 
   final _$_LoginViewModelBaseActionController =
       ActionController(name: '_LoginViewModelBase');
 
   @override
-  void changeName(String name) {
+  void isLoadingChange() {
     final _$actionInfo = _$_LoginViewModelBaseActionController.startAction(
-        name: '_LoginViewModelBase.changeName');
+        name: '_LoginViewModelBase.isLoadingChange');
     try {
-      return super.changeName(name);
+      return super.isLoadingChange();
+    } finally {
+      _$_LoginViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void isLockStateChange() {
+    final _$actionInfo = _$_LoginViewModelBaseActionController.startAction(
+        name: '_LoginViewModelBase.isLockStateChange');
+    try {
+      return super.isLockStateChange();
     } finally {
       _$_LoginViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -41,7 +75,8 @@ mixin _$LoginViewModel on _LoginViewModelBase, Store {
   @override
   String toString() {
     return '''
-name: ${name}
+isLoading: ${isLoading},
+isLockOpen: ${isLockOpen}
     ''';
   }
 }
