@@ -7,5 +7,15 @@
         {"title":"Make It Good","desc":"You are not alone. You have unique abiltiyto go to anther world"},
         "page3":
         {"title":"Make It Good","desc":"You are not alone. You have unique abiltiyto go to anther world"}
+    },
+
+    "login":{
+        "tab1":"Login",
+        "tab2":"SignUp",
+        "email":"Email",
+        "password":"Password",
+        "forgotText":"Forgot Password",
+        "login":"Login",
+        "dontAccount":"Dont have account"
     }
 }
