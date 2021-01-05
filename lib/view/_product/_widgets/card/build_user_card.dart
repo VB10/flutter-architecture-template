@@ -28,8 +28,8 @@ class BuildUserCard extends StatelessWidget {
     );
   }
 
-  Wrap buildWrap(BuildContext context) {
-    return Wrap(
+  Widget buildWrap(BuildContext context) {
+    return Column(
       children: [
         AutoSizeText(model.title, style: context.textTheme.headline6.copyWith(fontWeight: FontWeight.w600), maxLines: 1),
         Text(model.description),

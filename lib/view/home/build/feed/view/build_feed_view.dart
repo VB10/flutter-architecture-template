@@ -58,23 +58,25 @@ class BuildFeedView extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(flex: 3, child: Image.network(viewModel.houseModels[index].image)),
-                Expanded(
-                    flex: 9,
-                    child: Observer(builder: (_) {
-                      return BuildUserCard(
-                        model: viewModel.houseModels[index],
-                        isLiked: viewModel.likeItems.contains(viewModel.houseModels[index].id),
-                        onPressedLikeId: (id) {
-                          viewModel.onLikeItemPressed(id);
-                        },
-                      );
-                    })),
+                Expanded(flex: 9, child: buildObserver(viewModel, index)),
               ],
             ),
           )),
       itemCount: 3,
       shrinkWrap: true,
     );
+  }
+
+  Observer buildObserver(BuildFeedViewModel viewModel, int index) {
+    return Observer(builder: (_) {
+      return BuildUserCard(
+        model: viewModel.houseModels[index],
+        isLiked: viewModel.likeItems.contains(viewModel.houseModels[index].id),
+        onPressedLikeId: (id) {
+          viewModel.onLikeItemPressed(id);
+        },
+      );
+    });
   }
 
   SizedBox buildSizedBoxLAtestPageView(BuildContext context, BuildFeedViewModel viewModel) {
@@ -114,25 +116,25 @@ class BuildFeedView extends StatelessWidget {
       child: Stack(
         children: [
           Positioned.fill(bottom: 100, left: -50, right: -50, child: Image.network(model.image, fit: BoxFit.cover)),
-          Positioned(
-              top: 150,
-              left: 10,
-              right: 10,
-              child: Card(
-                child: Padding(
-                  padding: context.paddingLow,
-                  child: Observer(builder: (_) {
-                    return BuildUserCard(
-                      model: model,
-                      isLiked: viewModel.likeItems.contains(model.id),
-                      onPressedLikeId: (id) {
-                        viewModel.onLikeItemPressed(id);
-                      },
-                    );
-                  }),
-                ),
-              ))
+          Positioned(top: 120, left: 10, right: 10, child: buildCardFloaty(context, model, viewModel))
         ],
+      ),
+    );
+  }
+
+  Card buildCardFloaty(BuildContext context, HouseModel model, BuildFeedViewModel viewModel) {
+    return Card(
+      child: Padding(
+        padding: context.paddingLow,
+        child: Observer(builder: (_) {
+          return BuildUserCard(
+            model: model,
+            isLiked: viewModel.likeItems.contains(model.id),
+            onPressedLikeId: (id) {
+              viewModel.onLikeItemPressed(id);
+            },
+          );
+        }),
       ),
     );
   }
