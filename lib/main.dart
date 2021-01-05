@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttermvvmtemplate/view/home/build/feed/view/build_feed_view.dart';
 import 'package:provider/provider.dart';
 
 import 'core/constants/app/app_constants.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
-      home: LoginView(),
+      home: BuildFeedView(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );
