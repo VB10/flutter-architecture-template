@@ -47,6 +47,6 @@ I was shared mobile development practices on my channel so I supported only Turk
 
 ## Contribution
 
-|       |  |
+|    |
 | ----------- | ----------- |
 |   <a href="https://www.linkedin.com/in/krdnzbeyza1999/"><img src="https://avatars3.githubusercontent.com/u/57248151?s=460&u=bca4a4cfa8303a44875df0e6c69afe76428c0139&v=4" height="50" width="50" style="border-radius:50%;"></a>      |
