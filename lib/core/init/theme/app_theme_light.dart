@@ -18,6 +18,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
         fontFamily: ApplicationConstants.FONT_FAMILY,
         colorScheme: _appColorScheme,
         textTheme: textTheme(),
+        appBarTheme: ThemeData.light().appBarTheme.copyWith(brightness: Brightness.light, iconTheme: IconThemeData(color: Colors.black87, size: 21)),
         inputDecorationTheme: InputDecorationTheme(
             focusColor: Colors.black12,
             labelStyle: TextStyle(),
@@ -26,18 +27,23 @@ class AppThemeLight extends AppTheme with ILightTheme {
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.red))),
         scaffoldBackgroundColor: Color(0xfff1f3f8),
         floatingActionButtonTheme: ThemeData.light().floatingActionButtonTheme.copyWith(),
-        tabBarTheme: tabBarTheme(),
+        tabBarTheme: tabBarTheme,
       );
 
-  TabBarTheme tabBarTheme() {
+  TabBarTheme get tabBarTheme {
     return TabBarTheme(
       labelPadding: insets.lowPaddingAll,
-      unselectedLabelStyle: textThemeLight.headline4.copyWith(color: colorSchemeLight.red),
+      labelColor: _appColorScheme.onSecondary,
+      labelStyle: textThemeLight.headline5,
+      unselectedLabelColor: _appColorScheme.onSecondary.withOpacity(0.2),
+      // unselectedLabelStyle: textThemeLight.headline4.copyWith(color: colorSchemeLight.red),
     );
   }
 
   TextTheme textTheme() {
-    return TextTheme(headline1: textThemeLight.headline1, headline2: textThemeLight.headline2, overline: textThemeLight.headline3);
+    return ThemeData.light()
+        .textTheme
+        .copyWith(headline1: textThemeLight.headline1, headline2: textThemeLight.headline2, overline: textThemeLight.headline3);
   }
 
   ColorScheme get _appColorScheme {
@@ -46,7 +52,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
         primaryVariant: Colors.white, //xx
         secondary: Colors.green,
         secondaryVariant: colorSchemeLight.azure,
-        surface: Colors.blue,
+        surface: Colors.blue, //xx
         background: Colors.white,
         error: Colors.red[900],
         onPrimary: Colors.greenAccent,
