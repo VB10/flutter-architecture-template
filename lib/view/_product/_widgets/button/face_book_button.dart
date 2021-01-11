@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermvvmtemplate/core/components/button/title_text_button.dart';
+
+import '../../../../core/components/button/title_text_button.dart';
 
 class FaceBookButton extends StatelessWidget {
   final Function(FaceBookModel data, {String errorMessage}) onComplete;
@@ -9,14 +10,14 @@ class FaceBookButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TitleTextButton(
-      text: "Facebbok login",
+      text: 'Facebbok login',
       onPressed: () {
-        final isLengthSixCharacter = "asdasdasd".length == 6;
+        final isLengthSixCharacter = 'asdasdasd'.length == 6;
 
         if (isLengthSixCharacter) {
-          this.onComplete(FaceBookModel("asdasd", "ASdasd"));
+          onComplete(FaceBookModel('asdasd', 'ASdasd'));
         } else {
-          this.onComplete(null, errorMessage: "Facebook user not found");
+          onComplete(null, errorMessage: 'Facebook user not found');
         }
       },
     );

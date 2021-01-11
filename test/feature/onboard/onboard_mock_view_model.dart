@@ -1,13 +1,3 @@
-import 'package:dio/dio.dart';
-import 'package:fluttermvvmtemplate/core/constants/enums/http_request_enum.dart';
-import 'package:fluttermvvmtemplate/core/init/network/core_dio.dart';
-import 'package:fluttermvvmtemplate/view/authenticate/onboard/model/on_board_model.dart';
-import 'package:fluttermvvmtemplate/core/init/network/ICoreDio.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:fluttermvvmtemplate/view/authenticate/onboard/viewModel/on_board_view_model.dart';
-
-import '../../core/network/dio_mock_model.dart';
-
 //TODO: Test
 // class OnBoardMockViewModel implements OnBoardViewModel {
 //   @override

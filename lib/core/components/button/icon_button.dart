@@ -10,7 +10,7 @@ class IconNormalButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NormalButton(
-      onPressed: this.onPressed,
+      onPressed: onPressed,
       child: Center(
         child: Icon(icon),
       ),

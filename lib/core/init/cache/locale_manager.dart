@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../constants/enums/locale_keys_enum.dart';
 
 class LocaleManager {
-  static LocaleManager _instance = LocaleManager._init();
+  static final LocaleManager _instance = LocaleManager._init();
 
   SharedPreferences _preferences;
   static LocaleManager get instance => _instance;
@@ -13,11 +13,8 @@ class LocaleManager {
       _preferences = value;
     });
   }
-  static prefrencesInit() async {
-    if (instance._preferences == null) {
-      instance._preferences = await SharedPreferences.getInstance();
-    }
-    return;
+  static Future prefrencesInit() async {
+    instance._preferences ??= await SharedPreferences.getInstance();
   }
 
   Future<void> clearAll() async {
@@ -32,9 +29,7 @@ class LocaleManager {
     await _preferences.setBool(key.toString(), value);
   }
 
-  String getStringValue(PreferencesKeys key) =>
-      _preferences.getString(key.toString()) ?? "";
+  String getStringValue(PreferencesKeys key) => _preferences.getString(key.toString()) ?? '';
 
-  bool getBoolValue(PreferencesKeys key) =>
-      _preferences.getBool(key.toString()) ?? false;
+  bool getBoolValue(PreferencesKeys key) => _preferences.getBool(key.toString()) ?? false;
 }
