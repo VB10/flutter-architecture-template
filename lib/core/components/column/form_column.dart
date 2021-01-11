@@ -12,7 +12,7 @@ class FormColumn extends StatelessWidget {
         Expanded(
           flex: 8,
           child: Column(
-            children: this.children,
+            children: children,
           ),
         ),
         Spacer(flex: 1),

@@ -13,12 +13,13 @@ class TestModel extends BaseModel {
 
   TestModel({this.userId, this.id, this.title, this.completed});
 
+  @override
   Map<String, dynamic> toJson() {
     return _$TestModelToJson(this);
   }
 
   @override
-  fromJson(Map<String, Object> json) {
+  TestModel fromJson(Map<String, Object> json) {
     return _$TestModelFromJson(json);
   }
 }

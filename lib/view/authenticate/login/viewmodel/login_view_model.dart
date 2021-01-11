@@ -20,7 +20,9 @@ abstract class _LoginViewModelBase with Store, BaseViewModel {
   TextEditingController emailController;
   TextEditingController passwordController;
 
+  @override
   void setContext(BuildContext context) => this.context = context;
+  @override
   void init() {
     loginService = LoginService(VexanaManager.instance.networkManager);
     emailController = TextEditingController();
@@ -41,7 +43,7 @@ abstract class _LoginViewModelBase with Store, BaseViewModel {
 
       if (response != null) {
         scaffoldState.currentState.showSnackBar(SnackBar(content: Text(response.token)));
-        localeManager.setStringValue(PreferencesKeys.TOKEN, response.token);
+        await localeManager.setStringValue(PreferencesKeys.TOKEN, response.token);
       }
     }
     isLoadingChange();

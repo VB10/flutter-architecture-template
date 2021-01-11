@@ -13,6 +13,7 @@ part 'on_board_view_model.g.dart';
 class OnBoardViewModel = _OnBoardViewModelBase with _$OnBoardViewModel;
 
 abstract class _OnBoardViewModelBase with Store, BaseViewModel {
+  @override
   void setContext(BuildContext context) => this.context = context;
   List<OnBoardModel> onBoardItems = [];
 
@@ -27,13 +28,11 @@ abstract class _OnBoardViewModelBase with Store, BaseViewModel {
     currentIndex = value;
   }
 
+  @override
   void init() {
-    onBoardItems.add(OnBoardModel(LocaleKeys.onBoard_page1_title,
-        LocaleKeys.onBoard_page1_desc, SVGImagePaths.instance.astronautSVG));
-    onBoardItems.add(OnBoardModel(LocaleKeys.onBoard_page1_title,
-        LocaleKeys.onBoard_page2_desc, SVGImagePaths.instance.chattingSVG));
-    onBoardItems.add(OnBoardModel(LocaleKeys.onBoard_page3_title,
-        LocaleKeys.onBoard_page3_desc, SVGImagePaths.instance.relaxSVG));
+    onBoardItems.add(OnBoardModel(LocaleKeys.onBoard_page1_title, LocaleKeys.onBoard_page1_desc, SVGImagePaths.instance.astronautSVG));
+    onBoardItems.add(OnBoardModel(LocaleKeys.onBoard_page1_title, LocaleKeys.onBoard_page2_desc, SVGImagePaths.instance.chattingSVG));
+    onBoardItems.add(OnBoardModel(LocaleKeys.onBoard_page3_title, LocaleKeys.onBoard_page3_desc, SVGImagePaths.instance.relaxSVG));
   }
 
   @action
@@ -46,6 +45,6 @@ abstract class _OnBoardViewModelBase with Store, BaseViewModel {
     await localeManager.setBoolValue(PreferencesKeys.IS_FIRST_APP, true);
     changeLoading();
 
-    navigation.navigateToPageClear(path: NavigationConstants.TEST_VIEW);
+    await navigation.navigateToPageClear(path: NavigationConstants.TEST_VIEW);
   }
 }

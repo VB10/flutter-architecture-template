@@ -13,20 +13,17 @@ import 'package:fluttermvvmtemplate/core/init/network/ICoreDio.dart';
 import 'package:fluttermvvmtemplate/core/init/network/IResponseModel.dart';
 
 class CoreDioMock with DioMixin implements ICoreDioFull, Dio {
+  @override
   final BaseOptions options;
 
   CoreDioMock(this.options) {
-    this.options = options;
-    this.interceptors.add(InterceptorsWrapper());
-    this.httpClientAdapter = DefaultHttpClientAdapter();
+    options = options;
+    interceptors.add(InterceptorsWrapper());
+    httpClientAdapter = DefaultHttpClientAdapter();
   }
   @override
   Future<IResponseModel<R>> fetch<R, T extends BaseModel>(String path,
-      {HttpTypes type,
-      T parseModel,
-      data,
-      Map<String, Object> queryParameters,
-      void Function(int p1, int p2) onReceiveProgress}) async {
+      {HttpTypes type, T parseModel, data, Map<String, Object> queryParameters, void Function(int p1, int p2) onReceiveProgress}) async {
     final response = await request(path, data: data, options: Options(method: type.rawValue));
 
     switch (response.statusCode) {
@@ -35,17 +32,14 @@ class CoreDioMock with DioMixin implements ICoreDioFull, Dio {
         final model = _responseParser<R, T>(parseModel, response.data);
         return ResponseModel<R>(data: model);
       default:
-        return ResponseModel(error: BaseError("message"));
+        return ResponseModel(error: BaseError('message'));
     }
   }
 
+  @override
   Future<IResponseModel<R>> fetchNoNetwork<R, T extends BaseModel>(String path,
-      {HttpTypes type,
-      T parseModel,
-      data,
-      Map<String, Object> queryParameters,
-      void Function(int p1, int p2) onReceiveProgress}) async {
-    String dumyJson = """[
+      {HttpTypes type, T parseModel, data, Map<String, Object> queryParameters, void Function(int p1, int p2) onReceiveProgress}) async {
+    final dumyJson = '''[
   {
     "userId": 1,
     "id": 1,
@@ -57,7 +51,7 @@ class CoreDioMock with DioMixin implements ICoreDioFull, Dio {
     "id": 2,
     "title": "qui est esse",
     "body": "est rerum tempore vitaensequi sint nihil reprehenderit dolor beatae ea dolores nequenfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendisnqui aperiam non debitis possimus qui neque nisi nulla"
-  }]""";
+  }]''';
     final response = jsonDecode(dumyJson);
     final model = _responseParser<R, T>(parseModel, response);
     return ResponseModel<R>(data: model);
