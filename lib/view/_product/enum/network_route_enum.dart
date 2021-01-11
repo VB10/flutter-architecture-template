@@ -4,11 +4,11 @@ extension NetwrokRoutesString on NetworkRoutes {
   String get rawValue {
     switch (this) {
       case NetworkRoutes.LOGIN:
-        return "login";
+        return 'login';
       case NetworkRoutes.BUILD_HOME:
-        return "house";
+        return 'house';
       default:
-        throw Exception("Routes Not FouND");
+        throw Exception('Routes Not FouND');
     }
   }
 }
