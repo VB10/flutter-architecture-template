@@ -7,13 +7,13 @@ import 'light/light_theme_interface.dart';
 class AppThemeLight extends AppTheme with ILightTheme {
   static AppThemeLight _instance;
   static AppThemeLight get instance {
-    if (_instance == null) _instance = AppThemeLight._init();
-    return _instance;
+    return _instance ??= AppThemeLight._init();
   }
 
   AppThemeLight._init();
 
   // ThemeData get theme => redTheme;
+  @override
   ThemeData get theme => ThemeData(
         fontFamily: ApplicationConstants.FONT_FAMILY,
         colorScheme: _appColorScheme,
@@ -22,11 +22,19 @@ class AppThemeLight extends AppTheme with ILightTheme {
         inputDecorationTheme: InputDecorationTheme(
             focusColor: Colors.black12,
             labelStyle: TextStyle(),
-            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.red)),
-            border: UnderlineInputBorder(borderSide: BorderSide(color: Colors.red)),
-            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.red))),
+            fillColor: Colors.white,
+            contentPadding: EdgeInsets.zero,
+            filled: true,
+            enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 0.3)),
+            // border: OutlineInputBorder(borderSide: BorderSide(width: 0.3)),
+            focusedBorder: OutlineInputBorder()),
         scaffoldBackgroundColor: Color(0xfff1f3f8),
         floatingActionButtonTheme: ThemeData.light().floatingActionButtonTheme.copyWith(),
+        buttonTheme: ThemeData.light().buttonTheme.copyWith(
+              colorScheme: ColorScheme.light(
+                onError: Color(0xffFF2D55),
+              ),
+            ),
         tabBarTheme: tabBarTheme,
       );
 
@@ -53,7 +61,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
         secondary: Colors.green,
         secondaryVariant: colorSchemeLight.azure,
         surface: Colors.blue, //xx
-        background: Colors.white,
+        background: Color(0xfff6f9fc), //xx
         error: Colors.red[900],
         onPrimary: Colors.greenAccent,
         onSecondary: Colors.black, //x

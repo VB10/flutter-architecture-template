@@ -27,6 +27,14 @@
                 "tab4":"Style"
             },
             "subTitle":"Recommended"
+        },
+        "social":{
+            "cancel":"Cancel",
+            "next":"Next",
+            "search":"Search",
+            "findFriends":"Find Friends",
+            "follow":"Follow",
+            "following":"Following"
         }
     }
 }

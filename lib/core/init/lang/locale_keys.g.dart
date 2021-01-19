@@ -27,6 +27,13 @@ abstract class  LocaleKeys {
   static const home_build_tabbar = 'home.build.tabbar';
   static const home_build_subTitle = 'home.build.subTitle';
   static const home_build = 'home.build';
+  static const home_social_cancel = 'home.social.cancel';
+  static const home_social_next = 'home.social.next';
+  static const home_social_search = 'home.social.search';
+  static const home_social_findFriends = 'home.social.findFriends';
+  static const home_social_follow = 'home.social.follow';
+  static const home_social_following = 'home.social.following';
+  static const home_social = 'home.social';
   static const home = 'home';
 
 }

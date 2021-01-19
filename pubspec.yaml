@@ -23,6 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  animations: ^1.1.2
   auto_size_text: ^2.1.0
   build_runner: ^1.10.0
   cupertino_icons: ^0.1.3
