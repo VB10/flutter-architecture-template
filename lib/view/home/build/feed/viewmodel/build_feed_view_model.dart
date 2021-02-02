@@ -12,6 +12,7 @@ part 'build_feed_view_model.g.dart';
 class BuildFeedViewModel = _BuildFeedViewModelBase with _$BuildFeedViewModel;
 
 abstract class _BuildFeedViewModelBase with Store, BaseViewModel {
+  @override
   void setContext(BuildContext context) => this.context = context;
 
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
@@ -40,6 +41,7 @@ abstract class _BuildFeedViewModelBase with Store, BaseViewModel {
   @observable
   bool isLoaindg = false;
 
+  @override
   void init() {
     helper = DecorationHelper(context: context);
     feedService = BuildFeedService(vexanaManager.networkManager, scaffoldKey);
