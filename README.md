@@ -1,19 +1,19 @@
 # Flutter Architecture Template
 
-This project craeeted for proffesionel application arhitecture.
+This project was created for professional application architecture.
 
 ## Architecture
 
-We writed every mobile development unit at this website.
+We wrote every mobile development unit on this website.
 
 - [Mobile Architecture](https://vb10.dev/#/)
 
-> Now only support turkish language, it's comming soon other options.
+> The website supports only the Turkish language for now but other options are coming soon
 
 ## Architecture Video Series
 
 ---
-I was shared mobile development practices on my channel so I supported only Turkish now, I have will creating global content coming soon.
+I share mobile development practices on my channel. The channel is only in Turkish for now but I will be creating global content soon.
 
 ### **Season 1**
 
