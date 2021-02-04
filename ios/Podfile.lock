@@ -1,4 +1,11 @@
 PODS:
+  - connectivity (0.0.1):
+    - Flutter
+    - Reachability
+  - connectivity_for_web (0.1.0):
+    - Flutter
+  - connectivity_macos (0.0.1):
+    - Flutter
   - device_info (0.0.1):
     - Flutter
   - Flutter (1.0.0)
@@ -10,6 +17,7 @@ PODS:
     - Flutter
   - path_provider_windows (0.0.1):
     - Flutter
+  - Reachability (3.2)
   - share (0.0.1):
     - Flutter
   - shared_preferences (0.0.1):
@@ -34,6 +42,9 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - connectivity (from `.symlinks/plugins/connectivity/ios`)
+  - connectivity_for_web (from `.symlinks/plugins/connectivity_for_web/ios`)
+  - connectivity_macos (from `.symlinks/plugins/connectivity_macos/ios`)
   - device_info (from `.symlinks/plugins/device_info/ios`)
   - Flutter (from `Flutter`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
@@ -52,7 +63,17 @@ DEPENDENCIES:
   - url_launcher_web (from `.symlinks/plugins/url_launcher_web/ios`)
   - url_launcher_windows (from `.symlinks/plugins/url_launcher_windows/ios`)
 
+SPEC REPOS:
+  trunk:
+    - Reachability
+
 EXTERNAL SOURCES:
+  connectivity:
+    :path: ".symlinks/plugins/connectivity/ios"
+  connectivity_for_web:
+    :path: ".symlinks/plugins/connectivity_for_web/ios"
+  connectivity_macos:
+    :path: ".symlinks/plugins/connectivity_macos/ios"
   device_info:
     :path: ".symlinks/plugins/device_info/ios"
   Flutter:
@@ -89,12 +110,16 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/url_launcher_windows/ios"
 
 SPEC CHECKSUMS:
+  connectivity: c4130b2985d4ef6fd26f9702e886bd5260681467
+  connectivity_for_web: 2b8584556930d4bd490d82b836bcf45067ce345b
+  connectivity_macos: e2e9731b6b22dda39eb1b128f6969d574460e191
   device_info: d7d233b645a32c40dfdc212de5cf646ca482f175
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   path_provider_linux: 4d630dc393e1f20364f3e3b4a2ff41d9674a84e4
   path_provider_macos: f760a3c5b04357c380e2fddb6f9db6f3015897e0
   path_provider_windows: a2b81600c677ac1959367280991971cb9a1edb3b
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   share: 0b2c3e82132f5888bccca3351c504d0003b3b410
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   shared_preferences_linux: afefbfe8d921e207f01ede8b60373d9e3b566b78
@@ -109,4 +134,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: c34e2287a9ccaa606aeceab922830efb9a6ff69a
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.9.3

@@ -18,17 +18,19 @@ class LoginView extends StatelessWidget {
         model.setContext(context);
         model.init();
       },
-      onPageBuilder: (BuildContext context, LoginViewModel value) => DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          key: value.scaffoldState,
-          body: SafeArea(
-            child: Column(
-              children: [
-                buildAnimatedContainer(context),
-                buildContainerTabBar(context),
-                Expanded(flex: 6, child: Padding(padding: context.paddingNormal, child: buildForm(value, context))),
-              ],
+      onPageBuilder: (BuildContext context, LoginViewModel value) => Scaffold(
+        body: DefaultTabController(
+          length: 2,
+          child: Scaffold(
+            key: value.scaffoldState,
+            body: SafeArea(
+              child: Column(
+                children: [
+                  buildAnimatedContainer(context),
+                  buildContainerTabBar(context),
+                  Expanded(flex: 6, child: Padding(padding: context.paddingNormal, child: buildForm(value, context))),
+                ],
+              ),
             ),
           ),
         ),
@@ -130,7 +132,8 @@ class LoginView extends StatelessWidget {
     );
   }
 
-  Widget buildTextForgot() => Align(alignment: Alignment.centerRight, child: Text(LocaleKeys.login_forgotText, textAlign: TextAlign.end).tr());
+  Widget buildTextForgot() =>
+      Align(alignment: Alignment.centerRight, child: Text(LocaleKeys.login_forgotText, textAlign: TextAlign.end).tr());
 
   Widget buildRaisedButtonLogin(BuildContext context, LoginViewModel viewModel) {
     return Observer(builder: (_) {
@@ -151,7 +154,10 @@ class LoginView extends StatelessWidget {
   Wrap buildWrapForgot() {
     return Wrap(
       crossAxisAlignment: WrapCrossAlignment.center,
-      children: [Text(LocaleKeys.login_dontAccount.tr()), FlatButton(onPressed: () {}, child: Text(LocaleKeys.login_tab2.tr()))],
+      children: [
+        Text(LocaleKeys.login_dontAccount.tr()),
+        FlatButton(onPressed: () {}, child: Text(LocaleKeys.login_tab2.tr()))
+      ],
     );
   }
 }

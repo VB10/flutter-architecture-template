@@ -16,7 +16,10 @@ void main() {
   LocaleManager.prefrencesInit();
   runApp(MultiProvider(
     providers: [...ApplicationProvider.instance.dependItems],
-    child: EasyLocalization(child: MyApp(), supportedLocales: LanguageManager.instance.supportedLocales, path: ApplicationConstants.LANG_ASSET_PATH),
+    child: EasyLocalization(
+        child: MyApp(),
+        supportedLocales: LanguageManager.instance.supportedLocales,
+        path: ApplicationConstants.LANG_ASSET_PATH),
   ));
 }
 
