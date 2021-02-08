@@ -13,11 +13,12 @@ part 'social_view_model.g.dart';
 class SocialViewModel = _SocialViewModelBase with _$SocialViewModel;
 
 abstract class _SocialViewModelBase with Store, BaseViewModel {
-  ISocialServiceService _socialService;
-  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+  final ISocialServiceService _socialService;
   int _page = 0;
   String _query = '';
   bool isLazyLoadDataFinish = false;
+
+  int get page => _page;
 
   ThrottleStringHelper _throttleStringHelper;
   @observable
@@ -28,11 +29,12 @@ abstract class _SocialViewModelBase with Store, BaseViewModel {
   @observable
   bool isPageLoadingLazyLoad = false;
 
+  _SocialViewModelBase(this._socialService);
+
   @override
   void setContext(BuildContext context) => this.context = context;
   @override
   void init() {
-    _socialService = SocailService(vexanaManager.networkManager, scaffoldKey);
     _throttleStringHelper = ThrottleStringHelper();
     _fetchAllUser();
   }
