@@ -1,19 +1,19 @@
 # Flutter Architecture Template
 
-This project craeeted for proffesionel application arhitecture.
+This project was created for professional application architecture.
 
 ## Architecture
 
-We writed every mobile development unit at this website.
+We wrote every mobile development unit at this website.
 
 - [Mobile Architecture](https://vb10.dev/#/)
 
-> Now only support turkish language, it's comming soon other options.
+> It only supports the Turkish language for now. It's coming soon other options.
 
 ## Architecture Video Series
 
 ---
-I was shared mobile development practices on my channel so I supported only Turkish now, I have will creating global content coming soon.
+I shared mobile development practices on my channel so I supported only Turkish for now. I will create global content coming soon.
 
 ### **Season 1**
 
@@ -28,7 +28,7 @@ I was shared mobile development practices on my channel so I supported only Turk
 
 ##  **Season 2**
 
-9.  [Snippet Geliştirme (Sniipet Management)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=9)
+9.  [Snippet Geliştirme (Snippet Management)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=9)
 10. [Extension](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=10)
 11. [Tema Mimarisi Gelişmiş (Advanced Theme Management)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=11)
 12. [Gelişmiş Ağ İstekleri Yönetme (Advanced Network Managment)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=12)
