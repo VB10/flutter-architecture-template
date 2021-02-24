@@ -35,6 +35,19 @@
             "findFriends":"Find Friends",
             "follow":"Follow",
             "following":"Following"
+        },
+        "game":{
+            "title":"Unity Game",
+            "newUpdate":"New Updated Games",
+            "viewAll":"View All",
+            "topDownload":"Top Downloads",
+            "tabbar":{
+                "tab1":"RACING",
+                "tab2":"SIMULATION",
+                "tab3":"CASUAL",
+                "tab4":"CARTOONY",
+                "tab5":"TOYS"
+            }
         }
     }
 }
