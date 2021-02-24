@@ -18,7 +18,8 @@ class AppThemeLight extends AppTheme with ILightTheme {
         fontFamily: ApplicationConstants.FONT_FAMILY,
         colorScheme: _appColorScheme,
         textTheme: textTheme(),
-        appBarTheme: ThemeData.light().appBarTheme.copyWith(brightness: Brightness.light, iconTheme: IconThemeData(color: Colors.black87, size: 21)),
+        appBarTheme: ThemeData.light().appBarTheme.copyWith(
+            brightness: Brightness.light, color: Colors.transparent, elevation: 0, iconTheme: IconThemeData(color: Colors.black87, size: 21)),
         inputDecorationTheme: InputDecorationTheme(
             focusColor: Colors.black12,
             labelStyle: TextStyle(),
@@ -67,7 +68,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
         onSecondary: Colors.black, //x
         onSurface: Colors.white30,
         onBackground: Colors.black12,
-        onError: Color(0xffffc93c), //xx
+        onError: Color(0xFFF9B916), //xx
         brightness: Brightness.light);
   }
 }
