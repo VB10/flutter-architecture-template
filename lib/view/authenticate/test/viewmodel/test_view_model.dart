@@ -13,10 +13,12 @@ part 'test_view_model.g.dart';
 class TestViewModel = _TestViewModelBase with _$TestViewModel;
 
 abstract class _TestViewModelBase with Store, BaseViewModel {
+  @override
   void setContext(BuildContext context) {
     this.context = context;
   }
 
+  @override
   void init() {}
 
   @observable
@@ -41,9 +43,12 @@ abstract class _TestViewModelBase with Store, BaseViewModel {
   Future<void> getSampleRequest() async {
     isLoading = true;
 
-    final response = await coreDio.fetch<List<TestModel>, TestModel>("x", type: HttpTypes.GET, parseModel: TestModel());
+    final response = await coreDio.send<List<TestModel>, TestModel>('x', type: HttpTypes.GET, parseModel: TestModel());
     if (response.data is List<TestModel>) {
     } else {}
     isLoading = false;
   }
 }
+
+// BEFORE: null safety
+// final response = await coreDio.fetch<List<TestModel>, TestModel>("x", type: HttpTypes.GET, parseModel: TestModel());

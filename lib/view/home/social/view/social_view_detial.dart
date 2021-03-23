@@ -26,7 +26,7 @@ class SocialUserViewDetail extends StatelessWidget {
           onSuccess: (data) {
             return Center(child: Image.network(data.image));
           },
-          loaindgWidget: CircularProgressIndicator(),
+          loadingWidget: CircularProgressIndicator(),
           notFoundWidget: Center(
             child: Text('Not Found'),
           ),

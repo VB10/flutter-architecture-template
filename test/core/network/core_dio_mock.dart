@@ -12,7 +12,7 @@ import 'package:fluttermvvmtemplate/core/extension/network_exntension.dart';
 import 'package:fluttermvvmtemplate/core/init/network/ICoreDio.dart';
 import 'package:fluttermvvmtemplate/core/init/network/IResponseModel.dart';
 
-class CoreDioMock with DioMixin implements ICoreDioFull, Dio {
+class CoreDioMock with DioMixin implements ICoreDioFullNulSafetyFull, Dio {
   @override
   final BaseOptions options;
 
@@ -21,8 +21,7 @@ class CoreDioMock with DioMixin implements ICoreDioFull, Dio {
     interceptors.add(InterceptorsWrapper());
     httpClientAdapter = DefaultHttpClientAdapter();
   }
-  @override
-  Future<IResponseModel<R>> fetch<R, T extends BaseModel>(String path,
+  Future<IResponseModel<R>> send<R, T extends BaseModel>(String path,
       {HttpTypes type, T parseModel, data, Map<String, Object> queryParameters, void Function(int p1, int p2) onReceiveProgress}) async {
     final response = await request(path, data: data, options: Options(method: type.rawValue));
 
@@ -66,5 +65,3 @@ class CoreDioMock with DioMixin implements ICoreDioFull, Dio {
     return data as R;
   }
 }
-
-class Dio {}

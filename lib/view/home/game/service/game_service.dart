@@ -13,7 +13,7 @@ class GameService extends IGameService with ServiceHelper {
 
   @override
   Future<List<GameModel>> fetchGameItems(GameEnum type) async {
-    final response = await manager.fetch<GameModel, List<GameModel>>(NetworkRoutes.GAME.rawValue,
+    final response = await manager.send<GameModel, List<GameModel>>(NetworkRoutes.GAME.rawValue,
         urlSuffix: '/${type.index + 1}', parseModel: GameModel(), method: RequestType.GET);
     showMessage(scaffoldyKey, response.error);
 
@@ -24,8 +24,28 @@ class GameService extends IGameService with ServiceHelper {
   @override
   Future<List<SliderModel>> fetchSliderItems() async {
     final response =
-        await manager.fetch<SliderModel, List<SliderModel>>(NetworkRoutes.SLIDER.rawValue, parseModel: SliderModel(), method: RequestType.GET);
+        await manager.send<SliderModel, List<SliderModel>>(NetworkRoutes.SLIDER.rawValue, parseModel: SliderModel(), method: RequestType.GET);
     showMessage(scaffoldyKey, response.error);
     return response.data;
   }
 }
+
+// BEFORE: Null safety
+
+// @override
+// Future<List<GameModel>> fetchGameItems(GameEnum type) async {
+//   final response = await manager.fetch<GameModel, List<GameModel>>(NetworkRoutes.GAME.rawValue,
+//       urlSuffix: '/${type.index + 1}', parseModel: GameModel(), method: RequestType.GET);
+//   showMessage(scaffoldyKey, response.error);
+
+//   await Future.delayed(Duration(seconds: 5));
+//   return response.data;
+// }
+
+// @override
+// Future<List<SliderModel>> fetchSliderItems() async {
+//   final response =
+//       await manager.fetch<SliderModel, List<SliderModel>>(NetworkRoutes.SLIDER.rawValue, parseModel: SliderModel(), method: RequestType.GET);
+//   showMessage(scaffoldyKey, response.error);
+//   return response.data;
+// }

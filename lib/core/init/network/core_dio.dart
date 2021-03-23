@@ -13,7 +13,7 @@ import 'IResponseModel.dart';
 
 part './network_core/core_operations.dart';
 
-class CoreDio with DioMixin implements Dio, ICoreDio {
+class CoreDio with DioMixin implements Dio, ICoreDioNullSafety {
   @override
   final BaseOptions options;
 
@@ -24,7 +24,7 @@ class CoreDio with DioMixin implements Dio, ICoreDio {
   }
 
   @override
-  Future<IResponseModel<R>> fetch<R, T extends BaseModel>(String path,
+  Future<IResponseModel<R>> send<R, T extends BaseModel>(String path,
       {@required HttpTypes type,
       @required T parseModel,
       dynamic data,

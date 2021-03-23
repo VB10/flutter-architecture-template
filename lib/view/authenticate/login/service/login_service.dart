@@ -10,7 +10,7 @@ class LoginService extends ILoginService {
 
   @override
   Future<LoginResponseModel> fetchUserControl(LoginModel model) async {
-    final response = await manager.fetch<LoginResponseModel, LoginResponseModel>(NetworkRoutes.LOGIN.rawValue,
+    final response = await manager.send<LoginResponseModel, LoginResponseModel>(NetworkRoutes.LOGIN.rawValue,
         parseModel: LoginResponseModel(), method: RequestType.POST, data: model);
 
     if (response.data is LoginResponseModel) {
@@ -20,3 +20,16 @@ class LoginService extends ILoginService {
     }
   }
 }
+
+// BEFORE: null safety before
+// @override
+// Future<LoginResponseModel> fetchUserControl(LoginModel model) async {
+//   final response = await manager.fetch<LoginResponseModel, LoginResponseModel>(NetworkRoutes.LOGIN.rawValue,
+//       parseModel: LoginResponseModel(), method: RequestType.POST, data: model);
+
+//   if (response.data is LoginResponseModel) {
+//     return response.data;
+//   } else {
+//     return null;
+//   }
+// }
