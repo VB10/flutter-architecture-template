@@ -212,11 +212,13 @@ packages:
     source: hosted
     version: "2.0.1"
   dio:
-    dependency: "direct main"
+    dependency: transitive
     description:
-      name: dio
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: dio
+      ref: "4.0"
+      resolved-ref: "10c180a2f14be495bc001f875bb523bd990b6c25"
+      url: "https://github.com/VB10/dio"
+    source: git
     version: "4.0.0-prev3"
   easy_localization:
     dependency: "direct main"
@@ -609,6 +611,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.26.0"
+  sembast:
+    dependency: transitive
+    description:
+      name: sembast
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0+4"
   share:
     dependency: transitive
     description:
@@ -834,10 +843,12 @@ packages:
   vexana:
     dependency: "direct main"
     description:
-      name: vexana
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0-nullsafety.6"
+      path: "."
+      ref: "feature/web_supprt_nosql"
+      resolved-ref: "70d038dc23d3382ee1c31526179053f400386bb4"
+      url: "https://github.com/VB10/vexana"
+    source: git
+    version: "2.1.0"
   watcher:
     dependency: transitive
     description:

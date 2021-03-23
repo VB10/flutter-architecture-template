@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 
 import '../../base/model/base_error.dart';
 import '../../base/model/base_model.dart';
@@ -25,11 +24,11 @@ class CoreDio with DioMixin implements Dio, ICoreDioNullSafety {
 
   @override
   Future<IResponseModel<R>> send<R, T extends BaseModel>(String path,
-      {@required HttpTypes type,
-      @required T parseModel,
+      {required HttpTypes type,
+      required T parseModel,
       dynamic data,
-      Map<String, dynamic> queryParameters,
-      void Function(int, int) onReceiveProgress}) async {
+      Map<String, dynamic>? queryParameters,
+      void Function(int, int)? onReceiveProgress}) async {
     final response = await request(path, data: data, options: Options(method: type.rawValue));
     switch (response.statusCode) {
       case HttpStatus.ok:

@@ -7,10 +7,10 @@ import '../../init/network/network_manager.dart';
 import '../../init/network/vexana_manager.dart';
 
 abstract class BaseViewModel {
-  BuildContext context;
+  BuildContext? context;
 
-  ICoreDioNullSafety coreDio = NetworkManager.instance.coreDio;
-  VexanaManager vexanaManager = VexanaManager.instance;
+  ICoreDioNullSafety? coreDio = NetworkManager.instance!.coreDio;
+  VexanaManager? vexanaManager = VexanaManager.instance;
   LocaleManager localeManager = LocaleManager.instance;
   NavigationService navigation = NavigationService.instance;
 

@@ -12,9 +12,9 @@ class OpenContainerSocailWrapper extends StatelessWidget {
     this.socialUser,
   });
 
-  final OpenContainerBuilder closedBuilder;
-  final ClosedCallback<bool> onClosed;
-  final SocialUser socialUser;
+  final OpenContainerBuilder? closedBuilder;
+  final ClosedCallback<bool?>? onClosed;
+  final SocialUser? socialUser;
   @override
   Widget build(BuildContext context) {
     return OpenContainer<bool>(
@@ -26,7 +26,7 @@ class OpenContainerSocailWrapper extends StatelessWidget {
       },
       onClosed: onClosed,
       tappable: false,
-      closedBuilder: closedBuilder,
+      closedBuilder: closedBuilder as Widget Function(BuildContext, void Function()),
     );
   }
 }

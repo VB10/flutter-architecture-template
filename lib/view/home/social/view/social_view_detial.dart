@@ -8,23 +8,23 @@ import '../service/ISocialService.dart';
 import '../service/socail_service.dart';
 
 class SocialUserViewDetail extends StatelessWidget {
-  final SocialUser socialUser;
+  final SocialUser? socialUser;
 
   final INetworkManager manager = VexanaManager.instance.networkManager;
 
   ISocialServiceService get socialServiceService => SocailService(manager, null);
 
   SocialUserViewDetail({
-    Key key,
+    Key? key,
     this.socialUser,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: socialServiceService.fetchUser(socialUser.id).toBuild<SocialUser>(
+      body: socialServiceService.fetchUser(socialUser!.id).toBuild<SocialUser>(
           onSuccess: (data) {
-            return Center(child: Image.network(data.image));
+            return Center(child: Image.network(data!.image!));
           },
           loadingWidget: CircularProgressIndicator(),
           notFoundWidget: Center(

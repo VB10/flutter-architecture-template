@@ -67,7 +67,7 @@ class GameView extends StatelessWidget {
       actions: [IconButton(icon: Icon(Icons.camera_enhance), onPressed: () {})],
       title: Text(
         LocaleKeys.home_game_title.tr(),
-        style: context.textTheme.headline5.copyWith(color: context.colorScheme.onError, fontWeight: FontWeight.w600),
+        style: context.textTheme.headline5!.copyWith(color: context.colorScheme.onError, fontWeight: FontWeight.w600),
       ),
     );
   }
@@ -85,7 +85,7 @@ class GameView extends StatelessWidget {
             .toList());
   }
 
-  Widget buildSizedBoxSlider(BuildContext context, List<SliderModel> items) {
+  Widget buildSizedBoxSlider(BuildContext context, List<SliderModel>? items) {
     return Padding(
       padding: context.verticalPaddingLow,
       child: SizedBox(

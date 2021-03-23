@@ -11,10 +11,10 @@ import '../model/social_user_model.dart';
 import 'ISocialService.dart';
 
 class SocailService extends ISocialServiceService with ServiceHelper {
-  SocailService(INetworkManager manager, GlobalKey<ScaffoldState> scaffoldyKey) : super(manager, scaffoldyKey);
+  SocailService(INetworkManager manager, GlobalKey<ScaffoldState>? scaffoldyKey) : super(manager, scaffoldyKey);
 
   @override
-  Future<SocialUser> fetchUser(id) async {
+  Future<SocialUser?> fetchUser(id) async {
     final response = await manager.send<SocialUser, SocialUser>(NetworkRoutes.FRIENDS.rawValue,
         parseModel: SocialUser(), urlSuffix: '/$id', method: RequestType.GET);
     showMessage(scaffoldyKey, response.error);

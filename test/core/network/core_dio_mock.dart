@@ -22,8 +22,8 @@ class CoreDioMock with DioMixin implements ICoreDioFullNulSafetyFull, Dio {
     httpClientAdapter = DefaultHttpClientAdapter();
   }
   Future<IResponseModel<R>> send<R, T extends BaseModel>(String path,
-      {HttpTypes type, T parseModel, data, Map<String, Object> queryParameters, void Function(int p1, int p2) onReceiveProgress}) async {
-    final response = await request(path, data: data, options: Options(method: type.rawValue));
+      {HttpTypes? type, T? parseModel, data, Map<String, Object>? queryParameters, void Function(int p1, int p2)? onReceiveProgress}) async {
+    final Response<dynamic> response = await request(path, data: data, options: Options(method: type.rawValue));
 
     switch (response.statusCode) {
       case HttpStatus.ok:
@@ -37,7 +37,7 @@ class CoreDioMock with DioMixin implements ICoreDioFullNulSafetyFull, Dio {
 
   @override
   Future<IResponseModel<R>> fetchNoNetwork<R, T extends BaseModel>(String path,
-      {HttpTypes type, T parseModel, data, Map<String, Object> queryParameters, void Function(int p1, int p2) onReceiveProgress}) async {
+      {HttpTypes? type, T? parseModel, data, Map<String, Object>? queryParameters, void Function(int p1, int p2)? onReceiveProgress}) async {
     final dumyJson = '''[
   {
     "userId": 1,
@@ -56,12 +56,12 @@ class CoreDioMock with DioMixin implements ICoreDioFullNulSafetyFull, Dio {
     return ResponseModel<R>(data: model);
   }
 
-  R _responseParser<R, T>(BaseModel model, dynamic data) {
+  R? _responseParser<R, T>(BaseModel? model, dynamic data) {
     if (data is List) {
-      return data.map((e) => model.fromJson(e)).toList().cast<T>() as R;
+      return data.map((e) => model!.fromJson(e)).toList().cast<T>() as R;
     } else if (data is Map) {
-      return model.fromJson(data) as R;
+      return model!.fromJson(data as Map<String, Object>) as R;
     }
-    return data as R;
+    return data as R?;
   }
 }

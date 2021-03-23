@@ -12,7 +12,7 @@ class GameService extends IGameService with ServiceHelper {
   GameService(INetworkManager manager, GlobalKey<ScaffoldState> scaffoldyKey) : super(manager, scaffoldyKey);
 
   @override
-  Future<List<GameModel>> fetchGameItems(GameEnum type) async {
+  Future<List<GameModel>?> fetchGameItems(GameEnum type) async {
     final response = await manager.send<GameModel, List<GameModel>>(NetworkRoutes.GAME.rawValue,
         urlSuffix: '/${type.index + 1}', parseModel: GameModel(), method: RequestType.GET);
     showMessage(scaffoldyKey, response.error);
@@ -22,7 +22,7 @@ class GameService extends IGameService with ServiceHelper {
   }
 
   @override
-  Future<List<SliderModel>> fetchSliderItems() async {
+  Future<List<SliderModel>?> fetchSliderItems() async {
     final response =
         await manager.send<SliderModel, List<SliderModel>>(NetworkRoutes.SLIDER.rawValue, parseModel: SliderModel(), method: RequestType.GET);
     showMessage(scaffoldyKey, response.error);

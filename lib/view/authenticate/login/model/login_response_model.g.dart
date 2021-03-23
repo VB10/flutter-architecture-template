@@ -8,7 +8,7 @@ part of 'login_response_model.dart';
 
 LoginResponseModel _$LoginResponseModelFromJson(Map<String, dynamic> json) {
   return LoginResponseModel(
-    token: json['token'] as String,
+    token: json['token'] as String?,
   );
 }
 

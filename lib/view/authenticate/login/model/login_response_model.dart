@@ -5,17 +5,17 @@ part 'login_response_model.g.dart';
 
 @JsonSerializable()
 class LoginResponseModel extends INetworkModel<LoginResponseModel> {
-  final String token;
+  final String? token;
 
   LoginResponseModel({this.token});
 
   @override
-  LoginResponseModel fromJson(Map<String, Object> json) {
+  LoginResponseModel fromJson(Map<String, Object?> json) {
     return _$LoginResponseModelFromJson(json);
   }
 
   @override
-  Map<String, Object> toJson() {
+  Map<String, Object?> toJson() {
     return _$LoginResponseModelToJson(this);
   }
 }

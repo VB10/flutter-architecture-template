@@ -7,7 +7,7 @@ import 'package:fluttermvvmtemplate/view/home/social/service/socail_service.dart
 import 'package:vexana/src/interface/INetworkService.dart';
 
 class SocialNetworkMock extends SocailService {
-  SocialNetworkMock(INetworkManager manager, GlobalKey<ScaffoldState> scaffoldyKey) : super(manager, scaffoldyKey);
+  SocialNetworkMock(INetworkManager manager, GlobalKey<ScaffoldState>? scaffoldyKey) : super(manager, scaffoldyKey);
 }
 
 class SocialNetworkMockAll extends ISocialServiceService {

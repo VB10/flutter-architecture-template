@@ -23,7 +23,7 @@ abstract class _GameViewModelBase with Store, BaseViewModel {
 
   final GameService gameService;
 
-  List<SliderModel> sliderItems = [];
+  List<SliderModel>? sliderItems = [];
   List<GameModel> newsGameItems = [];
   List<GameModel> topGameITems = [];
   _GameViewModelBase(this.gameService);
@@ -47,7 +47,7 @@ abstract class _GameViewModelBase with Store, BaseViewModel {
     changeLoading();
   }
 
-  Future<List<GameModel>> onNewsGameItems() async {
+  Future<List<GameModel>?> onNewsGameItems() async {
     if (newsGameItems.isNotEmpty) return newsGameItems;
     final response = await gameService.fetchGameItems(GameEnum.NEW);
     newsGameItems = response ?? [];
@@ -55,7 +55,7 @@ abstract class _GameViewModelBase with Store, BaseViewModel {
     return response;
   }
 
-  Future<List<GameModel>> onTopGameItems() async {
+  Future<List<GameModel>?> onTopGameItems() async {
     if (newsGameItems.isNotEmpty) return newsGameItems;
     final response = await gameService.fetchGameItems(GameEnum.TOP);
     newsGameItems = response ?? [];

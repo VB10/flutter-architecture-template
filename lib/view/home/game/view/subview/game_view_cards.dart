@@ -2,7 +2,7 @@ part of '../game_view.dart';
 
 extension _GameViewGamesCard on GameView {
   Widget buildColumnNewCard(GameViewModel viewModel) {
-    return viewModel.onNewsGameItems().toBuild<List<GameModel>>(
+    return viewModel.onNewsGameItems().toBuild<List<GameModel>?>(
         onSuccess: (data) {
           return Column(
             children: [HeaderButton(titleText: LocaleKeys.home_game_newUpdate), GameGrid(models: data)],
@@ -13,7 +13,7 @@ extension _GameViewGamesCard on GameView {
           width: 100,
           child: Shimmer.fromColors(
             baseColor: Colors.grey,
-            highlightColor: Colors.grey[200],
+            highlightColor: Colors.grey[200]!,
             child: ListTile(
               leading: CircleAvatar(),
               title: Text('data'),
@@ -26,7 +26,7 @@ extension _GameViewGamesCard on GameView {
   }
 
   Widget buildColumnUpdate(GameViewModel viewModel) {
-    return viewModel.onNewsGameItems().toBuild<List<GameModel>>(
+    return viewModel.onNewsGameItems().toBuild<List<GameModel>?>(
         onSuccess: (data) {
           return Column(
             children: [

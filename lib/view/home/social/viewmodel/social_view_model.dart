@@ -15,12 +15,12 @@ class SocialViewModel = _SocialViewModelBase with _$SocialViewModel;
 abstract class _SocialViewModelBase with Store, BaseViewModel {
   final ISocialServiceService _socialService;
   int _page = 0;
-  String _query = '';
+  String? _query = '';
   bool isLazyLoadDataFinish = false;
 
   int get page => _page;
 
-  ThrottleStringHelper _throttleStringHelper;
+  late ThrottleStringHelper _throttleStringHelper;
   @observable
   List<SocialUser> socialUserList = [];
   @observable
@@ -32,7 +32,7 @@ abstract class _SocialViewModelBase with Store, BaseViewModel {
   _SocialViewModelBase(this._socialService);
 
   @override
-  void setContext(BuildContext context) => this.context = context;
+  void setContext(BuildContext? context) => this.context = context;
   @override
   void init() {
     _throttleStringHelper = ThrottleStringHelper();
@@ -71,7 +71,7 @@ abstract class _SocialViewModelBase with Store, BaseViewModel {
   @action
   void fetchAllSearchQuery(String text) {
     _throttleStringHelper.onDelayTouch(text, (text) {
-      if (_query.isEmpty) {
+      if (_query!.isEmpty) {
         _page = -1;
       }
       _query = text;
