@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fluttermvvmtemplate/core/base/model/base_error.dart';
 import 'package:fluttermvvmtemplate/core/constants/enums/http_request_enum.dart';
@@ -23,8 +22,13 @@ class CoreDioMock with DioMixin implements ICoreDioFull, Dio {
   }
   @override
   Future<IResponseModel<R>> fetch<R, T extends BaseModel>(String path,
-      {HttpTypes type, T parseModel, data, Map<String, Object> queryParameters, void Function(int p1, int p2) onReceiveProgress}) async {
-    final response = await request(path, data: data, options: Options(method: type.rawValue));
+      {HttpTypes type,
+      T parseModel,
+      data,
+      Map<String, Object> queryParameters,
+      void Function(int p1, int p2) onReceiveProgress}) async {
+    final response = await request(path,
+        data: data, options: Options(method: type.rawValue));
 
     switch (response.statusCode) {
       case HttpStatus.ok:
@@ -38,7 +42,11 @@ class CoreDioMock with DioMixin implements ICoreDioFull, Dio {
 
   @override
   Future<IResponseModel<R>> fetchNoNetwork<R, T extends BaseModel>(String path,
-      {HttpTypes type, T parseModel, data, Map<String, Object> queryParameters, void Function(int p1, int p2) onReceiveProgress}) async {
+      {HttpTypes type,
+      T parseModel,
+      data,
+      Map<String, Object> queryParameters,
+      void Function(int p1, int p2) onReceiveProgress}) async {
     final dumyJson = '''[
   {
     "userId": 1,

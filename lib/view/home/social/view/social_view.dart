@@ -17,12 +17,14 @@ class SocialView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<SocialViewModel>(
-      viewModel: SocialViewModel(SocailService(VexanaManager.instance.networkManager, scaffoldKey)),
+      viewModel: SocialViewModel(
+          SocailService(VexanaManager.instance.networkManager, scaffoldKey)),
       onModelReady: (model) {
         model.setContext(context);
         model.init();
       },
-      onPageBuilder: (BuildContext context, SocialViewModel viewModel) => Container(
+      onPageBuilder: (BuildContext context, SocialViewModel viewModel) =>
+          Container(
         color: context.colorScheme.background,
         padding: context.paddingLow,
         child: Scaffold(
@@ -36,10 +38,15 @@ class SocialView extends StatelessWidget {
                 onChanged: (value) {
                   viewModel.fetchAllSearchQuery(value);
                 },
-                decoration: InputDecoration(prefixIcon: Icon(Icons.search, color: context.colorScheme.onSecondary.withOpacity(0.2))),
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.search,
+                        color:
+                            context.colorScheme.onSecondary.withOpacity(0.2))),
               ),
               Spacer(flex: 2),
-              Expanded(flex: 90, child: Observer(builder: (_) => buildListViewUser(viewModel)))
+              Expanded(
+                  flex: 90,
+                  child: Observer(builder: (_) => buildListViewUser(viewModel)))
             ],
           ),
         ),
@@ -51,25 +58,57 @@ class SocialView extends StatelessWidget {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      leading: FlatButton(onPressed: () {}, padding: EdgeInsets.zero, child: Text(LocaleKeys.home_social_cancel).tr()),
+      leading: TextButton(
+        onPressed: () {},
+        child: Text(LocaleKeys.home_social_cancel).tr(),
+        style: ButtonStyle(
+          padding: MaterialStateProperty.all(EdgeInsets.zero),
+        ),
+      ),
       actions: [
-        FlatButton(
-            onPressed: () {},
-            child: Text(
-              LocaleKeys.home_social_next,
-              style: context.textTheme.subtitle1.copyWith(
-                fontWeight: FontWeight.w600,
-                color: context.appTheme.buttonTheme.colorScheme.onError,
-              ),
-            ).tr())
+        TextButton(
+          onPressed: () {},
+          child: Text(
+            LocaleKeys.home_social_next,
+            style: context.textTheme.subtitle1.copyWith(
+              fontWeight: FontWeight.w600,
+              color: context.appTheme.buttonTheme.colorScheme.onError,
+            ),
+          ).tr(),
+        ),
       ],
     );
   }
 
+  /* BEFORE: Flutter2.0
+
+  FlatButton(
+        onPressed: () {},
+        padding: EdgeInsets.zero,
+        child: Text(LocaleKeys.home_social_cancel).tr(),
+      ),
+
+
+
+
+      FlatButton(
+          onPressed: () {},
+          child: Text(
+            LocaleKeys.home_social_next,
+            style: context.textTheme.subtitle1.copyWith(
+              fontWeight: FontWeight.w600,
+              color: context.appTheme.buttonTheme.colorScheme.onError,
+            ),
+          ).tr(),
+        ),
+  
+   */
+
   Text buildTextFindFriends(BuildContext context) {
     return Text(
       LocaleKeys.home_social_findFriends,
-      style: context.textTheme.headline4.copyWith(fontWeight: FontWeight.bold, color: context.colorScheme.onSecondary),
+      style: context.textTheme.headline4.copyWith(
+          fontWeight: FontWeight.bold, color: context.colorScheme.onSecondary),
     );
   }
 
@@ -80,7 +119,8 @@ class SocialView extends StatelessWidget {
         viewModel.fetchAllUserLoading(index);
         return OpenContainerSocailWrapper(
           socialUser: viewModel.socialUserList[index],
-          closedBuilder: (BuildContext _, VoidCallback openContainer) => FriendCard(
+          closedBuilder: (BuildContext _, VoidCallback openContainer) =>
+              FriendCard(
             user: viewModel.socialUserList[index],
             onPressed: openContainer,
           ),

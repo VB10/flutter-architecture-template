@@ -5,7 +5,10 @@ extension _GameViewGamesCard on GameView {
     return viewModel.onNewsGameItems().toBuild<List<GameModel>>(
         onSuccess: (data) {
           return Column(
-            children: [HeaderButton(titleText: LocaleKeys.home_game_newUpdate), GameGrid(models: data)],
+            children: [
+              HeaderButton(titleText: LocaleKeys.home_game_newUpdate),
+              GameGrid(models: data)
+            ],
           );
         },
         loaindgWidget: SizedBox(
@@ -16,8 +19,8 @@ extension _GameViewGamesCard on GameView {
             highlightColor: Colors.grey[200],
             child: ListTile(
               leading: CircleAvatar(),
-              title: Text("data"),
-              subtitle: Text("data"),
+              title: Text('data'),
+              subtitle: Text('data'),
             ),
           ),
         ),
