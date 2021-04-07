@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^0.1.3
   dio: ^3.0.9
   easy_localization: ^2.3.2
+  firebase_analytics: any
   flutter_mobx: ^1.1.0
   flutter_svg: any
   json_annotation: ^3.0.1
