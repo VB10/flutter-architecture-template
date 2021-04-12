@@ -57,9 +57,9 @@ class SocialView extends StatelessWidget {
             onPressed: () {},
             child: Text(
               LocaleKeys.home_social_next,
-              style: context.textTheme.subtitle1.copyWith(
+              style: context.textTheme.subtitle1!.copyWith(
                 fontWeight: FontWeight.w600,
-                color: context.appTheme.buttonTheme.colorScheme.onError,
+                color: context.appTheme.buttonTheme.colorScheme!.onError,
               ),
             ).tr())
       ],
@@ -69,7 +69,7 @@ class SocialView extends StatelessWidget {
   Text buildTextFindFriends(BuildContext context) {
     return Text(
       LocaleKeys.home_social_findFriends,
-      style: context.textTheme.headline4.copyWith(fontWeight: FontWeight.bold, color: context.colorScheme.onSecondary),
+      style: context.textTheme.headline4!.copyWith(fontWeight: FontWeight.bold, color: context.colorScheme.onSecondary),
     );
   }
 

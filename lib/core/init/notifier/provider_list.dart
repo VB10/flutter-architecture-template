@@ -5,10 +5,10 @@ import '../navigation/navigation_service.dart';
 import 'theme_notifer.dart';
 
 class ApplicationProvider {
-  static ApplicationProvider _instance;
+  static ApplicationProvider? _instance;
   static ApplicationProvider get instance {
-    if (_instance == null) _instance = ApplicationProvider._init();
-    return _instance;
+    _instance ??= ApplicationProvider._init();
+    return _instance!;
   }
 
   ApplicationProvider._init();

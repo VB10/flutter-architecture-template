@@ -7,11 +7,11 @@ import '../model/social_user_model.dart';
 
 abstract class ISocialServiceService {
   final INetworkManager manager;
-  final GlobalKey<ScaffoldState> scaffoldyKey;
+  final GlobalKey<ScaffoldState>? scaffoldyKey;
 
   ISocialServiceService(this.manager, this.scaffoldyKey);
 
   Future<List<SocialUser>> fetchUserHouseList(FriendQuery query);
   Future<List<SocialUser>> fetchUserNameQuery(String text);
-  Future<SocialUser> fetchUser(id);
+  Future<SocialUser?> fetchUser(id);
 }

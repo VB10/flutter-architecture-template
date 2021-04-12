@@ -8,9 +8,9 @@ part of 'slider_model.dart';
 
 SliderModel _$SliderModelFromJson(Map<String, dynamic> json) {
   return SliderModel(
-    image: json['image'] as String,
-    text: json['text'] as String,
-    detailId: json['detailId'] as String,
+    image: json['image'] as String?,
+    text: json['text'] as String?,
+    detailId: json['detailId'] as String?,
   );
 }
 

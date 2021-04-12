@@ -10,5 +10,5 @@ abstract class IBuildFeedService {
 
   IBuildFeedService(this.manager, this.scaffoldyKey);
 
-  Future<List<HouseModel>> fetchUserHouseList();
+  Future<List<HouseModel>?> fetchUserHouseList();
 }

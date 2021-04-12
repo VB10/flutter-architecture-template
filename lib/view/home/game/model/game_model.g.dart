@@ -8,11 +8,11 @@ part of 'game_model.dart';
 
 GameModel _$GameModelFromJson(Map<String, dynamic> json) {
   return GameModel(
-    sId: json['_id'] as String,
-    image: json['image'] as String,
-    name: json['name'] as String,
-    money: json['money'] as int,
-    category: json['category'] as int,
+    sId: json['_id'] as String?,
+    image: json['image'] as String?,
+    name: json['name'] as String?,
+    money: json['money'] as int?,
+    category: json['category'] as int?,
   );
 }
 
