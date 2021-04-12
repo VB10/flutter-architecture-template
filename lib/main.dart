@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttermvvmtemplate/view/authenticate/login/view/login_view.dart';
+import 'package:fluttermvvmtemplate/view/home/game/view/game_view.dart';
 import 'package:provider/provider.dart';
 
 import 'core/constants/app/app_constants.dart';
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
-      home: LoginView(),
+      home: GameView(),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
