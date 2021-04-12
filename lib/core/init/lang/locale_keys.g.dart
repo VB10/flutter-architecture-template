@@ -45,6 +45,19 @@ abstract class  LocaleKeys {
   static const home_game_tabbar_tab5 = 'home.game.tabbar.tab5';
   static const home_game_tabbar = 'home.game.tabbar';
   static const home_game = 'home.game';
+  static const home_setting_title = 'home.setting.title';
+  static const home_setting_about_title = 'home.setting.about.title';
+  static const home_setting_about_contribitions = 'home.setting.about.contribitions';
+  static const home_setting_about = 'home.setting.about';
+  static const home_setting_core_title = 'home.setting.core.title';
+  static const home_setting_core_themeTitle = 'home.setting.core.themeTitle';
+  static const home_setting_core_themeDesc = 'home.setting.core.themeDesc';
+  static const home_setting_core_langTitle = 'home.setting.core.langTitle';
+  static const home_setting_core_langDesc = 'home.setting.core.langDesc';
+  static const home_setting_core = 'home.setting.core';
+  static const home_setting_exit = 'home.setting.exit';
+  static const home_setting_applicationTour = 'home.setting.applicationTour';
+  static const home_setting = 'home.setting';
   static const home = 'home';
 
 }
