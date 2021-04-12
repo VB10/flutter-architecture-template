@@ -8,7 +8,8 @@ class HeaderButton extends StatelessWidget {
   final String titleText;
   final VoidCallback onPressed;
 
-  const HeaderButton({Key key, this.titleText, this.onPressed}) : super(key: key);
+  const HeaderButton({Key key, this.titleText, this.onPressed})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,12 +24,35 @@ class HeaderButton extends StatelessWidget {
   Text buildTextTitle(BuildContext context) {
     return Text(
       titleText.tr(),
-      style: context.textTheme.headline6.copyWith(color: context.colorScheme.onError),
+      style: context.textTheme.headline6
+          .copyWith(color: context.colorScheme.onError),
     );
   }
 
-  FlatButton buildFlatButtonRight(BuildContext context) {
-    return FlatButton(
+  TextButton buildFlatButtonRight(BuildContext context) {
+    return TextButton(
+      onPressed: () {
+        onPressed();
+      },
+      child: Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        children: [
+          Text(LocaleKeys.home_game_viewAll.tr(),
+              style: context.textTheme.subtitle2
+                  .copyWith(color: context.colorScheme.onError)),
+          Icon(Icons.arrow_right, color: context.colorScheme.onError)
+        ],
+      ),
+      style: ButtonStyle(padding: MaterialStateProperty.all(EdgeInsets.zero)),
+    );
+  }
+}
+
+
+/*
+
+BEFORE: Flutter 2.0
+FlatButton(
         padding: EdgeInsets.zero,
         onPressed: () {
           onPressed();
@@ -40,5 +64,4 @@ class HeaderButton extends StatelessWidget {
             Icon(Icons.arrow_right, color: context.colorScheme.onError)
           ],
         ));
-  }
-}
+ */

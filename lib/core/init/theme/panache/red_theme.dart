@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const String FONT_FAMILY = "Poppins";
+const String FONT_FAMILY = 'Poppins';
 
 final ThemeData redTheme = ThemeData(
   fontFamily: FONT_FAMILY,
@@ -31,8 +31,11 @@ final ThemeData redTheme = ThemeData(
   textSelectionHandleColor: Color(0xffe57373),
   backgroundColor: Color(0xffef9a9a),
   toggleButtonsTheme: ToggleButtonsThemeData(
-      fillColor: Color(0xffC20003), textStyle: TextStyle(color: Colors.white), selectedColor: Colors.white),
-  floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: Color(0xffC20003)),
+      fillColor: Color(0xffC20003),
+      textStyle: TextStyle(color: Colors.white),
+      selectedColor: Colors.white),
+  floatingActionButtonTheme:
+      FloatingActionButtonThemeData(backgroundColor: Color(0xffC20003)),
 
   dialogBackgroundColor: Color(0xffffffff),
 

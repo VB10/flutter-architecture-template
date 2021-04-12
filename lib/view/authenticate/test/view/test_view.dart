@@ -38,7 +38,8 @@ class _TestsViewState extends BaseState<TestsView> {
 
   AppBar appBar() {
     return AppBar(
-      leading: Text(LocaleManager.instance.getStringValue(PreferencesKeys.TOKEN)),
+      leading:
+          Text(LocaleManager.instance.getStringValue(PreferencesKeys.TOKEN)),
       title: textWelcomeWidget(),
       actions: [iconButtonChangeTheme()],
     );
@@ -74,6 +75,7 @@ class _TestsViewState extends BaseState<TestsView> {
 }
 
 extension _FormArea on _TestsViewState {
+  // ignore: unused_element
   TextFormField get mailField => TextFormField(
         validator: (value) => value.isValidEmail,
       );

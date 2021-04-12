@@ -19,7 +19,8 @@ class BuildFeedView extends StatelessWidget {
         model.init();
         model.getListAll();
       },
-      onPageBuilder: (BuildContext context, BuildFeedViewModel viewModel) => Scaffold(
+      onPageBuilder: (BuildContext context, BuildFeedViewModel viewModel) =>
+          Scaffold(
         key: viewModel.scaffoldKey,
         appBar: buildAppBar(),
         body: DefaultTabController(
@@ -27,22 +28,26 @@ class BuildFeedView extends StatelessWidget {
             child: Observer(builder: (_) {
               return viewModel.isLoaindg
                   ? buildCenter()
-                  : viewModel.houseModels == null || viewModel.houseModels.isEmpty
-                      ? Center(child: Text("Not Found"))
+                  : viewModel.houseModels == null ||
+                          viewModel.houseModels.isEmpty
+                      ? Center(child: Text('Not Found'))
                       : buildListViewRecommended(viewModel, context);
             })),
       ),
     );
   }
 
-  ListView buildListViewRecommended(BuildFeedViewModel viewModel, BuildContext context) {
+  ListView buildListViewRecommended(
+      BuildFeedViewModel viewModel, BuildContext context) {
     return ListView(
       padding: context.paddingLow,
       children: [
         buildTabBar(viewModel),
         buildSizedBoxLAtestPageView(context, viewModel),
         context.emptySizedHeightBoxLow,
-        Text(LocaleKeys.home_build_subTitle.tr(), style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.w600)),
+        Text(LocaleKeys.home_build_subTitle.tr(),
+            style: context.textTheme.headline5
+                .copyWith(fontWeight: FontWeight.w600)),
         context.emptySizedHeightBoxLow,
         buildListBottom(viewModel)
       ],
@@ -57,7 +62,9 @@ class BuildFeedView extends StatelessWidget {
           child: Card(
             child: Row(
               children: [
-                Expanded(flex: 3, child: Image.network(viewModel.houseModels[index].image)),
+                Expanded(
+                    flex: 3,
+                    child: Image.network(viewModel.houseModels[index].image)),
                 Expanded(flex: 9, child: buildObserver(viewModel, index)),
               ],
             ),
@@ -79,24 +86,29 @@ class BuildFeedView extends StatelessWidget {
     });
   }
 
-  SizedBox buildSizedBoxLAtestPageView(BuildContext context, BuildFeedViewModel viewModel) {
+  SizedBox buildSizedBoxLAtestPageView(
+      BuildContext context, BuildFeedViewModel viewModel) {
     return SizedBox(
       height: context.dynamicHeight(0.3),
       child: PageView.builder(
         controller: PageController(viewportFraction: 0.95),
-        itemBuilder: (context, index) => buildStackFloaty(context, viewModel.sliderHouse, viewModel),
+        itemBuilder: (context, index) =>
+            buildStackFloaty(context, viewModel.sliderHouse, viewModel),
         itemCount: 3,
       ),
     );
   }
 
   TabBar buildTabBar(BuildFeedViewModel viewModel) {
-    return TabBar(indicator: viewModel.helper.circleDecoriaton, indicatorSize: TabBarIndicatorSize.label, tabs: [
-      Tab(text: LocaleKeys.home_build_tabbar_tab1.tr()),
-      Tab(text: LocaleKeys.home_build_tabbar_tab2.tr()),
-      Tab(text: LocaleKeys.home_build_tabbar_tab3.tr()),
-      Tab(text: LocaleKeys.home_build_tabbar_tab4.tr()),
-    ]);
+    return TabBar(
+        indicator: viewModel.helper.circleDecoriaton,
+        indicatorSize: TabBarIndicatorSize.label,
+        tabs: [
+          Tab(text: LocaleKeys.home_build_tabbar_tab1.tr()),
+          Tab(text: LocaleKeys.home_build_tabbar_tab2.tr()),
+          Tab(text: LocaleKeys.home_build_tabbar_tab3.tr()),
+          Tab(text: LocaleKeys.home_build_tabbar_tab4.tr()),
+        ]);
   }
 
   Center buildCenter() => Center(child: CircularProgressIndicator());
@@ -105,24 +117,35 @@ class BuildFeedView extends StatelessWidget {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      leading: IconButton(icon: Icon(Icons.format_align_left), onPressed: () {}),
+      leading:
+          IconButton(icon: Icon(Icons.format_align_left), onPressed: () {}),
       actions: [IconButton(icon: Icon(Icons.search), onPressed: () {})],
     );
   }
 
-  Widget buildStackFloaty(BuildContext context, HouseModel model, BuildFeedViewModel viewModel) {
+  Widget buildStackFloaty(
+      BuildContext context, HouseModel model, BuildFeedViewModel viewModel) {
     return Padding(
       padding: EdgeInsets.only(right: context.lowValue),
       child: Stack(
         children: [
-          Positioned.fill(bottom: 100, left: -50, right: -50, child: Image.network(model.image, fit: BoxFit.cover)),
-          Positioned(top: 120, left: 10, right: 10, child: buildCardFloaty(context, model, viewModel))
+          Positioned.fill(
+              bottom: 100,
+              left: -50,
+              right: -50,
+              child: Image.network(model.image, fit: BoxFit.cover)),
+          Positioned(
+              top: 120,
+              left: 10,
+              right: 10,
+              child: buildCardFloaty(context, model, viewModel))
         ],
       ),
     );
   }
 
-  Card buildCardFloaty(BuildContext context, HouseModel model, BuildFeedViewModel viewModel) {
+  Card buildCardFloaty(
+      BuildContext context, HouseModel model, BuildFeedViewModel viewModel) {
     return Card(
       child: Padding(
         padding: context.paddingLow,

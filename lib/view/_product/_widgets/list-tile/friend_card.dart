@@ -17,13 +17,29 @@ class FriendCard extends StatelessWidget {
       title: Text(user.name),
       onTap: onPressed,
       subtitle: Text(user.company),
-      trailing: RaisedButton(
+      trailing: ElevatedButton(
+        onPressed: () {},
+        child: Text(LocaleKeys.home_social_follow).tr(),
+        style: ButtonStyle(
+          padding: MaterialStateProperty.all(EdgeInsets.zero),
+          textStyle: MaterialStateProperty.all(
+              TextStyle(color: context.colorScheme.background)),
+          backgroundColor: MaterialStateProperty.all<Color>(
+              context.appTheme.buttonTheme.colorScheme.onError),
+        ),
+      ),
+    );
+  }
+}
+
+
+/* BEFORE: Flutter 2.0
+RaisedButton (
         child: Text(LocaleKeys.home_social_follow).tr(),
         onPressed: () {},
         padding: EdgeInsets.zero,
         textColor: context.colorScheme.background,
         color: context.appTheme.buttonTheme.colorScheme.onError,
       ),
-    );
-  }
-}
+
+ */

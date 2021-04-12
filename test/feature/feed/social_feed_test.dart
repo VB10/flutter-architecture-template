@@ -26,7 +26,7 @@ void main() {
   });
 
   test('Loading Test 2 ', () async {
-    socialMockViewModel.fetchAllUserLoading(1);
+    await socialMockViewModel.fetchAllUserLoading(1);
     expect(socialMockViewModel.isPageLoading, true);
     await Future.delayed(Duration(seconds: 1));
     expect(socialMockViewModel.isPageLoading, false);

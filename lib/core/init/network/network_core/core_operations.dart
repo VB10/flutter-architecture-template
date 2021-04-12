@@ -1,4 +1,4 @@
-part of "../core_dio.dart";
+part of '../core_dio.dart';
 
 extension _CoreDioOperations on CoreDio {
   R _responseParser<R, T>(BaseModel model, dynamic data) {

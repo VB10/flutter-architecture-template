@@ -5,37 +5,47 @@ import 'package:fluttermvvmtemplate/core/init/network/ICoreDio.dart';
 import 'core_dio_mock.dart';
 import 'dio_mock_model.dart';
 
-main() {
+Future<void> main() async {
   ICoreDioFull service;
   setUp(() {
-    service = CoreDioMock(BaseOptions(baseUrl: 'https://jsonplaceholder.typicode.com'));
+    service = CoreDioMock(
+        BaseOptions(baseUrl: 'https://jsonplaceholder.typicode.com'));
   });
   test('CoreDio List', () async {
-    final data = await service.fetch<List<PostModel>, PostModel>('/posts', type: HttpTypes.GET, parseModel: PostModel());
+    final data = await service.fetch<List<PostModel>, PostModel>('/posts',
+        type: HttpTypes.GET, parseModel: PostModel());
 
     expect(data.data, isList);
   });
 
   test('CoreDio List No Network', () async {
-    final data = await service.fetchNoNetwork<List<PostModel>, PostModel>('/posts', type: HttpTypes.GET, parseModel: PostModel());
+    final data = await service.fetchNoNetwork<List<PostModel>, PostModel>(
+        '/posts',
+        type: HttpTypes.GET,
+        parseModel: PostModel());
 
     expect(data.data, isList);
   });
 
   test('CoreDio Object', () async {
-    final data = await service.fetch<List<PostModel>, PostModel>('/posts', type: HttpTypes.GET, parseModel: PostModel());
+    final data = await service.fetch<List<PostModel>, PostModel>('/posts',
+        type: HttpTypes.GET, parseModel: PostModel());
 
     expect(data.data, isList);
   });
 
   test('CoreDio Primitive', () async {
-    final data = await service.fetch<List<PostModel>, PostModel>('/posts', type: HttpTypes.GET, parseModel: PostModel());
+    final data = await service.fetch<List<PostModel>, PostModel>('/posts',
+        type: HttpTypes.GET, parseModel: PostModel());
 
     expect(data.data, isList);
   });
 
   test('CoreDio Error', () async {
-    final data = await service.fetchNoNetwork<List<PostModel>, PostModel>('/posts', type: HttpTypes.GET, parseModel: PostModel());
+    final data = await service.fetchNoNetwork<List<PostModel>, PostModel>(
+        '/posts',
+        type: HttpTypes.GET,
+        parseModel: PostModel());
 
     expect(data.data, isList);
   });

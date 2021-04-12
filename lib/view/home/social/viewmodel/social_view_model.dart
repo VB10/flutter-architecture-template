@@ -6,7 +6,6 @@ import 'package:mobx/mobx.dart';
 import '../../../../core/base/model/base_view_model.dart';
 import '../model/social_user_model.dart';
 import '../service/ISocialService.dart';
-import '../service/socail_service.dart';
 
 part 'social_view_model.g.dart';
 
