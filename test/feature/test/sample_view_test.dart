@@ -4,7 +4,7 @@ import 'package:fluttermvvmtemplate/core/init/network/network_manager.dart';
 
 main() {
   setUp(() {
-    final _ = NetworkManager.instance.coreDio;
+    final _ = NetworkManager.instance!.coreDio;
   });
   test("Sample", () {});
 }

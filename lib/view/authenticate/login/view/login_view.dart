@@ -94,7 +94,7 @@ class LoginView extends StatelessWidget {
     return Observer(builder: (_) {
       return TextFormField(
         controller: viewModel.passwordController,
-        validator: (value) => value.isNotEmpty ? null : 'This field required',
+        validator: (value) => value!.isNotEmpty ? null : 'This field required',
         obscureText: viewModel.isLockOpen,
         decoration: InputDecoration(
             labelStyle: context.textTheme.subtitle1,
@@ -115,7 +115,7 @@ class LoginView extends StatelessWidget {
   TextFormField buildTextFormFieldEmail(BuildContext context, LoginViewModel viewModel) {
     return TextFormField(
       controller: viewModel.emailController,
-      validator: (value) => value.isValidEmails ? 'asdasd' : null,
+      validator: (value) => value!.isValidEmails ? 'asdasd' : null,
       decoration: InputDecoration(
         labelText: LocaleKeys.login_email.tr(),
         labelStyle: context.textTheme.subtitle1,

@@ -27,8 +27,8 @@ class BuildFeedView extends StatelessWidget {
             child: Observer(builder: (_) {
               return viewModel.isLoaindg
                   ? buildCenter()
-                  : viewModel.houseModels == null || viewModel.houseModels.isEmpty
-                      ? Center(child: Text("Not Found"))
+                  : viewModel.houseModels == null || viewModel.houseModels!.isEmpty
+                      ? Center(child: Text('Not Found'))
                       : buildListViewRecommended(viewModel, context);
             })),
       ),
@@ -42,7 +42,7 @@ class BuildFeedView extends StatelessWidget {
         buildTabBar(viewModel),
         buildSizedBoxLAtestPageView(context, viewModel),
         context.emptySizedHeightBoxLow,
-        Text(LocaleKeys.home_build_subTitle.tr(), style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.w600)),
+        Text(LocaleKeys.home_build_subTitle.tr(), style: context.textTheme.headline5!.copyWith(fontWeight: FontWeight.w600)),
         context.emptySizedHeightBoxLow,
         buildListBottom(viewModel)
       ],
@@ -57,7 +57,7 @@ class BuildFeedView extends StatelessWidget {
           child: Card(
             child: Row(
               children: [
-                Expanded(flex: 3, child: Image.network(viewModel.houseModels[index].image)),
+                Expanded(flex: 3, child: Image.network(viewModel.houseModels![index].image!)),
                 Expanded(flex: 9, child: buildObserver(viewModel, index)),
               ],
             ),
@@ -70,10 +70,12 @@ class BuildFeedView extends StatelessWidget {
   Observer buildObserver(BuildFeedViewModel viewModel, int index) {
     return Observer(builder: (_) {
       return BuildUserCard(
-        model: viewModel.houseModels[index],
-        isLiked: viewModel.likeItems.contains(viewModel.houseModels[index].id),
+        model: viewModel.houseModels![index],
+        isLiked: viewModel.likeItems.contains(viewModel.houseModels![index].id),
         onPressedLikeId: (id) {
-          viewModel.onLikeItemPressed(id);
+          if (id != null) {
+            viewModel.onLikeItemPressed(id);
+          }
         },
       );
     });
@@ -115,7 +117,7 @@ class BuildFeedView extends StatelessWidget {
       padding: EdgeInsets.only(right: context.lowValue),
       child: Stack(
         children: [
-          Positioned.fill(bottom: 100, left: -50, right: -50, child: Image.network(model.image, fit: BoxFit.cover)),
+          Positioned.fill(bottom: 100, left: -50, right: -50, child: Image.network(model.image!, fit: BoxFit.cover)),
           Positioned(top: 120, left: 10, right: 10, child: buildCardFloaty(context, model, viewModel))
         ],
       ),
@@ -131,7 +133,9 @@ class BuildFeedView extends StatelessWidget {
             model: model,
             isLiked: viewModel.likeItems.contains(model.id),
             onPressedLikeId: (id) {
-              viewModel.onLikeItemPressed(id);
+              if (id != null) {
+                viewModel.onLikeItemPressed(id);
+              }
             },
           );
         }),

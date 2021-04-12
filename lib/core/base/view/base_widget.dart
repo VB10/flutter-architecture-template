@@ -1,5 +1,7 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttermvvmtemplate/core/extension/string_extension.dart';
+import 'package:fluttermvvmtemplate/core/init/lang/locale_keys.g.dart';
 import 'package:fluttermvvmtemplate/view/_product/store/connectivity_store.dart';
 import 'package:mobx/mobx.dart';
 
@@ -9,9 +11,10 @@ class BaseView<T extends Store> extends StatefulWidget {
   final Widget Function(BuildContext context, T value) onPageBuilder;
   final T viewModel;
   final Function(T model) onModelReady;
-  final VoidCallback onDispose;
+  final VoidCallback? onDispose;
 
-  const BaseView({Key key, @required this.viewModel, @required this.onPageBuilder, this.onModelReady, this.onDispose})
+  const BaseView(
+      {Key? key, required this.viewModel, required this.onPageBuilder, required this.onModelReady, this.onDispose})
       : super(key: key);
 
   @override
@@ -19,10 +22,12 @@ class BaseView<T extends Store> extends StatefulWidget {
 }
 
 class _BaseViewState<T extends Store> extends State<BaseView<T>> {
-  final ConnectivityStore _connectivityStore = ConnectivityStore();
-  ReactionDisposer _disposer;
+  late T model;
 
-  T model;
+  final ConnectivityStore _connectivityStore = ConnectivityStore();
+
+  late final ReactionDisposer _disposer;
+
   @override
   void initState() {
     model = widget.viewModel;
@@ -31,21 +36,22 @@ class _BaseViewState<T extends Store> extends State<BaseView<T>> {
 
     _disposer = reaction((_) => _connectivityStore.connectivityStream.value, (result) {
       if (result == ConnectivityResult.none) {
-        return networkPopUp;
+        networkPopUp;
       }
     }, delay: 1000);
   }
 
   Future get networkPopUp {
-    return showDialog<void>(
-      context: (model as BaseViewModel).context,
+    var currentContext = (model as BaseViewModel).context;
+    return showDialog(
+      context: (currentContext)!,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('İnternet Bağlantısı'),
-          content: Text('Mobil veri veya WiFi kapalı gözüküyor. Lütfen açınız.'),
+          title: Text(LocaleKeys.networkCheck_networkConnectionText.locale),
+          content: Text(LocaleKeys.networkCheck_networkStatusClosedText.locale),
           actions: [
-            FlatButton(
-              child: Text('Tamam'),
+            TextButton(
+              child: Text(LocaleKeys.networkCheck_networkActionText.locale),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -60,7 +66,7 @@ class _BaseViewState<T extends Store> extends State<BaseView<T>> {
   void dispose() {
     _disposer();
     super.dispose();
-    if (widget.onDispose != null) widget.onDispose();
+    if (widget.onDispose != null) widget.onDispose!();
   }
 
   @override

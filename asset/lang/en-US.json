@@ -8,7 +8,11 @@
         "page3":
         {"title":"Make It Good","desc":"You are not alone. You have unique abiltiyto go to anther world"}
     },
-
+    "networkCheck": {
+        "networkConnectionText": "Network Connection",
+        "networkStatusClosedText": "Mobile data or WiFi appears to be turned off. Please open it.",
+        "networkActionText": "Ok"
+    },
     "login":{
         "tab1":"Login",
         "tab2":"SignUp",
@@ -27,6 +31,27 @@
                 "tab4":"Style"
             },
             "subTitle":"Recommended"
+        },
+        "social":{
+            "cancel":"Cancel",
+            "next":"Next",
+            "search":"Search",
+            "findFriends":"Find Friends",
+            "follow":"Follow",
+            "following":"Following"
+        },
+        "game":{
+            "title":"Unity Game",
+            "newUpdate":"New Updated Games",
+            "viewAll":"View All",
+            "topDownload":"Top Downloads",
+            "tabbar":{
+                "tab1":"RACING",
+                "tab2":"SIMULATION",
+                "tab3":"CASUAL",
+                "tab4":"CARTOONY",
+                "tab5":"TOYS"
+            }
         }
     }
 }

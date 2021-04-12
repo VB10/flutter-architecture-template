@@ -12,6 +12,10 @@ abstract class  LocaleKeys {
   static const onBoard_page3_desc = 'onBoard.page3.desc';
   static const onBoard_page3 = 'onBoard.page3';
   static const onBoard = 'onBoard';
+  static const networkCheck_networkConnectionText = 'networkCheck.networkConnectionText';
+  static const networkCheck_networkStatusClosedText = 'networkCheck.networkStatusClosedText';
+  static const networkCheck_networkActionText = 'networkCheck.networkActionText';
+  static const networkCheck = 'networkCheck';
   static const login_tab1 = 'login.tab1';
   static const login_tab2 = 'login.tab2';
   static const login_email = 'login.email';
@@ -27,6 +31,24 @@ abstract class  LocaleKeys {
   static const home_build_tabbar = 'home.build.tabbar';
   static const home_build_subTitle = 'home.build.subTitle';
   static const home_build = 'home.build';
+  static const home_social_cancel = 'home.social.cancel';
+  static const home_social_next = 'home.social.next';
+  static const home_social_search = 'home.social.search';
+  static const home_social_findFriends = 'home.social.findFriends';
+  static const home_social_follow = 'home.social.follow';
+  static const home_social_following = 'home.social.following';
+  static const home_social = 'home.social';
+  static const home_game_title = 'home.game.title';
+  static const home_game_newUpdate = 'home.game.newUpdate';
+  static const home_game_viewAll = 'home.game.viewAll';
+  static const home_game_topDownload = 'home.game.topDownload';
+  static const home_game_tabbar_tab1 = 'home.game.tabbar.tab1';
+  static const home_game_tabbar_tab2 = 'home.game.tabbar.tab2';
+  static const home_game_tabbar_tab3 = 'home.game.tabbar.tab3';
+  static const home_game_tabbar_tab4 = 'home.game.tabbar.tab4';
+  static const home_game_tabbar_tab5 = 'home.game.tabbar.tab5';
+  static const home_game_tabbar = 'home.game.tabbar';
+  static const home_game = 'home.game';
   static const home = 'home';
 
 }

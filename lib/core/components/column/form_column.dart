@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class FormColumn extends StatelessWidget {
-  final List<Widget> children;
+  final List<Widget>? children;
 
-  const FormColumn({Key key, this.children}) : super(key: key);
+  const FormColumn({Key? key, this.children}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -12,7 +12,7 @@ class FormColumn extends StatelessWidget {
         Expanded(
           flex: 8,
           child: Column(
-            children: children,
+            children: children!,
           ),
         ),
         Spacer(flex: 1),
