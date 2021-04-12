@@ -14,7 +14,7 @@ class NavigationRoute {
   Route<dynamic> generateRoute(RouteSettings args) {
     switch (args.name) {
       case NavigationConstants.TEST_VIEW:
-        return normalNavigate(TestsView());
+        return normalNavigate(TestsView(),NavigationConstants.TEST_VIEW);
       default:
         return MaterialPageRoute(
           builder: (context) => NotFoundNavigationWidget(),
@@ -22,9 +22,11 @@ class NavigationRoute {
     }
   }
 
-  MaterialPageRoute normalNavigate(Widget widget) {
+  MaterialPageRoute normalNavigate(Widget widget,String pageName) {
     return MaterialPageRoute(
       builder: (context) => widget,
+      //analytciste görülecek olan sayfa ismi için pageName veriyoruz
+      settings: RouteSettings(name: pageName)
     );
   }
 }
