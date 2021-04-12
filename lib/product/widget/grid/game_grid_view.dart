@@ -4,10 +4,10 @@ import '../../../view/home/game/model/game_model.dart';
 import '../card/game_card.dart';
 
 class GameGrid extends StatelessWidget {
-  final List<GameModel> models;
-  final void Function(GameModel item, int indx) onPressed;
+  final List<GameModel>? models;
+  final void Function(GameModel item, int indx)? onPressed;
 
-  const GameGrid({Key key, this.models, this.onPressed}) : super(key: key);
+  const GameGrid({Key? key, this.models, this.onPressed}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -19,9 +19,9 @@ class GameGrid extends StatelessWidget {
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) => GameCard(
-        model: models[index],
+        model: models![index],
         onPressed: () {
-          onPressed(models[index], index);
+          onPressed!(models![index], index);
         },
       ),
     );

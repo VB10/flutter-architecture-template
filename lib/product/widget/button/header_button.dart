@@ -5,10 +5,10 @@ import 'package:kartal/kartal.dart';
 import '../../../core/init/lang/locale_keys.g.dart';
 
 class HeaderButton extends StatelessWidget {
-  final String titleText;
-  final VoidCallback onPressed;
+  final String? titleText;
+  final VoidCallback? onPressed;
 
-  const HeaderButton({Key key, this.titleText, this.onPressed}) : super(key: key);
+  const HeaderButton({Key? key, this.titleText, this.onPressed}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,8 +22,8 @@ class HeaderButton extends StatelessWidget {
 
   Text buildTextTitle(BuildContext context) {
     return Text(
-      titleText.tr(),
-      style: context.textTheme.headline6.copyWith(color: context.colorScheme.onError),
+      titleText!.tr(),
+      style: context.textTheme.headline6!.copyWith(color: context.colorScheme.onError),
     );
   }
 
@@ -31,12 +31,14 @@ class HeaderButton extends StatelessWidget {
     return FlatButton(
         padding: EdgeInsets.zero,
         onPressed: () {
-          onPressed();
+          if (onPressed != null) {
+            onPressed!();
+          }
         },
         child: Wrap(
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
-            Text(LocaleKeys.home_game_viewAll.tr(), style: context.textTheme.subtitle2.copyWith(color: context.colorScheme.onError)),
+            Text(LocaleKeys.home_game_viewAll.tr(), style: context.textTheme.subtitle2!.copyWith(color: context.colorScheme.onError)),
             Icon(Icons.arrow_right, color: context.colorScheme.onError)
           ],
         ));

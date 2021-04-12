@@ -11,6 +11,6 @@ abstract class IGameService {
 
   IGameService(this.manager, this.scaffoldyKey);
 
-  Future<List<SliderModel>> fetchSliderItems();
-  Future<List<GameModel>> fetchGameItems(GameEnum type);
+  Future<List<SliderModel>?> fetchSliderItems();
+  Future<List<GameModel>?> fetchGameItems(GameEnum type);
 }

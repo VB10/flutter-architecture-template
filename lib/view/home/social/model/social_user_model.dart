@@ -6,18 +6,18 @@ part 'social_user_model.g.dart';
 @JsonSerializable()
 class SocialUser extends INetworkModel<SocialUser> {
   @JsonKey(name: '_id')
-  String id;
-  String name;
-  String company;
-  String image;
+  String? id;
+  String? name;
+  String? company;
+  String? image;
 
   SocialUser({this.name, this.company, this.image});
 
   SocialUser.fromJson(Map<String, dynamic> json) {
-    id = json['_id'];
-    name = json['name'];
-    company = json['company'];
-    image = json['image'];
+    id = json['_id'] as String?;
+    name = json['name'] as String?;
+    company = json['company'] as String?;
+    image = json['image'] as String?;
   }
 
   @override
@@ -26,7 +26,7 @@ class SocialUser extends INetworkModel<SocialUser> {
   }
 
   @override
-  SocialUser fromJson(Map<String, Object> json) {
+  SocialUser fromJson(Map<String, Object?> json) {
     return _$SocialUserFromJson(json);
   }
 

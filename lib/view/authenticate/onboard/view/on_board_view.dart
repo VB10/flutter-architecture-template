@@ -109,7 +109,7 @@ class OnBoardView extends StatelessWidget {
       OnBoardModel model, BuildContext context) {
     return AutoLocaleText(
       value: model.title,
-      style: Theme.of(context).textTheme.headline3.copyWith(
+      style: Theme.of(context).textTheme.headline3!.copyWith(
           fontWeight: FontWeight.bold, color: context.colors.onSecondary),
     );
   }
@@ -119,7 +119,7 @@ class OnBoardView extends StatelessWidget {
     return AutoLocaleText(
       value: model.description,
       textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.subtitle1.copyWith(
+      style: Theme.of(context).textTheme.subtitle1!.copyWith(
             fontWeight: FontWeight.w100,
           ),
     );

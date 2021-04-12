@@ -5,9 +5,9 @@ import 'package:kartal/kartal.dart';
 import '../../../view/home/game/model/slider_model.dart';
 
 class GameSlider extends StatefulWidget {
-  final List<SliderModel> sliderModel;
+  final List<SliderModel>? sliderModel;
 
-  const GameSlider({Key key, this.sliderModel}) : super(key: key);
+  const GameSlider({Key? key, this.sliderModel}) : super(key: key);
 
   @override
   _GameSliderState createState() => _GameSliderState();
@@ -26,7 +26,7 @@ class _GameSliderState extends State<GameSlider> {
     return PageView.builder(
       controller: PageController(viewportFraction: 0.8),
       onPageChanged: _changeValue,
-      itemCount: widget.sliderModel.length,
+      itemCount: widget.sliderModel!.length,
       itemBuilder: (context, index) => buildCardImage(index),
     );
   }
@@ -36,11 +36,11 @@ class _GameSliderState extends State<GameSlider> {
     setState(() {});
   }
 
-  Widget buildCardImage(int index) => CachedNetworkImage(imageUrl: widget.sliderModel[index].image);
+  Widget buildCardImage(int index) => CachedNetworkImage(imageUrl: widget.sliderModel![index].image!);
 
   ListView buildListViewCirleIndicator() {
     return ListView.builder(
-      itemCount: widget.sliderModel.length,
+      itemCount: widget.sliderModel!.length,
       shrinkWrap: true,
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) => Padding(

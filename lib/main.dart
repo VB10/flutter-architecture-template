@@ -12,12 +12,19 @@ import 'core/init/notifier/provider_list.dart';
 import 'core/init/notifier/theme_notifer.dart';
 import 'view/home/game/view/game_view.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  LocaleManager.prefrencesInit();
+  await LocaleManager.prefrencesInit();
+
+  await EasyLocalization.ensureInitialized();
+
   runApp(MultiProvider(
     providers: [...ApplicationProvider.instance.dependItems],
-    child: EasyLocalization(child: MyApp(), supportedLocales: LanguageManager.instance.supportedLocales, path: ApplicationConstants.LANG_ASSET_PATH),
+    child: EasyLocalization(
+      child: MyApp(),
+      supportedLocales: LanguageManager.instance.supportedLocales,
+      path: ApplicationConstants.LANG_ASSET_PATH,
+    ),
   ));
 }
 
@@ -28,6 +35,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
       home: GameView(),
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
       navigatorObservers: [AnalytcisManager.instance.observer],

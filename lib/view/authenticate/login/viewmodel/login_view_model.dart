@@ -15,10 +15,10 @@ class LoginViewModel = _LoginViewModelBase with _$LoginViewModel;
 abstract class _LoginViewModelBase with Store, BaseViewModel {
   GlobalKey<FormState> formState = GlobalKey();
   GlobalKey<ScaffoldState> scaffoldState = GlobalKey();
-  ILoginService loginService;
+  late ILoginService loginService;
 
-  TextEditingController emailController;
-  TextEditingController passwordController;
+  TextEditingController? emailController;
+  TextEditingController? passwordController;
 
   @override
   void setContext(BuildContext context) => this.context = context;
@@ -38,12 +38,14 @@ abstract class _LoginViewModelBase with Store, BaseViewModel {
   @action
   Future<void> fetchLoginSevice() async {
     isLoadingChange();
-    if (formState.currentState.validate()) {
-      final response = await loginService.fetchUserControl(LoginModel(email: emailController.text, password: passwordController.text));
+    if (formState.currentState!.validate()) {
+      final response = await loginService.fetchUserControl(LoginModel(email: emailController!.text, password: passwordController!.text));
 
       if (response != null) {
-        scaffoldState.currentState.showSnackBar(SnackBar(content: Text(response.token)));
-        await localeManager.setStringValue(PreferencesKeys.TOKEN, response.token);
+        if (scaffoldState.currentState != null) {
+          scaffoldState.currentState!.showSnackBar(SnackBar(content: Text(response.token!)));
+        }
+        await localeManager.setStringValue(PreferencesKeys.TOKEN, response.token!);
       }
     }
     isLoadingChange();

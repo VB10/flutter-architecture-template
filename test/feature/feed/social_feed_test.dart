@@ -8,10 +8,10 @@ import 'feed_mockito.dart';
 import 'social_network_mock.dart';
 
 void main() {
-  BuildContext context;
-  SocialNetworkMock mockService;
+  BuildContext? context;
+  SocialNetworkMock? mockService;
   INetworkManager networkManager;
-  SocialMockViewModel socialMockViewModel;
+  late SocialMockViewModel socialMockViewModel;
 
   setUp(() {
     context = SocialBuildContext();
@@ -57,17 +57,17 @@ void main() {
     // verify(socialMockViewModel.isPageLoading).called(2);
   });
   test('Fetch User Id', () async {
-    final response = await mockService.fetchUser(10);
+    final response = await mockService!.fetchUser(10);
     expect(response, isNotNull);
   });
 
   test('Fetch House Id', () async {
-    final response = await mockService.fetchUserHouseList(FriendQuery());
+    final response = await mockService!.fetchUserHouseList(FriendQuery());
     expect(response, isNotEmpty);
   });
 
   test('Fetch User Name Query', () async {
-    final response = await mockService.fetchUserNameQuery('hello');
+    final response = await mockService!.fetchUserNameQuery('hello');
     expect(response, isNotEmpty);
   });
 }

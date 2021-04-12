@@ -8,7 +8,7 @@ import 'social_network_mock.dart';
 class SocialBuildContext extends Mock implements BuildContext {}
 
 class SocialMockViewModel extends Mock implements SocialViewModel {
-  SocialMockViewModel(SocialNetworkMock mockService);
+  SocialMockViewModel(SocialNetworkMock? mockService);
   @override
   bool isPageLoading = false;
 }
@@ -16,7 +16,7 @@ class SocialMockViewModel extends Mock implements SocialViewModel {
 class SocialFakeViewModel extends Fake implements SocialViewModel {
   SocialFakeViewModel(SocialNetworkMock mockService);
   @override
-  BuildContext context;
+  BuildContext? context;
 
   @override
   bool isPageLoading = false;
@@ -32,7 +32,7 @@ class SocialFakeViewModel extends Fake implements SocialViewModel {
   }
 
   @override
-  void setContext(BuildContext context) {
+  void setContext(BuildContext? context) {
     this.context = context;
   }
 
