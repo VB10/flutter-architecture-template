@@ -49,6 +49,10 @@
                 "tab5":"Oyuncaklar"
             }
         },
+        "burgers":{
+            "favoriteProducts":"En Çok Satılanlar",
+            "normalProducts":"Burgerler"
+        },
         "setting":{
             "title":"Ayarlar",
             "about":{

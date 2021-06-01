@@ -49,6 +49,10 @@
                 "tab5":"TOYS"
             }
         },
+        "burgers":{
+            "favoriteProducts":"Best \nSelling",
+            "normalProducts":"Burgers"
+        },
         "setting":{
             "title":"Settings",
             "about":{
