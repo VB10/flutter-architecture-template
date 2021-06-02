@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermvvmtemplate/view/_product/_model/query/friend_query.dart';
-import 'package:fluttermvvmtemplate/view/_product/_utilty/thorottle_helper.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../core/base/model/base_view_model.dart';
+import '../../../_product/_model/query/friend_query.dart';
+import '../../../_product/_utilty/thorottle_helper.dart';
 import '../model/social_user_model.dart';
 import '../service/ISocialService.dart';
-import '../service/socail_service.dart';
 
 part 'social_view_model.g.dart';
 

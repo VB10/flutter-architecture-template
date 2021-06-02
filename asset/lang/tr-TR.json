@@ -37,37 +37,38 @@
             "following":"Following"
         },
         "game":{
-            "title":"Unity Game",
-            "newUpdate":"New Updated Games",
-            "viewAll":"View All",
-            "topDownload":"Top Downloads",
+            "title":"Birlik Oyun",
+            "newUpdate":"Yeni Güncellenmiş Oyunlar",
+            "viewAll":"Görünüm Herşey",
+            "topDownload":"Üst İndirilenler",
             "tabbar":{
-                "tab1":"RACING",
-                "tab2":"SIMULATION",
-                "tab3":"CASUAL",
-                "tab4":"CARTOONY",
-                "tab5":"TOYS"
+                "tab1":"YARIŞ",
+                "tab2":"Simülasyon",
+                "tab3":"Gündelik",
+                "tab4":"Karikatüry",
+                "tab5":"Oyuncaklar"
             }
         },
         "burgers":{
-            "favoriteProducts":"Best \nSelling",
-            "normalProducts":"Burgers"
+            "favoriteProducts":"En Çok Satılanlar",
+            "normalProducts":"Burgerler"
         },
         "setting":{
-            "title":"Settings",
+            "title":"Ayarlar",
             "about":{
-                "title":"About Project",
-                "contribitions":"Project Contributors"
+                "title":"Proje Hakkında",
+                "contribitions":"Proje Katkıda Bulunanlar"
             },
             "core":{
                 "title":"Project Core",
-                "themeTitle":"Theme Change",
-                "themeDesc":"You can change applicaton theme.",
-                "langTitle":"Language Change",
-                "langDesc":"You can change applicaton language."
+
+                "themeTitle":"Tema değişikliği",
+                "themeDesc":"Uygulama temasını değiştirebilirsiniz.",
+                "langTitle":"Dil değişimi",
+                "langDesc":"Uygulama dilini değiştirebilirsiniz."
             },
             "exit":"Exit",
-            "applicationTour":"Application Tuor"
+            "applicationTour":"Uygulama Turu"
 
         }
     }
