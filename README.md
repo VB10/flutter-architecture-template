@@ -1,19 +1,20 @@
 # Flutter Architecture Template
 
-This project craeeted for proffesionel application arhitecture.
+This project is created for professional application architecture.
 
 ## Architecture
 
-We writed every mobile development unit at this website.
+We wrote every mobile development unit at this website.
 
 - [Mobile Architecture](https://vb10.dev/#/)
 
-> Now only support turkish language, it's comming soon other options.
+> For now it only supports Turkish language, but other options will come soon.
 
 ## Architecture Video Series
 
 ---
-I was shared mobile development practices on my channel so I supported only Turkish now, I have will creating global content coming soon.
+
+I shared mobile development applications on my channel, so I only support Turkish for now, I will be creating global content soon.
 
 ### **Season 1**
 
@@ -23,15 +24,15 @@ I was shared mobile development practices on my channel so I supported only Turk
 4. [Durum Yönetimi(State Management)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=4)
 5. [Uygulama Dil ve Tema Yönetimi(Application Language and Theme Management)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=5)
 6. [Uygulama Yönlendirme(Navigation Architecture)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=6)
-7. [Yerel Saklama (Application Local Stroage)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=7)
+7. [Yerel Saklama (Application Local Storage)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=7)
 8. [Ağ İstekleri Yönetme (Network Architecture)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=8)
 
 ##  **Season 2**
 
-9.  [Snippet Geliştirme (Sniipet Management)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=9)
+9.  [Snippet Geliştirme (Snippet Management)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=9)
 10. [Extension](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=10)
 11. [Tema Mimarisi Gelişmiş (Advanced Theme Management)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=11)
-12. [Gelişmiş Ağ İstekleri Yönetme (Advanced Network Managment)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=12)
+12. [Gelişmiş Ağ İstekleri Yönetme (Advanced Network Management)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=12)
 13. [Widget Mimarisi (Widget Architecture)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=13)
 14. [Uygulama Apple Store Yükleme Yönetimi (Publish Apple Architecture)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=15)
 15. [Uygulama Android Store Yükleme Yönetimi (Publish Google Architecture)](https://www.youtube.com/watch?v=LSiHLLMBkjQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=14)
@@ -39,7 +40,7 @@ I was shared mobile development practices on my channel so I supported only Turk
 
 ## **Season 3**
 
-16. [Tanıtım Ekranları  (OnBoard Screen)](https://www.youtube.com/watch?v=7ifniDxWNgQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=17)
+16. [Tanıtım Ekranları (OnBoard Screen)](https://www.youtube.com/watch?v=7ifniDxWNgQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=17)
 17. [Giriş Ekranı (Login Screen)](https://www.youtube.com/watch?v=7ifniDxWNgQ&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=18)
 18. [Akış Ekranı (Akış Ekranı Geliştirmeleri)](https://www.youtube.com/watch?v=I2Eg-mC1eOA&list=PL1k5oWAuBhgV_XnhMSyu2YLZMZNGuD0Cv&index=19)
 
