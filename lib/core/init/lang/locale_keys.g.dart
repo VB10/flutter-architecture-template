@@ -12,6 +12,8 @@ abstract class  LocaleKeys {
   static const onBoard_page3_desc = 'onBoard.page3.desc';
   static const onBoard_page3 = 'onBoard.page3';
   static const onBoard = 'onBoard';
+  static const splash_welcome = 'splash.welcome';
+  static const splash = 'splash';
   static const login_tab1 = 'login.tab1';
   static const login_tab2 = 'login.tab2';
   static const login_email = 'login.email';

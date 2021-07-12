@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "cirlce_hwa.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

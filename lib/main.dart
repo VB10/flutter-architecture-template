@@ -27,9 +27,7 @@ Future<void> main() async {
 
 Future<void> _init() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await LocaleManager.prefrencesInit();
   await EasyLocalization.ensureInitialized();
-  await DeviceUtility.instance?.initPackageInfo();
 }
 
 class MyApp extends StatelessWidget {
@@ -38,7 +36,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: context.watch<ThemeNotifier>().currentTheme,
-      home: BurgersView(),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
