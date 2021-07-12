@@ -1,0 +1,22 @@
+name: architecture_widgets
+description: A new Flutter package project.
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  fluttermvvmtemplate: 
+      path: ../../
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+flutter:

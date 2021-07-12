@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../extension/context_extension.dart';
-
 class IndactorListView extends StatelessWidget {
   final int? itemCount;
 
@@ -9,7 +7,9 @@ class IndactorListView extends StatelessWidget {
 
   final Widget Function(int index)? onListItem;
 
-  const IndactorListView({Key? key, this.itemCount, this.onListItem, this.currentIndex}) : super(key: key);
+  const IndactorListView(
+      {Key? key, this.itemCount, this.onListItem, this.currentIndex})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -22,7 +22,7 @@ class IndactorListView extends StatelessWidget {
 
   Padding buildPadding(BuildContext context, int index) {
     return Padding(
-      padding: context.paddingLow,
+      padding: EdgeInsets.all(5),
       child: buildCircleAvatar(index, context),
     );
   }
@@ -30,14 +30,18 @@ class IndactorListView extends StatelessWidget {
   CircleAvatar buildCircleAvatar(int index, BuildContext context) {
     return CircleAvatar(
       backgroundColor: isCurrentIndex(index) ? Colors.black12 : Colors.blue,
-      radius: isCurrentIndex(index) ? context.width * 0.03 : context.width * 0.015,
+      radius: isCurrentIndex(index)
+          ? _pageWidth(context) * 0.03
+          : _pageWidth(context) * 0.015,
       child: AnimatedOpacity(
         opacity: opacityValue(index),
-        duration: context.normalDuration,
+        duration: Duration(seconds: 1),
         child: onListItem!(index),
       ),
     );
   }
+
+  double _pageWidth(BuildContext context) => MediaQuery.of(context).size.width;
 
   double opacityValue(int index) => isCurrentIndex(index) ? 1 : 0;
 

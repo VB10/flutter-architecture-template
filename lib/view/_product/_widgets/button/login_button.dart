@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/components/button/icon_button.dart';
+import 'package:architecture_widgets/src/button/icon_button.dart';
 
 class MVVMLoginButton extends StatelessWidget {
   final Function(String data)? onComplete;
