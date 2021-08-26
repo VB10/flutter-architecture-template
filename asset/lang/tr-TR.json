@@ -1,0 +1,81 @@
+{
+    "welcome": "Welcome to My App",
+    "onBoard": {
+        "page1": {
+            "title": "Make It Good",
+            "desc": "You are not alone. You have unique abiltiyto go to anther world"
+        },
+        "page2": {
+            "title": "Make It Good",
+            "desc": "You are not alone. You have unique abiltiyto go to anther world"
+        },
+        "page3": {
+            "title": "Make It Good",
+            "desc": "You are not alone. You have unique abiltiyto go to anther world"
+        }
+    },
+    "splash": {
+        "welcome": "HWA UYGULAMA MİMARİSİNE HOŞ GELDİNİZ"
+    },
+    "login": {
+        "tab1": "Login",
+        "tab2": "SignUp",
+        "email": "Email",
+        "password": "Password",
+        "forgotText": "Forgot Password",
+        "login": "Login",
+        "dontAccount": "Dont have account"
+    },
+    "home": {
+        "build": {
+            "tabbar": {
+                "tab1": "Latest",
+                "tab2": "Decorative",
+                "tab3": "Music",
+                "tab4": "Style"
+            },
+            "subTitle": "Recommended"
+        },
+        "social": {
+            "cancel": "Cancel",
+            "next": "Next",
+            "search": "Search",
+            "findFriends": "Find Friends",
+            "follow": "Follow",
+            "following": "Following"
+        },
+        "game": {
+            "title": "Birlik Oyun",
+            "newUpdate": "Yeni Güncellenmiş Oyunlar",
+            "viewAll": "Görünüm Herşey",
+            "topDownload": "Üst İndirilenler",
+            "tabbar": {
+                "tab1": "YARIŞ",
+                "tab2": "Simülasyon",
+                "tab3": "Gündelik",
+                "tab4": "Karikatüry",
+                "tab5": "Oyuncaklar"
+            }
+        },
+        "burgers": {
+            "favoriteProducts": "En Çok Satılanlar",
+            "normalProducts": "Burgerler"
+        },
+        "setting": {
+            "title": "Ayarlar",
+            "about": {
+                "title": "Proje Hakkında",
+                "contribitions": "Proje Katkıda Bulunanlar"
+            },
+            "core": {
+                "title": "Project Core",
+                "themeTitle": "Tema değişikliği",
+                "themeDesc": "Uygulama temasını değiştirebilirsiniz.",
+                "langTitle": "Dil değişimi",
+                "langDesc": "Uygulama dilini değiştirebilirsiniz."
+            },
+            "exit": "Exit",
+            "applicationTour": "Uygulama Turu"
+        }
+    }
+}

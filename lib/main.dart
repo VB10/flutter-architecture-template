@@ -1,6 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+firebase-analytics
 import 'package:fluttermvvmtemplate/core/init/analytics/analytics_manager.dart';
+
+import 'package:kartal/kartal.dart';
+master
 import 'package:provider/provider.dart';
 
 import 'core/constants/app/app_constants.dart';
@@ -10,22 +14,24 @@ import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';
 import 'core/init/notifier/provider_list.dart';
 import 'core/init/notifier/theme_notifer.dart';
-import 'view/home/game/view/game_view.dart';
+import 'view/home/burger/view/burgers_view.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await LocaleManager.prefrencesInit();
-
-  await EasyLocalization.ensureInitialized();
-
+  await _init();
   runApp(MultiProvider(
     providers: [...ApplicationProvider.instance.dependItems],
     child: EasyLocalization(
       child: MyApp(),
       supportedLocales: LanguageManager.instance.supportedLocales,
       path: ApplicationConstants.LANG_ASSET_PATH,
+      startLocale: LanguageManager.instance.enLocale,
     ),
   ));
+}
+
+Future<void> _init() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
 }
 
 class MyApp extends StatelessWidget {
@@ -33,8 +39,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
-      home: GameView(),
+      theme: context.watch<ThemeNotifier>().currentTheme,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
