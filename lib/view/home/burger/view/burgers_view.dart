@@ -1,10 +1,10 @@
+import 'package:architecture_widgets/architecture_widgets.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:kartal/kartal.dart';
 
 import '../../../../core/base/view/base_widget.dart';
-import '../../../../core/components/slider/range_price_slider.dart';
 import '../../../../core/init/lang/locale_keys.g.dart';
 import '../../../../core/init/network/vexana_manager.dart';
 import '../../../../product/widget/card/burger_card.dart';
@@ -12,32 +12,43 @@ import '../../../_product/_utilty/burger_network_enum.dart';
 import '../service/burger_serivce.dart';
 import '../viewmodel/burger_view_model.dart';
 
-enum _BurgerViews { BEST_SELL_TITLE, BURGER_FOVORITE, NORMAL_TITLE, BURGER_VIEW }
+enum _BurgerViews {
+  BEST_SELL_TITLE,
+  BURGER_FOVORITE,
+  NORMAL_TITLE,
+  BURGER_VIEW
+}
 
 class BurgersView extends StatelessWidget {
   final _title = 'VB BURGER';
   @override
   Widget build(BuildContext context) {
     return BaseView<BurgerViewModel>(
-      viewModel: BurgerViewModel(BurgerService(VexanaManager.instance.networkManager)),
+      viewModel:
+          BurgerViewModel(BurgerService(VexanaManager.instance.networkManager)),
       onModelReady: (model) {
         model.setContext(context);
         model.init();
       },
-      onPageBuilder: (BuildContext context, BurgerViewModel viewModel) => Scaffold(
+      onPageBuilder: (BuildContext context, BurgerViewModel viewModel) =>
+          Scaffold(
         appBar: buildAppBar(context, viewModel),
         body: buildObserverBuildbody(viewModel, context),
       ),
     );
   }
 
-  Observer buildObserverBuildbody(BurgerViewModel viewModel, BuildContext context) {
+  Observer buildObserverBuildbody(
+      BurgerViewModel viewModel, BuildContext context) {
     return Observer(builder: (_) {
-      return viewModel.isLoading ? buildCenterLoading() : buildPaddingListView(context, viewModel);
+      return viewModel.isLoading
+          ? buildCenterLoading()
+          : buildPaddingListView(context, viewModel);
     });
   }
 
-  Padding buildPaddingListView(BuildContext context, BurgerViewModel viewModel) {
+  Padding buildPaddingListView(
+      BuildContext context, BurgerViewModel viewModel) {
     return Padding(
       padding: context.paddingLow,
       child: ListView.builder(
@@ -63,21 +74,28 @@ class BurgersView extends StatelessWidget {
     return AppBar(
       title: Text(
         _title,
-        style: context.textTheme.headline5?.copyWith(fontWeight: FontWeight.w600, color: context.colorScheme.onError),
+        style: context.textTheme.headline5?.copyWith(
+            fontWeight: FontWeight.w600, color: context.colorScheme.onError),
       ),
       centerTitle: false,
-      leading: Icon(Icons.food_bank_outlined, color: context.colorScheme.onError),
+      leading:
+          Icon(Icons.food_bank_outlined, color: context.colorScheme.onError),
       actions: [
         IconButton(
             onPressed: () {
-              showModalBottomSheet(context: context, builder: (context) => buildBottomSheetBody(context, viewModel));
+              showModalBottomSheet(
+                  context: context,
+                  builder: (context) =>
+                      buildBottomSheetBody(context, viewModel));
             },
             icon: Icon(Icons.filter_alt))
       ],
     );
   }
 
-  Widget buildBottomSheetBody(BuildContext context, BurgerViewModel viewModel) => Padding(
+  Widget buildBottomSheetBody(
+          BuildContext context, BurgerViewModel viewModel) =>
+      Padding(
         padding: context.paddingLow,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,8 +136,12 @@ class BurgersView extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      IconButton(onPressed: () => viewModel.changeAscending(true), icon: Icon(Icons.plus_one)),
-                      IconButton(onPressed: () => viewModel.changeAscending(true), icon: Icon(Icons.design_services_rounded)),
+                      IconButton(
+                          onPressed: () => viewModel.changeAscending(true),
+                          icon: Icon(Icons.plus_one)),
+                      IconButton(
+                          onPressed: () => viewModel.changeAscending(true),
+                          icon: Icon(Icons.design_services_rounded)),
                     ],
                   ),
                 ],
@@ -132,33 +154,42 @@ class BurgersView extends StatelessWidget {
   Padding buildPaddingNormalTitle(BuildContext context) {
     return Padding(
       padding: context.verticalPaddingLow,
-      child: Text(LocaleKeys.home_burgers_normalProducts.tr(), style: context.textTheme.headline5),
+      child: Text(LocaleKeys.home_burgers_normalProducts.tr(),
+          style: context.textTheme.headline5),
     );
   }
 
   Text buildTextBestSell(BuildContext context) {
     return Text(
       LocaleKeys.home_burgers_favoriteProducts.tr(),
-      style: context.textTheme.headline3?.copyWith(color: context.colorScheme.onSecondary, fontWeight: FontWeight.bold),
+      style: context.textTheme.headline3?.copyWith(
+          color: context.colorScheme.onSecondary, fontWeight: FontWeight.bold),
     );
   }
 
-  Center buildCenterLoading() => Center(child: CircularProgressIndicator.adaptive());
+  Center buildCenterLoading() =>
+      Center(child: CircularProgressIndicator.adaptive());
 
-  SizedBox buildSizedBoxFavorite(BuildContext context, BurgerViewModel viewModel) =>
-      SizedBox(height: context.dynamicHeight(0.3), child: BurgerCard().buildList(viewModel.favoriteBurgerModel));
+  SizedBox buildSizedBoxFavorite(
+          BuildContext context, BurgerViewModel viewModel) =>
+      SizedBox(
+          height: context.dynamicHeight(0.3),
+          child: BurgerCard().buildList(viewModel.favoriteBurgerModel));
 
-  Widget buildSizedBoxNormalBurgers(BurgerViewModel viewModel, BuildContext context) {
+  Widget buildSizedBoxNormalBurgers(
+      BurgerViewModel viewModel, BuildContext context) {
     viewModel.fetchNormalItems();
 
     return SizedBox(
       child: Observer(builder: (_) {
         return viewModel.isLoadingMain
-            ? SizedBox(height: context.dynamicHeight(0.1), child: buildCenterLoading())
+            ? SizedBox(
+                height: context.dynamicHeight(0.1), child: buildCenterLoading())
             : GridView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2),
                 itemBuilder: (context, index) {
                   return BurgerCard(
                     model: viewModel.mainBurgerModel[index],

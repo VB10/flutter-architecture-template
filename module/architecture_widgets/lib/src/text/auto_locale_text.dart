@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-import '../../extension/string_extension.dart';
+import 'package:fluttermvvmtemplate/core/extension/string_extension.dart';
 
 class AutoLocaleText extends StatelessWidget {
   final String value;

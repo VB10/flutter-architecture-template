@@ -1,3 +1,4 @@
+import 'package:all_of_template/features/buy_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fluttermvvmtemplate/view/authenticate/splash/view/splash_view.dart';
@@ -7,7 +8,7 @@ import '../../../view/authenticate/onboard/view/on_board_view.dart';
 import '../../../view/authenticate/test/view/test_view.dart';
 import '../../../view/settings/model/settings_dynamic.dart';
 import '../../../view/settings/view/subview/settings_dynamic_view.dart';
-import '../../components/card/not_found_navigation_widget.dart';
+import 'package:architecture_widgets/src/card/not_found_navigation_widget.dart';
 import '../../constants/navigation/navigation_constants.dart';
 
 class NavigationRoute {
@@ -23,6 +24,9 @@ class NavigationRoute {
 
       case NavigationConstants.TEST_VIEW:
         return normalNavigate(TestsView());
+
+      case NavigationConstants.BUY_VIEW:
+        return normalNavigate(BuyView());
 
       case NavigationConstants.ON_BOARD:
         return normalNavigate(OnBoardView());

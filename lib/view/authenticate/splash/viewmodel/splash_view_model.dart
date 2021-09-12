@@ -33,6 +33,11 @@ abstract class _SplashViewModelBase with Store, BaseViewModel, DeviceAndCache {
     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
       controlAppState();
     });
+
+    // Dummy for moduler page
+    Future.delayed(Duration(seconds: 1)).then((value) {
+      navigation.navigateToPage(path: NavigationConstants.BUY_VIEW);
+    });
   }
 
   Future<void> controlAppState() async {
