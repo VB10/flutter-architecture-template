@@ -31,8 +31,13 @@ dependencies:
   # dio: ^4.0.0-prev3
   # vexana has a package
   easy_localization: ^3.0.0
+  firebase-analytics
+  firebase_analytics: any
+  flutter_mobx: ^2.0.0-nullsafety.3
+
   flutter_mobx: ^2.0.0
   flutter_rating_bar: ^4.0.0
+  master
   flutter_svg: ^0.21.0-nullsafety.0
   json_annotation: ^4.0.1
   json_serializable: ^4.1.0

@@ -23,6 +23,9 @@ class NavigationRoute {
         return normalNavigate(SplashView());
 
       case NavigationConstants.TEST_VIEW:
+ firebase-analytics
+        return normalNavigate(TestsView(),NavigationConstants.TEST_VIEW);
+
         return normalNavigate(TestsView());
 
       case NavigationConstants.BUY_VIEW:
@@ -39,6 +42,7 @@ class NavigationRoute {
         }
         throw NavigateException<SettingsDynamicModel>(args.arguments);
 
+master
       default:
         return MaterialPageRoute(
           builder: (context) => NotFoundNavigationWidget(),
@@ -46,9 +50,11 @@ class NavigationRoute {
     }
   }
 
-  MaterialPageRoute normalNavigate(Widget widget) {
+  MaterialPageRoute normalNavigate(Widget widget,String pageName) {
     return MaterialPageRoute(
       builder: (context) => widget,
+      //analytciste görülecek olan sayfa ismi için pageName veriyoruz
+      settings: RouteSettings(name: pageName)
     );
   }
 }
