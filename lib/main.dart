@@ -1,20 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-firebase-analytics
-import 'package:fluttermvvmtemplate/core/init/analytics/analytics_manager.dart';
-
-import 'package:kartal/kartal.dart';
-master
 import 'package:provider/provider.dart';
 
 import 'core/constants/app/app_constants.dart';
-import 'core/init/cache/locale_manager.dart';
+import 'core/init/analytics/analytics_manager.dart';
 import 'core/init/lang/language_manager.dart';
 import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';
 import 'core/init/notifier/provider_list.dart';
 import 'core/init/notifier/theme_notifer.dart';
-import 'view/home/burger/view/burgers_view.dart';
 
 Future<void> main() async {
   await _init();
@@ -32,6 +27,7 @@ Future<void> main() async {
 Future<void> _init() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await Firebase.initializeApp();
 }
 
 class MyApp extends StatelessWidget {
@@ -45,7 +41,7 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
-      navigatorObservers: [AnalytcisManager.instance.observer],
+      navigatorObservers: AnalytcisManager.instance.observer,
     );
   }
 }
