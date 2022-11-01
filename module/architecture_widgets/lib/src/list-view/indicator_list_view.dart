@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class IndactorListView extends StatelessWidget {
-  const IndactorListView({Key? key, this.itemCount, this.onListItem, this.currentIndex}) : super(key: key);
+  const IndactorListView({
+    Key? key,
+    this.itemCount,
+    this.onListItem,
+    this.currentIndex,
+  }) : super(key: key);
   final int? itemCount;
 
   final int? currentIndex;

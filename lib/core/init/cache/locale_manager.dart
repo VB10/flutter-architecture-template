@@ -2,7 +2,6 @@ import 'package:fluttermvvmtemplate/core/constants/enums/locale_keys_enum.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocaleManager {
-
   LocaleManager._init() {
     SharedPreferences.getInstance().then((value) {
       _preferences = value;
@@ -35,9 +34,7 @@ class LocaleManager {
     await _preferences!.setBool(key.toString(), value);
   }
 
-  String getStringValue(PreferencesKeys key) =>
-      _preferences?.getString(key.toString()) ?? '';
+  String getStringValue(PreferencesKeys key) => _preferences?.getString(key.toString()) ?? '';
 
-  bool getBoolValue(PreferencesKeys key) =>
-      _preferences!.getBool(key.toString()) ?? false;
+  bool getBoolValue(PreferencesKeys key) => _preferences!.getBool(key.toString()) ?? false;
 }

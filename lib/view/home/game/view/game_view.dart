@@ -18,25 +18,29 @@ import 'package:shimmer/shimmer.dart';
 part './subview/game_view_cards.dart';
 
 class GameView extends StatelessWidget {
-  final GlobalKey<ScaffoldState> _scaffoldyKey = GlobalKey();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return BaseView<GameViewModel>(
-      viewModel: GameViewModel(GameService(VexanaManager.instance.networkManager, _scaffoldyKey)),
+      viewModel: GameViewModel(GameService(
+        VexanaManager.instance.networkManager,
+        _scaffoldKey,
+      )),
       onModelReady: (model) {
         model.setContext(context);
         model.init();
       },
       onPageBuilder: (BuildContext context, GameViewModel value) => Scaffold(
-        key: _scaffoldyKey,
+        key: _scaffoldKey,
         appBar: buildAppBar(context),
-        body: Observer(builder: (_) {
-          return value.isLoading
-              ? const Center(child: CircularProgressIndicator())
-              : DefaultTabController(
-                  length: value.gameTabItems.length,
-                  child: ListView.builder(
+        body: Observer(
+          builder: (_) {
+            return value.isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : DefaultTabController(
+                    length: value.gameTabItems.length,
+                    child: ListView.builder(
                       itemCount: GameViewItems.values.length,
                       itemBuilder: (context, index) {
                         switch (GameViewItems.values[index]) {
@@ -45,17 +49,21 @@ class GameView extends StatelessWidget {
                           case GameViewItems.TABBAR:
                             return buildTabBar(context, value);
                           case GameViewItems.SLIDER:
-                            return buildSizedBoxSlider(context, value.sliderItems);
+                            return buildSizedBoxSlider(
+                              context,
+                              value.sliderItems,
+                            );
                           case GameViewItems.NEW_UPDATE_GAMES_CARD:
                             return buildColumnNewCard(value);
                           case GameViewItems.TOP_UPDATE_GAMES_CARD:
                             return buildColumnUpdate(value);
-                          default:
-                            throw Exception('STATE NOT FOUND');
                           // return Card(child: Text("data"));
                         }
-                      },),);
-        },),
+                      },
+                    ),
+                  );
+          },
+        ),
       ),
     );
   }
@@ -73,15 +81,18 @@ class GameView extends StatelessWidget {
 
   TabBar buildTabBar(BuildContext context, GameViewModel value) {
     return TabBar(
-        isScrollable: true,
-        indicatorColor: context.colorScheme.onError,
-        labelPadding: EdgeInsets.zero,
-        indicatorWeight: 3,
-        tabs: value.gameTabItems
-            .map((e) => Tab(
-                  child: Padding(padding: context.paddingLow, child: Text(e.tr())),
-                ),)
-            .toList(),);
+      isScrollable: true,
+      indicatorColor: context.colorScheme.onError,
+      labelPadding: EdgeInsets.zero,
+      indicatorWeight: 3,
+      tabs: value.gameTabItems
+          .map(
+            (e) => Tab(
+              child: Padding(padding: context.paddingLow, child: Text(e.tr())),
+            ),
+          )
+          .toList(),
+    );
   }
 
   Widget buildSizedBoxSlider(BuildContext context, List<SliderModel>? items) {

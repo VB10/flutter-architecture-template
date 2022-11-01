@@ -4,7 +4,6 @@ import 'package:fluttermvvmtemplate/view/home/game/model/slider_model.dart';
 import 'package:kartal/kartal.dart';
 
 class GameSlider extends StatefulWidget {
-
   const GameSlider({Key? key, this.sliderModel}) : super(key: key);
   final List<SliderModel>? sliderModel;
 
@@ -45,7 +44,8 @@ class _GameSliderState extends State<GameSlider> {
       itemBuilder: (context, index) => Padding(
         padding: EdgeInsets.all(context.dynamicWidth(0.01)),
         child: CircleAvatar(
-          backgroundColor: _selectedValueIndex == index ? context.colorScheme.onError : context.colorScheme.onError.withOpacity(0.1),
+          backgroundColor:
+              _selectedValueIndex == index ? context.colorScheme.onError : context.colorScheme.onError.withOpacity(0.1),
           radius: 10,
         ),
       ),

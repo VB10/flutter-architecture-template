@@ -6,10 +6,11 @@ import 'package:fluttermvvmtemplate/core/init/network/ICoreDio.dart';
 import 'package:fluttermvvmtemplate/core/init/network/core_dio.dart';
 
 class NetworkManager {
-
   NetworkManager._init() {
-    final baseOptions =
-        BaseOptions(baseUrl: 'https://jsonplaceholder.typicode.com/', headers: {'val': LocaleManager.instance.getStringValue(PreferencesKeys.TOKEN)});
+    final baseOptions = BaseOptions(
+      baseUrl: 'https://jsonplaceholder.typicode.com/',
+      headers: {'val': LocaleManager.instance.getStringValue(PreferencesKeys.TOKEN)},
+    );
     // _dio = Dio(baseOptions);
 
     coreDio = CoreDio(baseOptions);

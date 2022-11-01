@@ -4,7 +4,6 @@ import 'package:fluttermvvmtemplate/core/extension/context_extension.dart';
 import 'package:fluttermvvmtemplate/view/home/game/model/game_model.dart';
 
 class GameCard extends StatelessWidget {
-
   const GameCard({Key? key, this.model, this.onPressed}) : super(key: key);
   final GameModel? model;
   final VoidCallback? onPressed;

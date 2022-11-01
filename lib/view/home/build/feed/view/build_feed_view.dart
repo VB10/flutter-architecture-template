@@ -9,6 +9,8 @@ import 'package:fluttermvvmtemplate/view/home/build/feed/viewmodel/build_feed_vi
 import 'package:kartal/kartal.dart';
 
 class BuildFeedView extends StatelessWidget {
+  const BuildFeedView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return BaseView<BuildFeedViewModel>(
@@ -22,26 +24,37 @@ class BuildFeedView extends StatelessWidget {
         key: viewModel.scaffoldKey,
         appBar: buildAppBar(),
         body: DefaultTabController(
-            length: 4,
-            child: Observer(builder: (_) {
+          length: 4,
+          child: Observer(
+            builder: (_) {
               return viewModel.isLoaindg
                   ? buildCenter()
                   : viewModel.houseModels == null || viewModel.houseModels!.isEmpty
                       ? const Center(child: Text('Not Found'))
                       : buildListViewRecommended(viewModel, context);
-            },),),
+            },
+          ),
+        ),
       ),
     );
   }
 
-  ListView buildListViewRecommended(BuildFeedViewModel viewModel, BuildContext context) {
+  ListView buildListViewRecommended(
+    BuildFeedViewModel viewModel,
+    BuildContext context,
+  ) {
     return ListView(
       padding: context.paddingLow,
       children: [
         buildTabBar(viewModel),
         buildSizedBoxLAtestPageView(context, viewModel),
         context.emptySizedHeightBoxLow,
-        Text(LocaleKeys.home_build_subTitle.tr(), style: context.textTheme.headline5!.copyWith(fontWeight: FontWeight.w600)),
+        Text(
+          LocaleKeys.home_build_subTitle.tr(),
+          style: context.textTheme.headline5!.copyWith(
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         context.emptySizedHeightBoxLow,
         buildListBottom(viewModel)
       ],
@@ -52,35 +65,41 @@ class BuildFeedView extends StatelessWidget {
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) => SizedBox(
-          height: context.dynamicHeight(0.15),
-          child: Card(
-            child: Row(
-              children: [
-                Expanded(flex: 3, child: Image.network(viewModel.houseModels![index].image!)),
-                Expanded(flex: 9, child: buildObserver(viewModel, index)),
-              ],
-            ),
-          ),),
+        height: context.dynamicHeight(0.15),
+        child: Card(
+          child: Row(
+            children: [
+              Expanded(flex: 3, child: Image.network(viewModel.houseModels![index].image!)),
+              Expanded(flex: 9, child: buildObserver(viewModel, index)),
+            ],
+          ),
+        ),
+      ),
       itemCount: 3,
       shrinkWrap: true,
     );
   }
 
   Observer buildObserver(BuildFeedViewModel viewModel, int index) {
-    return Observer(builder: (_) {
-      return BuildUserCard(
-        model: viewModel.houseModels![index],
-        isLiked: viewModel.likeItems.contains(viewModel.houseModels![index].id),
-        onPressedLikeId: (id) {
-          if (id != null) {
-            viewModel.onLikeItemPressed(id);
-          }
-        },
-      );
-    },);
+    return Observer(
+      builder: (_) {
+        return BuildUserCard(
+          model: viewModel.houseModels![index],
+          isLiked: viewModel.likeItems.contains(viewModel.houseModels![index].id),
+          onPressedLikeId: (id) {
+            if (id != null) {
+              viewModel.onLikeItemPressed(id);
+            }
+          },
+        );
+      },
+    );
   }
 
-  SizedBox buildSizedBoxLAtestPageView(BuildContext context, BuildFeedViewModel viewModel) {
+  SizedBox buildSizedBoxLAtestPageView(
+    BuildContext context,
+    BuildFeedViewModel viewModel,
+  ) {
     return SizedBox(
       height: context.dynamicHeight(0.3),
       child: PageView.builder(
@@ -92,12 +111,16 @@ class BuildFeedView extends StatelessWidget {
   }
 
   TabBar buildTabBar(BuildFeedViewModel viewModel) {
-    return TabBar(indicator: viewModel.helper.circleDecoriaton, indicatorSize: TabBarIndicatorSize.label, tabs: [
-      Tab(text: LocaleKeys.home_build_tabbar_tab1.tr()),
-      Tab(text: LocaleKeys.home_build_tabbar_tab2.tr()),
-      Tab(text: LocaleKeys.home_build_tabbar_tab3.tr()),
-      Tab(text: LocaleKeys.home_build_tabbar_tab4.tr()),
-    ],);
+    return TabBar(
+      indicator: viewModel.helper.circleDecoriaton,
+      indicatorSize: TabBarIndicatorSize.label,
+      tabs: [
+        Tab(text: LocaleKeys.home_build_tabbar_tab1.tr()),
+        Tab(text: LocaleKeys.home_build_tabbar_tab2.tr()),
+        Tab(text: LocaleKeys.home_build_tabbar_tab3.tr()),
+        Tab(text: LocaleKeys.home_build_tabbar_tab4.tr()),
+      ],
+    );
   }
 
   Center buildCenter() => const Center(child: CircularProgressIndicator());
@@ -127,17 +150,19 @@ class BuildFeedView extends StatelessWidget {
     return Card(
       child: Padding(
         padding: context.paddingLow,
-        child: Observer(builder: (_) {
-          return BuildUserCard(
-            model: model,
-            isLiked: viewModel.likeItems.contains(model.id),
-            onPressedLikeId: (id) {
-              if (id != null) {
-                viewModel.onLikeItemPressed(id);
-              }
-            },
-          );
-        },),
+        child: Observer(
+          builder: (_) {
+            return BuildUserCard(
+              model: model,
+              isLiked: viewModel.likeItems.contains(model.id),
+              onPressedLikeId: (id) {
+                if (id != null) {
+                  viewModel.onLikeItemPressed(id);
+                }
+              },
+            );
+          },
+        ),
       ),
     );
   }

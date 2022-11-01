@@ -13,6 +13,8 @@ import 'package:kartal/kartal.dart';
 import 'package:provider/provider.dart';
 
 class SettingsView extends StatelessWidget {
+  const SettingsView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return BaseView<SettingsViewModel>(
@@ -38,7 +40,9 @@ class SettingsView extends StatelessWidget {
               Text(
                 ''.version,
                 textAlign: TextAlign.center,
-                style: context.textTheme.headline6?.copyWith(fontWeight: FontWeight.w100),
+                style: context.textTheme.headline6?.copyWith(
+                  fontWeight: FontWeight.w100,
+                ),
               ).toSliver,
               context.emptySizedHeightBoxNormal.toSliver,
               buildTextButtonLogOut(context, viewModel).toSliver,
@@ -51,70 +55,111 @@ class SettingsView extends StatelessWidget {
 
   Card buildCardNavigationTour(SettingsViewModel viewModel) {
     return Card(
-        child: ListTile(
-      onTap: viewModel.navigateToOnBoard,
-      title: Text(LocaleKeys.home_setting_applicationTour.tr()),
-      trailing: const Icon(Icons.arrow_right),
-    ),);
+      child: ListTile(
+        onTap: viewModel.navigateToOnBoard,
+        title: Text(LocaleKeys.home_setting_applicationTour.tr()),
+        trailing: const Icon(Icons.arrow_right),
+      ),
+    );
   }
 
   TextButton buildTextButtonLogOut(BuildContext context, SettingsViewModel viewModel) {
     return TextButton.icon(
-        style: ButtonStyle(
-            shape: MaterialStateProperty.all(const StadiumBorder()),
-            padding: MaterialStateProperty.all(context.paddingNormal),
-            backgroundColor: MaterialStateProperty.all(context.colorScheme.onError.withOpacity(0.7)),),
-        onPressed: viewModel.logutApp,
-        icon: const Icon(Icons.exit_to_app),
-        label: Text(LocaleKeys.home_setting_exit.tr()),);
+      style: ButtonStyle(
+        shape: MaterialStateProperty.all(const StadiumBorder()),
+        padding: MaterialStateProperty.all(context.paddingNormal),
+        backgroundColor: MaterialStateProperty.all(context.colorScheme.onError.withOpacity(0.7)),
+      ),
+      onPressed: viewModel.logutApp,
+      icon: const Icon(Icons.exit_to_app),
+      label: Text(LocaleKeys.home_setting_exit.tr()),
+    );
   }
 
   Widget buildBuildCardHeaderProjectCore(BuildContext context, SettingsViewModel viewModel) {
-    return buildCardHeader(context, viewModel, title: LocaleKeys.home_setting_core_title, children: [
-      ListTile(
-        title: Text(LocaleKeys.home_setting_core_themeTitle.tr()),
-        trailing: IconButton(
-            icon: context.watch<ThemeNotifier>().currenThemeEnum == AppThemes.LIGHT ? LottiePathEnum.MOON.toWidget : LottiePathEnum.SUNNY.toWidget,
-            onPressed: viewModel.changeAppTheme,),
-        subtitle: const Text(LocaleKeys.home_setting_core_themeDesc),
-      ),
-      ListTile(
-        title: Text(LocaleKeys.home_setting_core_langTitle.tr()),
-        trailing: Observer(builder: (_) {
-          return DropdownButton<Locale>(items: [
-            DropdownMenuItem(value: LanguageManager.instance.trLocale, child: Text(LanguageManager.instance.trLocale.countryCode!.toUpperCase())),
-            DropdownMenuItem(value: LanguageManager.instance.enLocale, child: Text(LanguageManager.instance.enLocale.countryCode!.toUpperCase())),
-          ], onChanged: viewModel.changeAppLocalization, value: viewModel.appLocale,);
-        },),
-        subtitle: Text(LocaleKeys.home_setting_core_langDesc.tr()),
-      ),
-    ],);
+    return buildCardHeader(
+      context,
+      viewModel,
+      title: LocaleKeys.home_setting_core_title,
+      children: [
+        ListTile(
+          title: Text(LocaleKeys.home_setting_core_themeTitle.tr()),
+          trailing: IconButton(
+            icon: context.watch<ThemeNotifier>().currenThemeEnum == AppThemes.LIGHT
+                ? LottiePathEnum.MOON.toWidget
+                : LottiePathEnum.SUNNY.toWidget,
+            onPressed: viewModel.changeAppTheme,
+          ),
+          subtitle: const Text(LocaleKeys.home_setting_core_themeDesc),
+        ),
+        ListTile(
+          title: Text(LocaleKeys.home_setting_core_langTitle.tr()),
+          trailing: Observer(
+            builder: (_) {
+              return DropdownButton<Locale>(
+                items: [
+                  DropdownMenuItem(
+                    value: LanguageManager.instance.trLocale,
+                    child: Text(
+                      LanguageManager.instance.trLocale.countryCode?.toUpperCase() ?? '',
+                    ),
+                  ),
+                  DropdownMenuItem(
+                    value: LanguageManager.instance.enLocale,
+                    child: Text(
+                      LanguageManager.instance.enLocale.countryCode?.toUpperCase() ?? '',
+                    ),
+                  ),
+                ],
+                onChanged: viewModel.changeAppLocalization,
+                value: viewModel.appLocale,
+              );
+            },
+          ),
+          subtitle: Text(LocaleKeys.home_setting_core_langDesc.tr()),
+        ),
+      ],
+    );
   }
 
-  Widget buildCardHeader(BuildContext context, SettingsViewModel viewModel, {required String title, required List<Widget> children}) {
+  Widget buildCardHeader(
+    BuildContext context,
+    SettingsViewModel viewModel, {
+    required String title,
+    required List<Widget> children,
+  }) {
     return Card(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [Padding(padding: context.paddingLow, child: Text(title.tr(), style: context.textTheme.headline5)), const Divider(), ...children],
+        children: [
+          Padding(padding: context.paddingLow, child: Text(title.tr(), style: context.textTheme.headline5)),
+          const Divider(),
+          ...children
+        ],
       ),
     );
   }
 
   Widget buildCardAbout(BuildContext context, SettingsViewModel viewModel) {
-    return buildCardHeader(context, viewModel, title: LocaleKeys.home_setting_about_title, children: [
-      ListTile(
-        onTap: viewModel.navigateToContribution,
-        leading: const Icon(Icons.favorite),
-        title: Text(LocaleKeys.home_setting_about_contribitions.tr()),
-        trailing: const Icon(Icons.keyboard_arrow_right_outlined),
-      ),
-      ListTile(
-        onTap: viewModel.navigateToFakeContribution,
-        leading: const Icon(Icons.home),
-        title: const Text('Home Page'),
-        trailing: const Icon(Icons.keyboard_arrow_right_outlined),
-      )
-    ],);
+    return buildCardHeader(
+      context,
+      viewModel,
+      title: LocaleKeys.home_setting_about_title,
+      children: [
+        ListTile(
+          onTap: viewModel.navigateToContribution,
+          leading: const Icon(Icons.favorite),
+          title: Text(LocaleKeys.home_setting_about_contribitions.tr()),
+          trailing: const Icon(Icons.keyboard_arrow_right_outlined),
+        ),
+        ListTile(
+          onTap: viewModel.navigateToFakeContribution,
+          leading: const Icon(Icons.home),
+          title: const Text('Home Page'),
+          trailing: const Icon(Icons.keyboard_arrow_right_outlined),
+        )
+      ],
+    );
   }
 
   Card buildCardUser(BuildContext context, SettingsViewModel viewModel) {
@@ -135,10 +180,11 @@ class SettingsView extends StatelessWidget {
 
   NestedScrollView buildNestedScrollView() {
     return NestedScrollView(
-        headerSliverBuilder: (context, innerBoxIsScrolled) {
-          return [buildSliverAppBar(context)];
-        },
-        body: Column(),);
+      headerSliverBuilder: (context, innerBoxIsScrolled) {
+        return [buildSliverAppBar(context)];
+      },
+      body: Column(),
+    );
   }
 
   SliverAppBar buildSliverAppBar(BuildContext context) {

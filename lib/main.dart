@@ -12,15 +12,17 @@ import 'package:provider/provider.dart';
 
 Future<void> main() async {
   await _init();
-  runApp(MultiProvider(
-    providers: [...ApplicationProvider.instance.dependItems],
-    child: EasyLocalization(
-      supportedLocales: LanguageManager.instance.supportedLocales,
-      path: ApplicationConstants.LANG_ASSET_PATH,
-      startLocale: LanguageManager.instance.enLocale,
-      child: MyApp(),
+  runApp(
+    MultiProvider(
+      providers: [...ApplicationProvider.instance.dependItems],
+      child: EasyLocalization(
+        supportedLocales: LanguageManager.instance.supportedLocales,
+        path: ApplicationConstants.LANG_ASSET_PATH,
+        startLocale: LanguageManager.instance.enLocale,
+        child: MyApp(),
+      ),
     ),
-  ),);
+  );
 }
 
 Future<void> _init() async {
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
-      navigatorObservers: AnalytcisManager.instance.observer,
+      navigatorObservers: AnalyticsManager.instance.observer,
     );
   }
 }

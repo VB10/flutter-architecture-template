@@ -4,7 +4,6 @@ import 'package:fluttermvvmtemplate/view/home/social/model/social_user_model.dar
 import 'package:vexana/vexana.dart';
 
 abstract class ISocialServiceService {
-
   ISocialServiceService(this.manager, this.scaffoldyKey);
   final INetworkManager manager;
   final GlobalKey<ScaffoldState>? scaffoldyKey;

@@ -8,6 +8,5 @@ class DecorationHelper {
   });
   BuildContext? context;
 
-  Decoration get circleDecoriaton =>
-      CircleDecoration(color: context!.colors.surface, radius: 3);
+  Decoration get circleDecoriaton => CircleDecoration(color: context!.colors.surface, radius: 3);
 }

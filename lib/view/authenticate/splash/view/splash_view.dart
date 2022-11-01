@@ -26,46 +26,58 @@ class SplashView extends StatelessWidget {
     return Scaffold(
       backgroundColor: context.colorScheme.onSurface,
       body: SafeArea(
-          child: Stack(
-        children: [
-          buildCenterTextWelcome(context, viewModel),
-          buildAnimatedAlignIcon(viewModel, context),
-        ],
-      ),),
+        child: Stack(
+          children: [
+            buildCenterTextWelcome(context, viewModel),
+            buildAnimatedAlignIcon(viewModel, context),
+          ],
+        ),
+      ),
     );
   }
 
   Center buildCenterTextWelcome(
-      BuildContext context, SplashViewModel viewModel,) {
-    return Center(child: Observer(builder: (_) {
-      return AnimatedOpacity(
-        duration: context.durationNormal,
-        opacity: viewModel.isFirstInit ? 0 : 1,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              LocaleKeys.splash_welcome.tr(),
-              style: context.textTheme.headline4?.copyWith(
-                  fontWeight: FontWeight.w700,
-                  color: context.colorScheme.primaryContainer,),
-              textAlign: TextAlign.center,
+    BuildContext context,
+    SplashViewModel viewModel,
+  ) {
+    return Center(
+      child: Observer(
+        builder: (_) {
+          return AnimatedOpacity(
+            duration: context.durationNormal,
+            opacity: viewModel.isFirstInit ? 0 : 1,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  LocaleKeys.splash_welcome.tr(),
+                  style: context.textTheme.headline4?.copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: context.colorScheme.primaryContainer,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const CircularProgressIndicator.adaptive()
+              ],
             ),
-            const CircularProgressIndicator.adaptive()
-          ],
-        ),
-      );
-    },),);
+          );
+        },
+      ),
+    );
   }
 
   Widget buildAnimatedAlignIcon(
-      SplashViewModel viewModel, BuildContext context,) {
-    return Observer(builder: (_) {
-      return AnimatedAlign(
-          alignment:
-              viewModel.isFirstInit ? Alignment.center : Alignment.bottomCenter,
+    SplashViewModel viewModel,
+    BuildContext context,
+  ) {
+    return Observer(
+      builder: (_) {
+        return AnimatedAlign(
+          alignment: viewModel.isFirstInit ? Alignment.center : Alignment.bottomCenter,
           duration: context.durationLow,
-          child: Image.asset(ImageConstants.instance.projeIcon),);
-    },);
+          child: Image.asset(ImageConstants.instance.projeIcon),
+        );
+      },
+    );
   }
 }

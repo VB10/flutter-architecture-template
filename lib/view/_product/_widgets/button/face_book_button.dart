@@ -2,9 +2,8 @@ import 'package:architecture_widgets/src/button/title_text_button.dart';
 import 'package:flutter/material.dart';
 
 class FaceBookButton extends StatelessWidget {
-
   const FaceBookButton({Key? key, this.onComplete}) : super(key: key);
-  final Function(FaceBookModel? data, {String? errorMessage})? onComplete;
+  final void Function(FaceBookModel? data, {String? errorMessage})? onComplete;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,6 @@ class FaceBookButton extends StatelessWidget {
 }
 
 class FaceBookModel {
-
   FaceBookModel(this.token, this.mail);
   final String token;
   final String mail;

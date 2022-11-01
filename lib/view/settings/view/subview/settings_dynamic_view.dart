@@ -5,7 +5,6 @@ import 'package:kartal/kartal.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class SettingsDynamicView extends StatelessWidget {
-
   const SettingsDynamicView({Key? key, required this.model}) : super(key: key);
   final SettingsDynamicModel model;
   @override

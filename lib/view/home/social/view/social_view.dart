@@ -11,6 +11,8 @@ import 'package:fluttermvvmtemplate/view/home/social/viewmodel/social_view_model
 import 'package:kartal/kartal.dart';
 
 class SocialView extends StatelessWidget {
+  SocialView({Key? key}) : super(key: key);
+
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 
   @override

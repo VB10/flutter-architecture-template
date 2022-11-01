@@ -4,7 +4,6 @@ import 'package:fluttermvvmtemplate/view/home/build/feed/model/house_model.dart'
 import 'package:kartal/kartal.dart';
 
 class BuildUserCard extends StatelessWidget {
-
   const BuildUserCard({Key? key, required this.model, this.onPressedLikeId, this.isLiked = false}) : super(key: key);
   final HouseModel model;
   final bool isLiked;
@@ -30,7 +29,11 @@ class BuildUserCard extends StatelessWidget {
   Widget buildWrap(BuildContext context) {
     return Column(
       children: [
-        AutoSizeText(model.title!, style: context.textTheme.headline6!.copyWith(fontWeight: FontWeight.w600), maxLines: 1),
+        AutoSizeText(
+          model.title!,
+          style: context.textTheme.headline6!.copyWith(fontWeight: FontWeight.w600),
+          maxLines: 1,
+        ),
         Text(model.description!),
       ],
     );
@@ -38,12 +41,13 @@ class BuildUserCard extends StatelessWidget {
 
   IconButton buildIconButton() {
     return IconButton(
-        icon: Icon(
-          Icons.favorite,
-          color: isLiked ? Colors.pink : Colors.black12,
-        ),
-        onPressed: () {
-          onPressedLikeId!(model.id);
-        },);
+      icon: Icon(
+        Icons.favorite,
+        color: isLiked ? Colors.pink : Colors.black12,
+      ),
+      onPressed: () {
+        onPressedLikeId!(model.id);
+      },
+    );
   }
 }

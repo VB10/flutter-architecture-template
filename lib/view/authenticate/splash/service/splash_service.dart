@@ -2,12 +2,13 @@ import 'package:fluttermvvmtemplate/view/authenticate/splash/model/force_update_
 import 'package:vexana/vexana.dart';
 
 abstract class ISplashService {
-
   ISplashService(this.networkManager);
   final INetworkManager networkManager;
 
-  Future<ForceUpdateModel?> checkDeviceVersion(
-      {required String version, required String platform,});
+  Future<ForceUpdateModel?> checkDeviceVersion({
+    required String version,
+    required String platform,
+  });
 }
 
 enum SplashServiceQuery { VERSION, PLATFORM }
@@ -28,17 +29,20 @@ class SplashService extends ISplashService {
   final String _path = 'version';
 
   @override
-  Future<ForceUpdateModel?> checkDeviceVersion(
-      {required String version, required String platform,}) async {
-    final response =
-        await networkManager.send<ForceUpdateModel, ForceUpdateModel>(
+  Future<ForceUpdateModel?> checkDeviceVersion({
+    required String version,
+    required String platform,
+  }) async {
+    final response = await networkManager.send<ForceUpdateModel, ForceUpdateModel>(
       _path,
       parseModel: ForceUpdateModel(),
       method: RequestType.GET,
-      queryParameters: Map.fromEntries([
-        SplashServiceQuery.VERSION.toMapValue(version),
-        SplashServiceQuery.PLATFORM.toMapValue(platform)
-      ]),
+      queryParameters: Map.fromEntries(
+        [
+          SplashServiceQuery.VERSION.toMapValue(version),
+          SplashServiceQuery.PLATFORM.toMapValue(platform),
+        ],
+      ),
     );
     return response.data;
   }

@@ -3,7 +3,6 @@ import 'package:fluttermvvmtemplate/product/widget/card/game_card.dart';
 import 'package:fluttermvvmtemplate/view/home/game/model/game_model.dart';
 
 class GameGrid extends StatelessWidget {
-
   const GameGrid({Key? key, this.models, this.onPressed}) : super(key: key);
   final List<GameModel>? models;
   final void Function(GameModel item, int indx)? onPressed;

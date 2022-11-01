@@ -9,8 +9,12 @@ class LoginService extends ILoginService {
 
   @override
   Future<LoginResponseModel?> fetchUserControl(LoginModel model) async {
-    final response = await manager.send<LoginResponseModel, LoginResponseModel>(NetworkRoutes.LOGIN.rawValue,
-        parseModel: LoginResponseModel(), method: RequestType.POST, data: model,);
+    final response = await manager.send<LoginResponseModel, LoginResponseModel>(
+      NetworkRoutes.LOGIN.rawValue,
+      parseModel: LoginResponseModel(),
+      method: RequestType.POST,
+      data: model,
+    );
 
     if (response.data is LoginResponseModel) {
       return response.data;

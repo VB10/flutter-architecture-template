@@ -4,20 +4,20 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluttermvvmtemplate/view/home/burger/model/burger_model.dart';
 
 class BurgerCard extends StatelessWidget {
-
   const BurgerCard({Key? key, this.model}) : super(key: key);
   final BurgerModel? model;
   @override
   Widget build(BuildContext context) {
     return Card(
-        child: Column(
-      children: [
-        Expanded(child: Image.network(model?.image ?? '')),
-        Text('${model?.name}'),
-        buildRatingBar(),
-        Text('${model?.price} \$'),
-      ],
-    ),);
+      child: Column(
+        children: [
+          Expanded(child: Image.network(model?.image ?? '')),
+          Text('${model?.name}'),
+          buildRatingBar(),
+          Text('${model?.price} \$'),
+        ],
+      ),
+    );
   }
 
   RatingBar buildRatingBar() {

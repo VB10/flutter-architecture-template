@@ -7,7 +7,6 @@ import 'package:kartal/kartal.dart';
 import 'package:vexana/vexana.dart';
 
 class SocialUserViewDetail extends StatelessWidget {
-
   SocialUserViewDetail({
     Key? key,
     this.socialUser,
@@ -21,15 +20,16 @@ class SocialUserViewDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: socialServiceService.fetchUser(socialUser!.id).toBuild<SocialUser>(
-          onSuccess: (data) {
-            return Center(child: Image.network(data!.image!));
-          },
-          loadingWidget: const CircularProgressIndicator(),
-          notFoundWidget: const Center(
-            child: Text('Not Found'),
+      body: socialServiceService.fetchUser(socialUser!.id).toBuild(
+            onSuccess: (data) {
+              return Center(child: Image.network(data!.image!));
+            },
+            loadingWidget: const CircularProgressIndicator(),
+            notFoundWidget: const Center(
+              child: Text('Not Found'),
+            ),
+            onError: const Text('errro'),
           ),
-          onError: const Text('errro'),),
     );
   }
 }

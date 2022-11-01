@@ -10,7 +10,6 @@ import 'package:fluttermvvmtemplate/view/settings/model/settings_dynamic.dart';
 import 'package:fluttermvvmtemplate/view/settings/view/subview/settings_dynamic_view.dart';
 
 class NavigationRoute {
-
   NavigationRoute._init();
   static final NavigationRoute _instance = NavigationRoute._init();
   static NavigationRoute get instance => _instance;
@@ -27,7 +26,7 @@ class NavigationRoute {
         return normalNavigate(const BuyView(), NavigationConstants.BUY_VIEW);
 
       case NavigationConstants.ON_BOARD:
-        return normalNavigate(OnBoardView(), NavigationConstants.ON_BOARD);
+        return normalNavigate(const OnBoardView(), NavigationConstants.ON_BOARD);
 
       case NavigationConstants.SETTINGS_WEB_VIEW:
         if (args.arguments is SettingsDynamicModel) {
@@ -40,15 +39,16 @@ class NavigationRoute {
 
       default:
         return MaterialPageRoute(
-          builder: (context) => NotFoundNavigationWidget(),
+          builder: (context) => const NotFoundNavigationWidget(),
         );
     }
   }
 
   MaterialPageRoute normalNavigate(Widget widget, String pageName) {
     return MaterialPageRoute(
-        builder: (context) => widget,
-        //analytciste görülecek olan sayfa ismi için pageName veriyoruz
-        settings: RouteSettings(name: pageName),);
+      builder: (context) => widget,
+      //analytciste görülecek olan sayfa ismi için pageName veriyoruz
+      settings: RouteSettings(name: pageName),
+    );
   }
 }

@@ -13,18 +13,24 @@ class SocailService extends ISocialServiceService with ServiceHelper {
 
   @override
   Future<SocialUser?> fetchUser(id) async {
-    final response = await manager.send<SocialUser, SocialUser>(NetworkRoutes.FRIENDS.rawValue,
-        parseModel: SocialUser(), urlSuffix: '/$id', method: RequestType.GET,);
+    final response = await manager.send<SocialUser, SocialUser>(
+      NetworkRoutes.FRIENDS.rawValue,
+      parseModel: SocialUser(),
+      urlSuffix: '/$id',
+      method: RequestType.GET,
+    );
     showMessage(scaffoldyKey, response.error);
     return response.data;
   }
 
   @override
   Future<List<SocialUser>> fetchUserHouseList(FriendQuery query) async {
-    final response = await manager.send<SocialUser, List<SocialUser>>(NetworkRoutes.FRIENDS.rawValue,
-        parseModel: SocialUser(),
-        queryParameters: {FriendQueryEnum.LIMIT.rawValue: query.limit, FriendQueryEnum.Q.rawValue: query.q},
-        method: RequestType.GET,);
+    final response = await manager.send<SocialUser, List<SocialUser>>(
+      NetworkRoutes.FRIENDS.rawValue,
+      parseModel: SocialUser(),
+      queryParameters: {FriendQueryEnum.LIMIT.rawValue: query.limit, FriendQueryEnum.Q.rawValue: query.q},
+      method: RequestType.GET,
+    );
     showMessage(scaffoldyKey, response.error);
     return response.data ?? [];
   }

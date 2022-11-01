@@ -44,5 +44,7 @@
 		<string>en</string>
 		<string>tr</string>
 	</array>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 </dict>
 </plist>

@@ -46,10 +46,11 @@ class _TestsViewState extends BaseState<TestsView> {
 
   IconButton iconButtonChangeTheme() {
     return IconButton(
-        icon: const Icon(Icons.change_history),
-        onPressed: () {
-          context.setLocale(LanguageManager.instance.enLocale);
-        },);
+      icon: const Icon(Icons.change_history),
+      onPressed: () {
+        context.setLocale(LanguageManager.instance.enLocale);
+      },
+    );
   }
 
   Widget get textNumber {
