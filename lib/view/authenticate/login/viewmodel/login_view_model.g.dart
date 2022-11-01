@@ -6,10 +6,11 @@ part of 'login_view_model.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$LoginViewModel on _LoginViewModelBase, Store {
-  final _$isLoadingAtom = Atom(name: '_LoginViewModelBase.isLoading');
+  late final _$isLoadingAtom =
+      Atom(name: '_LoginViewModelBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -24,7 +25,8 @@ mixin _$LoginViewModel on _LoginViewModelBase, Store {
     });
   }
 
-  final _$isLockOpenAtom = Atom(name: '_LoginViewModelBase.isLockOpen');
+  late final _$isLockOpenAtom =
+      Atom(name: '_LoginViewModelBase.isLockOpen', context: context);
 
   @override
   bool get isLockOpen {
@@ -39,16 +41,16 @@ mixin _$LoginViewModel on _LoginViewModelBase, Store {
     });
   }
 
-  final _$fetchLoginSeviceAsyncAction =
-      AsyncAction('_LoginViewModelBase.fetchLoginSevice');
+  late final _$fetchLoginServiceAsyncAction =
+      AsyncAction('_LoginViewModelBase.fetchLoginService', context: context);
 
   @override
-  Future<void> fetchLoginSevice() {
-    return _$fetchLoginSeviceAsyncAction.run(() => super.fetchLoginSevice());
+  Future<void> fetchLoginService() {
+    return _$fetchLoginServiceAsyncAction.run(() => super.fetchLoginService());
   }
 
-  final _$_LoginViewModelBaseActionController =
-      ActionController(name: '_LoginViewModelBase');
+  late final _$_LoginViewModelBaseActionController =
+      ActionController(name: '_LoginViewModelBase', context: context);
 
   @override
   void isLoadingChange() {

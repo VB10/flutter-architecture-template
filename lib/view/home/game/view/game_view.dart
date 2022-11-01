@@ -1,20 +1,19 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:fluttermvvmtemplate/core/base/view/base_widget.dart';
+import 'package:fluttermvvmtemplate/core/init/lang/locale_keys.g.dart';
+import 'package:fluttermvvmtemplate/core/init/network/vexana_manager.dart';
+import 'package:fluttermvvmtemplate/product/widget/button/header_button.dart';
+import 'package:fluttermvvmtemplate/product/widget/grid/game_grid_view.dart';
+import 'package:fluttermvvmtemplate/product/widget/pageview/game_slider.dart';
+import 'package:fluttermvvmtemplate/view/home/game/model/game_model.dart';
+import 'package:fluttermvvmtemplate/view/home/game/model/game_view_state.dart';
+import 'package:fluttermvvmtemplate/view/home/game/model/slider_model.dart';
+import 'package:fluttermvvmtemplate/view/home/game/service/game_service.dart';
+import 'package:fluttermvvmtemplate/view/home/game/viewmodel/game_view_model.dart';
 import 'package:kartal/kartal.dart';
 import 'package:shimmer/shimmer.dart';
-
-import '../../../../core/base/view/base_widget.dart';
-import '../../../../core/init/lang/locale_keys.g.dart';
-import '../../../../core/init/network/vexana_manager.dart';
-import '../../../../product/widget/button/header_button.dart';
-import '../../../../product/widget/grid/game_grid_view.dart';
-import '../../../../product/widget/pageview/game_slider.dart';
-import '../model/game_model.dart';
-import '../model/game_view_state.dart';
-import '../model/slider_model.dart';
-import '../service/game_service.dart';
-import '../viewmodel/game_view_model.dart';
 
 part './subview/game_view_cards.dart';
 
@@ -34,7 +33,7 @@ class GameView extends StatelessWidget {
         appBar: buildAppBar(context),
         body: Observer(builder: (_) {
           return value.isLoading
-              ? Center(child: CircularProgressIndicator())
+              ? const Center(child: CircularProgressIndicator())
               : DefaultTabController(
                   length: value.gameTabItems.length,
                   child: ListView.builder(
@@ -55,16 +54,16 @@ class GameView extends StatelessWidget {
                             throw Exception('STATE NOT FOUND');
                           // return Card(child: Text("data"));
                         }
-                      }));
-        }),
+                      },),);
+        },),
       ),
     );
   }
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      leading: Icon(Icons.rounded_corner),
-      actions: [IconButton(icon: Icon(Icons.camera_enhance), onPressed: () {})],
+      leading: const Icon(Icons.rounded_corner),
+      actions: [IconButton(icon: const Icon(Icons.camera_enhance), onPressed: () {})],
       title: Text(
         LocaleKeys.home_game_title.tr(),
         style: context.textTheme.headline5!.copyWith(color: context.colorScheme.onError, fontWeight: FontWeight.w600),
@@ -81,8 +80,8 @@ class GameView extends StatelessWidget {
         tabs: value.gameTabItems
             .map((e) => Tab(
                   child: Padding(padding: context.paddingLow, child: Text(e.tr())),
-                ))
-            .toList());
+                ),)
+            .toList(),);
   }
 
   Widget buildSizedBoxSlider(BuildContext context, List<SliderModel>? items) {
@@ -100,7 +99,7 @@ class GameView extends StatelessWidget {
   Padding buildPaddingSearchBar(BuildContext context) {
     return Padding(
       padding: context.paddingLow,
-      child: TextField(
+      child: const TextField(
         decoration: InputDecoration(prefixIcon: Icon(Icons.search)),
       ),
     );

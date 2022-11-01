@@ -1,13 +1,12 @@
+import 'package:architecture_widgets/src/text/auto_locale_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../../../core/base/view/base_widget.dart';
-import 'package:architecture_widgets/src/text/auto_locale_text.dart';
-import '../../../../core/extension/context_extension.dart';
-import '../../../_product/_widgets/avatar/on_board_circle.dart';
-import '../model/on_board_model.dart';
-import '../viewModel/on_board_view_model.dart';
+import 'package:fluttermvvmtemplate/core/base/view/base_widget.dart';
+import 'package:fluttermvvmtemplate/core/extension/context_extension.dart';
+import 'package:fluttermvvmtemplate/view/_product/_widgets/avatar/on_board_circle.dart';
+import 'package:fluttermvvmtemplate/view/authenticate/onboard/model/on_board_model.dart';
+import 'package:fluttermvvmtemplate/view/authenticate/onboard/viewModel/on_board_view_model.dart';
 
 class OnBoardView extends StatelessWidget {
   @override
@@ -24,7 +23,7 @@ class OnBoardView extends StatelessWidget {
           padding: context.paddingNormalHorizontal,
           child: Column(
             children: [
-              Spacer(flex: 1),
+              const Spacer(),
               Expanded(flex: 5, child: buildPageView(viewModel)),
               Expanded(flex: 2, child: buildRowFooter(viewModel, context)),
             ],
@@ -41,7 +40,7 @@ class OnBoardView extends StatelessWidget {
           viewModel.changeCurrentIndex(value);
         },
         itemBuilder: (context, index) =>
-            buildColumnBody(context, viewModel.onBoardItems[index]));
+            buildColumnBody(context, viewModel.onBoardItems[index]),);
   }
 
   Row buildRowFooter(OnBoardViewModel viewModel, BuildContext context) {
@@ -51,8 +50,8 @@ class OnBoardView extends StatelessWidget {
         buildListViewCircles(viewModel),
         Expanded(child: Center(child: Observer(builder: (_) {
           return Visibility(
-              visible: viewModel.isLoading, child: CircularProgressIndicator());
-        }))),
+              visible: viewModel.isLoading, child: const CircularProgressIndicator(),);
+        },),),),
         buildFloatingActionButtonSkip(context, viewModel)
       ],
     );
@@ -68,18 +67,18 @@ class OnBoardView extends StatelessWidget {
           return OnBoardCircle(
             isSelected: viewModel.currentIndex == index,
           );
-        });
+        },);
       },
     );
   }
 
   FloatingActionButton buildFloatingActionButtonSkip(
-      BuildContext context, OnBoardViewModel viewModel) {
+      BuildContext context, OnBoardViewModel viewModel,) {
     return FloatingActionButton(
-      backgroundColor: context.colors.secondaryVariant,
+      backgroundColor: context.colors.secondaryContainer,
       child: Icon(
         Icons.keyboard_arrow_right,
-        color: context.colors.primaryVariant,
+        color: context.colors.primaryContainer,
       ),
       onPressed: () => viewModel.completeToOnBoard(),
     );
@@ -100,22 +99,22 @@ class OnBoardView extends StatelessWidget {
         buildAutoLocaleTextTitle(model, context),
         Padding(
             padding: context.paddingMediumHorizontal,
-            child: buildAutoLocaleTextDescription(model, context))
+            child: buildAutoLocaleTextDescription(model, context),)
       ],
     );
   }
 
   AutoLocaleText buildAutoLocaleTextTitle(
-      OnBoardModel model, BuildContext context) {
+      OnBoardModel model, BuildContext context,) {
     return AutoLocaleText(
       value: model.title,
       style: Theme.of(context).textTheme.headline3!.copyWith(
-          fontWeight: FontWeight.bold, color: context.colors.onSecondary),
+          fontWeight: FontWeight.bold, color: context.colors.onSecondary,),
     );
   }
 
   AutoLocaleText buildAutoLocaleTextDescription(
-      OnBoardModel model, BuildContext context) {
+      OnBoardModel model, BuildContext context,) {
     return AutoLocaleText(
       value: model.description,
       textAlign: TextAlign.center,

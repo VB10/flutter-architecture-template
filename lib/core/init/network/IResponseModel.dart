@@ -8,10 +8,10 @@ abstract class IErrorModel<T> {
 }
 
 class ResponseModel<T> extends IResponseModel<T> {
+
+  ResponseModel({this.data, this.error});
   @override
   final T? data;
   @override
   final IErrorModel? error;
-
-  ResponseModel({this.data, this.error});
 }

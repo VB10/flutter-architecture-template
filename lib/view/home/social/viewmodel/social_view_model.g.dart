@@ -6,11 +6,11 @@ part of 'social_view_model.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$SocialViewModel on _SocialViewModelBase, Store {
-  final _$socialUserListAtom =
-      Atom(name: '_SocialViewModelBase.socialUserList');
+  late final _$socialUserListAtom =
+      Atom(name: '_SocialViewModelBase.socialUserList', context: context);
 
   @override
   List<SocialUser> get socialUserList {
@@ -25,7 +25,8 @@ mixin _$SocialViewModel on _SocialViewModelBase, Store {
     });
   }
 
-  final _$isPageLoadingAtom = Atom(name: '_SocialViewModelBase.isPageLoading');
+  late final _$isPageLoadingAtom =
+      Atom(name: '_SocialViewModelBase.isPageLoading', context: context);
 
   @override
   bool get isPageLoading {
@@ -40,8 +41,8 @@ mixin _$SocialViewModel on _SocialViewModelBase, Store {
     });
   }
 
-  final _$isPageLoadingLazyLoadAtom =
-      Atom(name: '_SocialViewModelBase.isPageLoadingLazyLoad');
+  late final _$isPageLoadingLazyLoadAtom = Atom(
+      name: '_SocialViewModelBase.isPageLoadingLazyLoad', context: context);
 
   @override
   bool get isPageLoadingLazyLoad {
@@ -57,16 +58,16 @@ mixin _$SocialViewModel on _SocialViewModelBase, Store {
     });
   }
 
-  final _$_fetchAllUserAsyncAction =
-      AsyncAction('_SocialViewModelBase._fetchAllUser');
+  late final _$_fetchAllUserAsyncAction =
+      AsyncAction('_SocialViewModelBase._fetchAllUser', context: context);
 
   @override
   Future<void> _fetchAllUser() {
     return _$_fetchAllUserAsyncAction.run(() => super._fetchAllUser());
   }
 
-  final _$fetchAllUserLoadingAsyncAction =
-      AsyncAction('_SocialViewModelBase.fetchAllUserLoading');
+  late final _$fetchAllUserLoadingAsyncAction =
+      AsyncAction('_SocialViewModelBase.fetchAllUserLoading', context: context);
 
   @override
   Future<void> fetchAllUserLoading(int index) {
@@ -74,8 +75,8 @@ mixin _$SocialViewModel on _SocialViewModelBase, Store {
         .run(() => super.fetchAllUserLoading(index));
   }
 
-  final _$_SocialViewModelBaseActionController =
-      ActionController(name: '_SocialViewModelBase');
+  late final _$_SocialViewModelBaseActionController =
+      ActionController(name: '_SocialViewModelBase', context: context);
 
   @override
   void fetchAllSearchQuery(String text) {

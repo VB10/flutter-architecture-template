@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermvvmtemplate/core/base/model/base_view_model.dart';
+import 'package:fluttermvvmtemplate/view/_product/_utilty/decoration_helper.dart';
+import 'package:fluttermvvmtemplate/view/home/build/feed/model/house_model.dart';
+import 'package:fluttermvvmtemplate/view/home/build/feed/service/IBuildFeedService.dart';
+import 'package:fluttermvvmtemplate/view/home/build/feed/service/build_feed_service.dart';
 import 'package:mobx/mobx.dart';
-
-import '../../../../../core/base/model/base_view_model.dart';
-import '../../../../_product/_utilty/decoration_helper.dart';
-import '../model/house_model.dart';
-import '../service/IBuildFeedService.dart';
-import '../service/build_feed_service.dart';
 
 part 'build_feed_view_model.g.dart';
 
@@ -13,7 +12,7 @@ class BuildFeedViewModel = _BuildFeedViewModelBase with _$BuildFeedViewModel;
 
 abstract class _BuildFeedViewModelBase with Store, BaseViewModel {
   @override
-  void setContext(BuildContext context) => this.context = context;
+  void setContext(BuildContext context) => viewModelContext = context;
 
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
   late DecorationHelper helper;
@@ -43,7 +42,7 @@ abstract class _BuildFeedViewModelBase with Store, BaseViewModel {
 
   @override
   void init() {
-    helper = DecorationHelper(context: context);
+    helper = DecorationHelper(context: viewModelContext);
     feedService = BuildFeedService(vexanaManager!.networkManager, scaffoldKey);
   }
 

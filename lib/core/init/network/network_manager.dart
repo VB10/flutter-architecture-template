@@ -1,18 +1,11 @@
 import 'package:dio/dio.dart';
 
-import '../../constants/enums/locale_keys_enum.dart';
-import '../cache/locale_manager.dart';
-import 'ICoreDio.dart';
-import 'core_dio.dart';
+import 'package:fluttermvvmtemplate/core/constants/enums/locale_keys_enum.dart';
+import 'package:fluttermvvmtemplate/core/init/cache/locale_manager.dart';
+import 'package:fluttermvvmtemplate/core/init/network/ICoreDio.dart';
+import 'package:fluttermvvmtemplate/core/init/network/core_dio.dart';
 
 class NetworkManager {
-  static NetworkManager? _instance;
-  static NetworkManager? get instance {
-    _instance ??= NetworkManager._init();
-    return _instance;
-  }
-
-  ICoreDioNullSafety? coreDio;
 
   NetworkManager._init() {
     final baseOptions =
@@ -30,4 +23,11 @@ class NetworkManager {
     //   },
     // ));
   }
+  static NetworkManager? _instance;
+  static NetworkManager? get instance {
+    _instance ??= NetworkManager._init();
+    return _instance;
+  }
+
+  ICoreDioNullSafety? coreDio;
 }

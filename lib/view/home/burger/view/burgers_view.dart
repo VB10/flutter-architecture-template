@@ -2,15 +2,14 @@ import 'package:architecture_widgets/architecture_widgets.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:fluttermvvmtemplate/core/base/view/base_widget.dart';
+import 'package:fluttermvvmtemplate/core/init/lang/locale_keys.g.dart';
+import 'package:fluttermvvmtemplate/core/init/network/vexana_manager.dart';
+import 'package:fluttermvvmtemplate/product/widget/card/burger_card.dart';
+import 'package:fluttermvvmtemplate/view/_product/_utilty/burger_network_enum.dart';
+import 'package:fluttermvvmtemplate/view/home/burger/service/burger_serivce.dart';
+import 'package:fluttermvvmtemplate/view/home/burger/viewmodel/burger_view_model.dart';
 import 'package:kartal/kartal.dart';
-
-import '../../../../core/base/view/base_widget.dart';
-import '../../../../core/init/lang/locale_keys.g.dart';
-import '../../../../core/init/network/vexana_manager.dart';
-import '../../../../product/widget/card/burger_card.dart';
-import '../../../_product/_utilty/burger_network_enum.dart';
-import '../service/burger_serivce.dart';
-import '../viewmodel/burger_view_model.dart';
 
 enum _BurgerViews {
   BEST_SELL_TITLE,
@@ -39,23 +38,23 @@ class BurgersView extends StatelessWidget {
   }
 
   Observer buildObserverBuildbody(
-      BurgerViewModel viewModel, BuildContext context) {
+      BurgerViewModel viewModel, BuildContext context,) {
     return Observer(builder: (_) {
       return viewModel.isLoading
           ? buildCenterLoading()
           : buildPaddingListView(context, viewModel);
-    });
+    },);
   }
 
   Padding buildPaddingListView(
-      BuildContext context, BurgerViewModel viewModel) {
+      BuildContext context, BurgerViewModel viewModel,) {
     return Padding(
       padding: context.paddingLow,
       child: ListView.builder(
         itemCount: _BurgerViews.values.length,
         itemBuilder: (context, index) {
-          final _views = _BurgerViews.values[index];
-          switch (_views) {
+          final views = _BurgerViews.values[index];
+          switch (views) {
             case _BurgerViews.BEST_SELL_TITLE:
               return buildTextBestSell(context);
             case _BurgerViews.BURGER_FOVORITE:
@@ -75,7 +74,7 @@ class BurgersView extends StatelessWidget {
       title: Text(
         _title,
         style: context.textTheme.headline5?.copyWith(
-            fontWeight: FontWeight.w600, color: context.colorScheme.onError),
+            fontWeight: FontWeight.w600, color: context.colorScheme.onError,),
       ),
       centerTitle: false,
       leading:
@@ -86,22 +85,22 @@ class BurgersView extends StatelessWidget {
               showModalBottomSheet(
                   context: context,
                   builder: (context) =>
-                      buildBottomSheetBody(context, viewModel));
+                      buildBottomSheetBody(context, viewModel),);
             },
-            icon: Icon(Icons.filter_alt))
+            icon: const Icon(Icons.filter_alt),)
       ],
     );
   }
 
   Widget buildBottomSheetBody(
-          BuildContext context, BurgerViewModel viewModel) =>
+          BuildContext context, BurgerViewModel viewModel,) =>
       Padding(
         padding: context.paddingLow,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Filter'),
-            Divider(height: 2, thickness: 2),
+            const Text('Filter'),
+            const Divider(height: 2, thickness: 2),
             Row(
               children: [
                 Expanded(
@@ -117,7 +116,7 @@ class BurgersView extends StatelessWidget {
                     onPressed: () {
                       viewModel.fetchMinMax();
                     },
-                    icon: Icon(Icons.check_box_outline_blank))
+                    icon: const Icon(Icons.check_box_outline_blank),)
               ],
             ),
             Card(
@@ -131,17 +130,17 @@ class BurgersView extends StatelessWidget {
                             onPressed: () {
                               viewModel.fetchSort(e);
                             },
-                            icon: Text(e.rawValue, maxLines: 1)))
+                            icon: Text(e.rawValue, maxLines: 1),),)
                         .toList(),
                   ),
                   Row(
                     children: [
                       IconButton(
                           onPressed: () => viewModel.changeAscending(true),
-                          icon: Icon(Icons.plus_one)),
+                          icon: const Icon(Icons.plus_one),),
                       IconButton(
                           onPressed: () => viewModel.changeAscending(true),
-                          icon: Icon(Icons.design_services_rounded)),
+                          icon: const Icon(Icons.design_services_rounded),),
                     ],
                   ),
                 ],
@@ -155,7 +154,7 @@ class BurgersView extends StatelessWidget {
     return Padding(
       padding: context.verticalPaddingLow,
       child: Text(LocaleKeys.home_burgers_normalProducts.tr(),
-          style: context.textTheme.headline5),
+          style: context.textTheme.headline5,),
     );
   }
 
@@ -163,33 +162,33 @@ class BurgersView extends StatelessWidget {
     return Text(
       LocaleKeys.home_burgers_favoriteProducts.tr(),
       style: context.textTheme.headline3?.copyWith(
-          color: context.colorScheme.onSecondary, fontWeight: FontWeight.bold),
+          color: context.colorScheme.onSecondary, fontWeight: FontWeight.bold,),
     );
   }
 
   Center buildCenterLoading() =>
-      Center(child: CircularProgressIndicator.adaptive());
+      const Center(child: CircularProgressIndicator.adaptive());
 
   SizedBox buildSizedBoxFavorite(
-          BuildContext context, BurgerViewModel viewModel) =>
+          BuildContext context, BurgerViewModel viewModel,) =>
       SizedBox(
           height: context.dynamicHeight(0.3),
-          child: BurgerCard().buildList(viewModel.favoriteBurgerModel));
+          child: const BurgerCard().buildList(viewModel.favoriteBurgerModel),);
 
   Widget buildSizedBoxNormalBurgers(
-      BurgerViewModel viewModel, BuildContext context) {
+      BurgerViewModel viewModel, BuildContext context,) {
     viewModel.fetchNormalItems();
 
     return SizedBox(
       child: Observer(builder: (_) {
         return viewModel.isLoadingMain
             ? SizedBox(
-                height: context.dynamicHeight(0.1), child: buildCenterLoading())
+                height: context.dynamicHeight(0.1), child: buildCenterLoading(),)
             : GridView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,),
                 itemBuilder: (context, index) {
                   return BurgerCard(
                     model: viewModel.mainBurgerModel[index],
@@ -197,7 +196,7 @@ class BurgersView extends StatelessWidget {
                 },
                 itemCount: viewModel.mainBurgerModel.length,
               );
-      }),
+      },),
     );
   }
 }

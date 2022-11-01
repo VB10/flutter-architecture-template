@@ -1,15 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttermvvmtemplate/view/home/build/feed/model/house_model.dart';
 import 'package:kartal/kartal.dart';
 
-import '../../../home/build/feed/model/house_model.dart';
-
 class BuildUserCard extends StatelessWidget {
+
+  const BuildUserCard({Key? key, required this.model, this.onPressedLikeId, this.isLiked = false}) : super(key: key);
   final HouseModel model;
   final bool isLiked;
   final Function(String? id)? onPressedLikeId;
-
-  const BuildUserCard({Key? key, required this.model, this.onPressedLikeId, this.isLiked = false}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -45,6 +44,6 @@ class BuildUserCard extends StatelessWidget {
         ),
         onPressed: () {
           onPressedLikeId!(model.id);
-        });
+        },);
   }
 }

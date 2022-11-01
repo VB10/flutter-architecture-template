@@ -1,17 +1,16 @@
+import 'package:architecture_widgets/src/button/icon_button.dart';
 import 'package:flutter/material.dart';
 
-import 'package:architecture_widgets/src/button/icon_button.dart';
-
 class MVVMLoginButton extends StatelessWidget {
-  final Function(String data)? onComplete;
 
   const MVVMLoginButton({Key? key, this.onComplete}) : super(key: key);
+  final Function(String data)? onComplete;
   @override
   Widget build(BuildContext context) {
     return IconNormalButton(
       icon: Icons.access_alarm,
       onPressed: () {
-        onComplete!("OKEY");
+        onComplete!('OKEY');
         //  BUSINESS CALL
       },
     );

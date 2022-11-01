@@ -6,7 +6,7 @@ part of 'build_feed_view_model.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BuildFeedViewModel on _BuildFeedViewModelBase, Store {
   Computed<HouseModel>? _$sliderHouseComputed;
@@ -17,7 +17,8 @@ mixin _$BuildFeedViewModel on _BuildFeedViewModelBase, Store {
               name: '_BuildFeedViewModelBase.sliderHouse'))
           .value;
 
-  final _$likeItemsAtom = Atom(name: '_BuildFeedViewModelBase.likeItems');
+  late final _$likeItemsAtom =
+      Atom(name: '_BuildFeedViewModelBase.likeItems', context: context);
 
   @override
   List<String> get likeItems {
@@ -32,7 +33,8 @@ mixin _$BuildFeedViewModel on _BuildFeedViewModelBase, Store {
     });
   }
 
-  final _$houseModelsAtom = Atom(name: '_BuildFeedViewModelBase.houseModels');
+  late final _$houseModelsAtom =
+      Atom(name: '_BuildFeedViewModelBase.houseModels', context: context);
 
   @override
   List<HouseModel>? get houseModels {
@@ -47,7 +49,8 @@ mixin _$BuildFeedViewModel on _BuildFeedViewModelBase, Store {
     });
   }
 
-  final _$isLoaindgAtom = Atom(name: '_BuildFeedViewModelBase.isLoaindg');
+  late final _$isLoaindgAtom =
+      Atom(name: '_BuildFeedViewModelBase.isLoaindg', context: context);
 
   @override
   bool get isLoaindg {
@@ -62,16 +65,16 @@ mixin _$BuildFeedViewModel on _BuildFeedViewModelBase, Store {
     });
   }
 
-  final _$getListAllAsyncAction =
-      AsyncAction('_BuildFeedViewModelBase.getListAll');
+  late final _$getListAllAsyncAction =
+      AsyncAction('_BuildFeedViewModelBase.getListAll', context: context);
 
   @override
   Future<void> getListAll() {
     return _$getListAllAsyncAction.run(() => super.getListAll());
   }
 
-  final _$_BuildFeedViewModelBaseActionController =
-      ActionController(name: '_BuildFeedViewModelBase');
+  late final _$_BuildFeedViewModelBaseActionController =
+      ActionController(name: '_BuildFeedViewModelBase', context: context);
 
   @override
   void onLikeItemPressed(String id) {

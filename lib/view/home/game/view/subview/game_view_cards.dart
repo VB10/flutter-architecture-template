@@ -5,7 +5,7 @@ extension _GameViewGamesCard on GameView {
     return viewModel.onNewsGameItems().toBuild<List<GameModel>?>(
         onSuccess: (data) {
           return Column(
-            children: [HeaderButton(titleText: LocaleKeys.home_game_newUpdate), GameGrid(models: data)],
+            children: [const HeaderButton(titleText: LocaleKeys.home_game_newUpdate), GameGrid(models: data)],
           );
         },
         loadingWidget: SizedBox(
@@ -14,15 +14,15 @@ extension _GameViewGamesCard on GameView {
           child: Shimmer.fromColors(
             baseColor: Colors.grey,
             highlightColor: Colors.grey[200]!,
-            child: ListTile(
+            child: const ListTile(
               leading: CircleAvatar(),
               title: Text('data'),
               subtitle: Text('data'),
             ),
           ),
         ),
-        notFoundWidget: Text('data'),
-        onError: Text('data'));
+        notFoundWidget: const Text('data'),
+        onError: const Text('data'),);
   }
 
   Widget buildColumnUpdate(GameViewModel viewModel) {
@@ -30,15 +30,15 @@ extension _GameViewGamesCard on GameView {
         onSuccess: (data) {
           return Column(
             children: [
-              HeaderButton(titleText: LocaleKeys.home_game_topDownload),
+              const HeaderButton(titleText: LocaleKeys.home_game_topDownload),
               GameGrid(
                 models: data,
               )
             ],
           );
         },
-        loadingWidget: CircularProgressIndicator(),
-        notFoundWidget: Text('data'),
-        onError: Text('data'));
+        loadingWidget: const CircularProgressIndicator(),
+        notFoundWidget: const Text('data'),
+        onError: const Text('data'),);
   }
 }

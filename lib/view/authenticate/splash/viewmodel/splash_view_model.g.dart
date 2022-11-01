@@ -6,10 +6,11 @@ part of 'splash_view_model.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$SplashViewModel on _SplashViewModelBase, Store {
-  final _$isFirstInitAtom = Atom(name: '_SplashViewModelBase.isFirstInit');
+  late final _$isFirstInitAtom =
+      Atom(name: '_SplashViewModelBase.isFirstInit', context: context);
 
   @override
   bool get isFirstInit {
@@ -24,8 +25,8 @@ mixin _$SplashViewModel on _SplashViewModelBase, Store {
     });
   }
 
-  final _$_SplashViewModelBaseActionController =
-      ActionController(name: '_SplashViewModelBase');
+  late final _$_SplashViewModelBaseActionController =
+      ActionController(name: '_SplashViewModelBase', context: context);
 
   @override
   void _changeFirstInit() {

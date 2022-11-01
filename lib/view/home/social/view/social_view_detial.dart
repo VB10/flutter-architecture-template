@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermvvmtemplate/core/init/network/vexana_manager.dart';
+import 'package:fluttermvvmtemplate/view/home/social/model/social_user_model.dart';
+import 'package:fluttermvvmtemplate/view/home/social/service/ISocialService.dart';
+import 'package:fluttermvvmtemplate/view/home/social/service/socail_service.dart';
 import 'package:kartal/kartal.dart';
 import 'package:vexana/vexana.dart';
 
-import '../../../../core/init/network/vexana_manager.dart';
-import '../model/social_user_model.dart';
-import '../service/ISocialService.dart';
-import '../service/socail_service.dart';
-
 class SocialUserViewDetail extends StatelessWidget {
-  final SocialUser? socialUser;
-
-  final INetworkManager manager = VexanaManager.instance.networkManager;
-
-  ISocialServiceService get socialServiceService => SocailService(manager, null);
 
   SocialUserViewDetail({
     Key? key,
     this.socialUser,
   }) : super(key: key);
+  final SocialUser? socialUser;
+
+  final INetworkManager manager = VexanaManager.instance.networkManager;
+
+  ISocialServiceService get socialServiceService => SocailService(manager, null);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,11 +25,11 @@ class SocialUserViewDetail extends StatelessWidget {
           onSuccess: (data) {
             return Center(child: Image.network(data!.image!));
           },
-          loadingWidget: CircularProgressIndicator(),
-          notFoundWidget: Center(
+          loadingWidget: const CircularProgressIndicator(),
+          notFoundWidget: const Center(
             child: Text('Not Found'),
           ),
-          onError: Text('errro')),
+          onError: const Text('errro'),),
     );
   }
 }

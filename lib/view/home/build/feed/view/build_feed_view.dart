@@ -1,13 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:fluttermvvmtemplate/core/base/view/base_widget.dart';
+import 'package:fluttermvvmtemplate/core/init/lang/locale_keys.g.dart';
+import 'package:fluttermvvmtemplate/view/_product/_widgets/card/build_user_card.dart';
+import 'package:fluttermvvmtemplate/view/home/build/feed/model/house_model.dart';
+import 'package:fluttermvvmtemplate/view/home/build/feed/viewmodel/build_feed_view_model.dart';
 import 'package:kartal/kartal.dart';
-
-import '../../../../../core/base/view/base_widget.dart';
-import '../../../../../core/init/lang/locale_keys.g.dart';
-import '../../../../_product/_widgets/card/build_user_card.dart';
-import '../model/house_model.dart';
-import '../viewmodel/build_feed_view_model.dart';
 
 class BuildFeedView extends StatelessWidget {
   @override
@@ -28,9 +27,9 @@ class BuildFeedView extends StatelessWidget {
               return viewModel.isLoaindg
                   ? buildCenter()
                   : viewModel.houseModels == null || viewModel.houseModels!.isEmpty
-                      ? Center(child: Text('Not Found'))
+                      ? const Center(child: Text('Not Found'))
                       : buildListViewRecommended(viewModel, context);
-            })),
+            },),),
       ),
     );
   }
@@ -51,7 +50,7 @@ class BuildFeedView extends StatelessWidget {
 
   ListView buildListBottom(BuildFeedViewModel viewModel) {
     return ListView.builder(
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) => SizedBox(
           height: context.dynamicHeight(0.15),
           child: Card(
@@ -61,7 +60,7 @@ class BuildFeedView extends StatelessWidget {
                 Expanded(flex: 9, child: buildObserver(viewModel, index)),
               ],
             ),
-          )),
+          ),),
       itemCount: 3,
       shrinkWrap: true,
     );
@@ -78,7 +77,7 @@ class BuildFeedView extends StatelessWidget {
           }
         },
       );
-    });
+    },);
   }
 
   SizedBox buildSizedBoxLAtestPageView(BuildContext context, BuildFeedViewModel viewModel) {
@@ -98,17 +97,17 @@ class BuildFeedView extends StatelessWidget {
       Tab(text: LocaleKeys.home_build_tabbar_tab2.tr()),
       Tab(text: LocaleKeys.home_build_tabbar_tab3.tr()),
       Tab(text: LocaleKeys.home_build_tabbar_tab4.tr()),
-    ]);
+    ],);
   }
 
-  Center buildCenter() => Center(child: CircularProgressIndicator());
+  Center buildCenter() => const Center(child: CircularProgressIndicator());
 
   AppBar buildAppBar() {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      leading: IconButton(icon: Icon(Icons.format_align_left), onPressed: () {}),
-      actions: [IconButton(icon: Icon(Icons.search), onPressed: () {})],
+      leading: IconButton(icon: const Icon(Icons.format_align_left), onPressed: () {}),
+      actions: [IconButton(icon: const Icon(Icons.search), onPressed: () {})],
     );
   }
 
@@ -138,7 +137,7 @@ class BuildFeedView extends StatelessWidget {
               }
             },
           );
-        }),
+        },),
       ),
     );
   }

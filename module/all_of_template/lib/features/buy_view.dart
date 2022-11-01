@@ -26,9 +26,9 @@ class _BuyViewState extends State<BuyView> {
   TextButton goNextPage() {
     return TextButton(
       onPressed: () {
-        context.navigateToPage(NextPage());
+        context.navigateToPage(const NextPage());
       },
-      child: Text('Go'),
+      child: const Text('Go'),
     );
   }
 
@@ -37,7 +37,7 @@ class _BuyViewState extends State<BuyView> {
       onPressed: () {
         Navigator.of(context).pop();
       },
-      child: Icon(Icons.arrow_back),
+      child: const Icon(Icons.arrow_back),
     );
   }
 

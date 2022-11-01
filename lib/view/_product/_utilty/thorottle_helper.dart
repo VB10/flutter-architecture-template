@@ -1,17 +1,17 @@
 import 'dart:async';
 
 class ThrottleStringHelper {
+  ThrottleStringHelper() {
+    _onSetMaxValue();
+  }
   String? _pastText;
 
   final int _maxTimerValue = 5;
   int _timerValue = 0;
-  ThrottleStringHelper() {
-    _onSetMaxValue();
-  }
   void onDelayTouch(String text, Function(String? text) onComplete) {
     _pastText = text;
     if (_timerValue == _maxTimerValue) {
-      Timer.periodic(Duration(milliseconds: 100), (timer) {
+      Timer.periodic(const Duration(milliseconds: 100), (timer) {
         _timerValue--;
 
         if (_timerValue == 0) {

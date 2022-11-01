@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 
-import 'INavigationService.dart';
+import 'package:fluttermvvmtemplate/core/init/navigation/INavigationService.dart';
 
 class NavigationService implements INavigationService {
-  static final NavigationService _instance = NavigationService._init();
-  static NavigationService get instance => _instance;
 
   NavigationService._init();
+  static final NavigationService _instance = NavigationService._init();
+  static NavigationService get instance => _instance;
 
   GlobalKey<NavigatorState> navigatorKey = GlobalKey();
   final removeAllOldRoutes = (Route<dynamic> route) => false;

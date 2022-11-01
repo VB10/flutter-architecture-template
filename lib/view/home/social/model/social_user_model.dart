@@ -5,11 +5,6 @@ part 'social_user_model.g.dart';
 
 @JsonSerializable()
 class SocialUser extends INetworkModel<SocialUser> {
-  @JsonKey(name: '_id')
-  String? id;
-  String? name;
-  String? company;
-  String? image;
 
   SocialUser({this.name, this.company, this.image});
 
@@ -19,6 +14,11 @@ class SocialUser extends INetworkModel<SocialUser> {
     company = json['company'] as String?;
     image = json['image'] as String?;
   }
+  @JsonKey(name: '_id')
+  String? id;
+  String? name;
+  String? company;
+  String? image;
 
   @override
   Map<String, dynamic> toJson() {

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermvvmtemplate/core/base/model/base_view_model.dart';
+import 'package:fluttermvvmtemplate/core/init/lang/locale_keys.g.dart';
+import 'package:fluttermvvmtemplate/view/home/game/model/game_enums.dart';
+import 'package:fluttermvvmtemplate/view/home/game/model/game_model.dart';
+import 'package:fluttermvvmtemplate/view/home/game/model/slider_model.dart';
+import 'package:fluttermvvmtemplate/view/home/game/service/game_service.dart';
 import 'package:mobx/mobx.dart';
-
-import '../../../../core/base/model/base_view_model.dart';
-import '../../../../core/init/lang/locale_keys.g.dart';
-import '../model/game_enums.dart';
-import '../model/game_model.dart';
-import '../model/slider_model.dart';
-import '../service/game_service.dart';
 
 part 'game_view_model.g.dart';
 
 class GameViewModel = _GameViewModelBase with _$GameViewModel;
 
 abstract class _GameViewModelBase with Store, BaseViewModel {
+  _GameViewModelBase(this.gameService);
   final List<String> gameTabItems = [
     LocaleKeys.home_game_tabbar_tab1,
     LocaleKeys.home_game_tabbar_tab2,
@@ -26,10 +26,9 @@ abstract class _GameViewModelBase with Store, BaseViewModel {
   List<SliderModel>? sliderItems = [];
   List<GameModel> newsGameItems = [];
   List<GameModel> topGameITems = [];
-  _GameViewModelBase(this.gameService);
 
   @override
-  void setContext(BuildContext context) => this.context = context;
+  void setContext(BuildContext context) => viewModelContext = context;
 
   @observable
   bool isLoading = false;

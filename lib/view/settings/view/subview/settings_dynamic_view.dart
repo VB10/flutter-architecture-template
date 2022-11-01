@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermvvmtemplate/core/constants/app/app_constants.dart';
+import 'package:fluttermvvmtemplate/view/settings/model/settings_dynamic.dart';
 import 'package:kartal/kartal.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../../../../core/constants/app/app_constants.dart';
-import '../../model/settings_dynamic.dart';
-
 class SettingsDynamicView extends StatelessWidget {
-  final SettingsDynamicModel model;
 
   const SettingsDynamicView({Key? key, required this.model}) : super(key: key);
+  final SettingsDynamicModel model;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

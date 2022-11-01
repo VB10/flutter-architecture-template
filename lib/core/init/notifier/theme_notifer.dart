@@ -1,7 +1,7 @@
 import 'package:architecture_theme/theme/app_theme_light.dart';
 import 'package:flutter/material.dart';
 
-import '../../constants/enums/app_theme_enum.dart';
+import 'package:fluttermvvmtemplate/core/constants/enums/app_theme_enum.dart';
 
 class ThemeNotifier extends ChangeNotifier {
   ThemeData _currentTheme = AppThemeLight.instance.theme;
@@ -30,7 +30,6 @@ class ThemeNotifier extends ChangeNotifier {
       _currenThemeEnum = AppThemes.DARK;
     } else {
       _currentTheme = AppThemeLight.instance.theme;
-      ;
       _currenThemeEnum = AppThemes.LIGHT;
     }
     notifyListeners();

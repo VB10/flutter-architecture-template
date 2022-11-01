@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/extension/context_extension.dart';
+import 'package:fluttermvvmtemplate/core/extension/context_extension.dart';
 
 class OnBoardCircle extends StatelessWidget {
-  final bool isSelected;
 
   const OnBoardCircle({Key? key, required this.isSelected}) : super(key: key);
+  final bool isSelected;
   @override
   Widget build(BuildContext context) {
     return Padding(
