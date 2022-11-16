@@ -6,16 +6,14 @@ part of 'burger_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-BurgerModel _$BurgerModelFromJson(Map<String, dynamic> json) {
-  return BurgerModel()
-    ..id = json['_id'] as String?
-    ..image = json['image'] as String?
-    ..name = json['name'] as String?
-    ..price = json['price'] as int?
-    ..rates = json['rates'] as int?
-    ..isFavorite = json['isFavorite'] as bool?
-    ..updated = json['updated'] as String?;
-}
+BurgerModel _$BurgerModelFromJson(Map<String, dynamic> json) => BurgerModel()
+  ..id = json['_id'] as String?
+  ..image = json['image'] as String?
+  ..name = json['name'] as String?
+  ..price = json['price'] as int?
+  ..rates = json['rates'] as int?
+  ..isFavorite = json['isFavorite'] as bool?
+  ..updated = json['updated'] as String?;
 
 Map<String, dynamic> _$BurgerModelToJson(BurgerModel instance) =>
     <String, dynamic>{

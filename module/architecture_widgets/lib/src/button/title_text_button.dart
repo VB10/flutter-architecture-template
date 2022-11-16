@@ -1,12 +1,13 @@
+import 'package:architecture_widgets/src/button/normal_button.dart';
 import 'package:flutter/material.dart';
 
-import 'normal_button.dart';
-
 class TitleTextButton extends StatelessWidget {
+  const TitleTextButton({Key? key, this.onPressed, required this.text})
+      : super(
+          key: key,
+        );
   final VoidCallback? onPressed;
   final String text;
-
-  const TitleTextButton({Key? key, this.onPressed, required this.text}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return NormalButton(

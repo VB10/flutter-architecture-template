@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 class RangePriceSLider extends StatefulWidget {
+  const RangePriceSLider({Key? key, required this.min, required this.max, required this.onCompleted}) : super(key: key);
   final double min;
   final double max;
 
   final void Function(RangeValues values) onCompleted;
-
-  const RangePriceSLider({Key? key, required this.min, required this.max, required this.onCompleted}) : super(key: key);
   @override
   _RangePriceSLiderState createState() => _RangePriceSLiderState();
 }

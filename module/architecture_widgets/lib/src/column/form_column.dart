@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 
 class FormColumn extends StatelessWidget {
-  final List<Widget>? children;
-
   const FormColumn({Key? key, this.children}) : super(key: key);
+  final List<Widget>? children;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Spacer(flex: 1),
+        const Spacer(),
         Expanded(
           flex: 8,
           child: Column(
             children: children!,
           ),
         ),
-        Spacer(flex: 1),
+        const Spacer(),
       ],
     );
   }

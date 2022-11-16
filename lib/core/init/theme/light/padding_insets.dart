@@ -1,5 +1,5 @@
 import 'package:flutter/rendering.dart';
 
 class PaddingInsets {
-  final lowPaddingAll = EdgeInsets.all(5);
+  final lowPaddingAll = const EdgeInsets.all(5);
 }

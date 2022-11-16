@@ -1,17 +1,18 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:fluttermvvmtemplate/core/base/view/base_widget.dart';
+import 'package:fluttermvvmtemplate/core/init/lang/locale_keys.g.dart';
 import 'package:fluttermvvmtemplate/core/init/network/vexana_manager.dart';
+import 'package:fluttermvvmtemplate/view/_product/_widgets/animation/social_card_animation.dart';
+import 'package:fluttermvvmtemplate/view/_product/_widgets/list-tile/friend_card.dart';
 import 'package:fluttermvvmtemplate/view/home/social/service/socail_service.dart';
+import 'package:fluttermvvmtemplate/view/home/social/viewmodel/social_view_model.dart';
 import 'package:kartal/kartal.dart';
 
-import '../../../../core/base/view/base_widget.dart';
-import '../../../../core/init/lang/locale_keys.g.dart';
-import '../../../_product/_widgets/animation/social_card_animation.dart';
-import '../../../_product/_widgets/list-tile/friend_card.dart';
-import '../viewmodel/social_view_model.dart';
-
 class SocialView extends StatelessWidget {
+  SocialView({Key? key}) : super(key: key);
+
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 
   @override
@@ -31,14 +32,16 @@ class SocialView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               buildTextFindFriends(context).tr(),
-              Spacer(flex: 2),
+              const Spacer(flex: 2),
               TextField(
                 onChanged: (value) {
                   viewModel.fetchAllSearchQuery(value);
                 },
-                decoration: InputDecoration(prefixIcon: Icon(Icons.search, color: context.colorScheme.onSecondary.withOpacity(0.2))),
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.search, color: context.colorScheme.onSecondary.withOpacity(0.2)),
+                ),
               ),
-              Spacer(flex: 2),
+              const Spacer(flex: 2),
               Expanded(flex: 90, child: Observer(builder: (_) => buildListViewUser(viewModel)))
             ],
           ),
@@ -51,17 +54,21 @@ class SocialView extends StatelessWidget {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      leading: FlatButton(onPressed: () {}, padding: EdgeInsets.zero, child: Text(LocaleKeys.home_social_cancel).tr()),
+      leading: TextButton(
+        onPressed: () {},
+        child: const Text(LocaleKeys.home_social_cancel).tr(),
+      ),
       actions: [
-        FlatButton(
-            onPressed: () {},
-            child: Text(
-              LocaleKeys.home_social_next,
-              style: context.textTheme.subtitle1!.copyWith(
-                fontWeight: FontWeight.w600,
-                color: context.appTheme.buttonTheme.colorScheme!.onError,
-              ),
-            ).tr())
+        TextButton(
+          onPressed: () {},
+          child: Text(
+            LocaleKeys.home_social_next,
+            style: context.textTheme.subtitle1!.copyWith(
+              fontWeight: FontWeight.w600,
+              color: context.appTheme.buttonTheme.colorScheme!.onError,
+            ),
+          ).tr(),
+        )
       ],
     );
   }

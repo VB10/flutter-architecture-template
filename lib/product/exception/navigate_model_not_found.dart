@@ -1,7 +1,7 @@
 class NavigateException<T> implements Exception {
-  final dynamic model;
 
   NavigateException(this.model);
+  final dynamic model;
 
   @override
   String toString() {

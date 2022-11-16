@@ -2,12 +2,12 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttermvvmtemplate/core/constants/app/app_constants.dart';
 
-class AnalytcisManager {
-  static final AnalytcisManager _instance = AnalytcisManager._init();
-  static AnalytcisManager get instance => _instance;
-  AnalytcisManager._init() {
+class AnalyticsManager {
+  AnalyticsManager._init() {
     init();
   }
+  static final AnalyticsManager _instance = AnalyticsManager._init();
+  static AnalyticsManager get instance => _instance;
 
   static final _analytics = FirebaseAnalytics.instance;
 

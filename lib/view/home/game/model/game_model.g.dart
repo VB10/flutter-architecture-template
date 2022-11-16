@@ -6,15 +6,13 @@ part of 'game_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-GameModel _$GameModelFromJson(Map<String, dynamic> json) {
-  return GameModel(
-    sId: json['_id'] as String?,
-    image: json['image'] as String?,
-    name: json['name'] as String?,
-    money: json['money'] as int?,
-    category: json['category'] as int?,
-  );
-}
+GameModel _$GameModelFromJson(Map<String, dynamic> json) => GameModel(
+      sId: json['_id'] as String?,
+      image: json['image'] as String?,
+      name: json['name'] as String?,
+      money: json['money'] as int?,
+      category: json['category'] as int?,
+    );
 
 Map<String, dynamic> _$GameModelToJson(GameModel instance) => <String, dynamic>{
       '_id': instance.sId,

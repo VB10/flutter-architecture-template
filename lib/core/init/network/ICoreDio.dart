@@ -1,41 +1,49 @@
-import '../../base/model/base_model.dart';
-import '../../constants/enums/http_request_enum.dart';
-import 'IResponseModel.dart';
+import 'package:fluttermvvmtemplate/core/base/model/base_model.dart';
+import 'package:fluttermvvmtemplate/core/constants/enums/http_request_enum.dart';
+import 'package:fluttermvvmtemplate/core/init/network/IResponseModel.dart';
 
 abstract class ICoreDio {
-  Future<IResponseModel<R>> fetch<R, T extends BaseModel>(String path,
-      {required HttpTypes type,
-      required T parseModel,
-      dynamic data,
-      Map<String, Object>? queryParameters,
-      void Function(int, int)? onReceiveProgress});
+  Future<IResponseModel<R>> fetch<R, T extends BaseModel>(
+    String path, {
+    required HttpTypes type,
+    required T parseModel,
+    dynamic data,
+    Map<String, Object>? queryParameters,
+    void Function(int, int)? onReceiveProgress,
+  });
 }
 // MARK: Null SAfety
 
 abstract class ICoreDioNullSafety {
-  Future<IResponseModel<R>> send<R, T extends BaseModel>(String path,
-      {required HttpTypes type,
-      required T parseModel,
-      dynamic data,
-      Map<String, Object>? queryParameters,
-      void Function(int, int)? onReceiveProgress});
+  Future<IResponseModel<R>> send<R, T>(
+    String path, {
+    required HttpTypes type,
+    required BaseModel<T> parseModel,
+    dynamic data,
+    Map<String, Object>? queryParameters,
+    void Function(int, int)? onReceiveProgress,
+  });
 }
 
 abstract class ICoreDioFull extends ICoreDio {
-  Future<IResponseModel<R>> fetchNoNetwork<R, T extends BaseModel>(String path,
-      {required HttpTypes type,
-      required T parseModel,
-      dynamic data,
-      Map<String, Object>? queryParameters,
-      void Function(int, int)? onReceiveProgress});
+  Future<IResponseModel<R>> fetchNoNetwork<R, T extends BaseModel>(
+    String path, {
+    required HttpTypes type,
+    required T parseModel,
+    dynamic data,
+    Map<String, Object>? queryParameters,
+    void Function(int, int)? onReceiveProgress,
+  });
 }
 
 // MARK: Nul SAfety
 abstract class ICoreDioFullNulSafetyFull extends ICoreDioNullSafety {
-  Future<IResponseModel<R>> fetchNoNetwork<R, T extends BaseModel>(String path,
-      {required HttpTypes type,
-      required T parseModel,
-      dynamic data,
-      Map<String, Object>? queryParameters,
-      void Function(int, int)? onReceiveProgress});
+  Future<IResponseModel<R>> fetchNoNetwork<R, T extends BaseModel>(
+    String path, {
+    required HttpTypes type,
+    required T parseModel,
+    dynamic data,
+    Map<String, Object>? queryParameters,
+    void Function(int, int)? onReceiveProgress,
+  });
 }

@@ -6,7 +6,7 @@ part of 'test_view_model.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$TestViewModel on _TestViewModelBase, Store {
   Computed<bool>? _$isEvenComputed;
@@ -16,7 +16,8 @@ mixin _$TestViewModel on _TestViewModelBase, Store {
           Computed<bool>(() => super.isEven, name: '_TestViewModelBase.isEven'))
       .value;
 
-  final _$isLoadingAtom = Atom(name: '_TestViewModelBase.isLoading');
+  late final _$isLoadingAtom =
+      Atom(name: '_TestViewModelBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -31,7 +32,8 @@ mixin _$TestViewModel on _TestViewModelBase, Store {
     });
   }
 
-  final _$numberAtom = Atom(name: '_TestViewModelBase.number');
+  late final _$numberAtom =
+      Atom(name: '_TestViewModelBase.number', context: context);
 
   @override
   int get number {
@@ -46,16 +48,16 @@ mixin _$TestViewModel on _TestViewModelBase, Store {
     });
   }
 
-  final _$getSampleRequestAsyncAction =
-      AsyncAction('_TestViewModelBase.getSampleRequest');
+  late final _$getSampleRequestAsyncAction =
+      AsyncAction('_TestViewModelBase.getSampleRequest', context: context);
 
   @override
   Future<void> getSampleRequest() {
     return _$getSampleRequestAsyncAction.run(() => super.getSampleRequest());
   }
 
-  final _$_TestViewModelBaseActionController =
-      ActionController(name: '_TestViewModelBase');
+  late final _$_TestViewModelBaseActionController =
+      ActionController(name: '_TestViewModelBase', context: context);
 
   @override
   void incrementNumber() {

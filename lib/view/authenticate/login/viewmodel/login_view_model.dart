@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermvvmtemplate/core/base/model/base_view_model.dart';
+import 'package:fluttermvvmtemplate/core/constants/enums/locale_keys_enum.dart';
+import 'package:fluttermvvmtemplate/core/init/network/vexana_manager.dart';
+import 'package:fluttermvvmtemplate/view/authenticate/login/model/login_model.dart';
+import 'package:fluttermvvmtemplate/view/authenticate/login/service/ILoginService.dart';
+import 'package:fluttermvvmtemplate/view/authenticate/login/service/login_service.dart';
 import 'package:mobx/mobx.dart';
-
-import '../../../../core/base/model/base_view_model.dart';
-import '../../../../core/constants/enums/locale_keys_enum.dart';
-import '../../../../core/init/network/vexana_manager.dart';
-import '../model/login_model.dart';
-import '../service/ILoginService.dart';
-import '../service/login_service.dart';
 
 part 'login_view_model.g.dart';
 
@@ -17,16 +16,15 @@ abstract class _LoginViewModelBase with Store, BaseViewModel {
   GlobalKey<ScaffoldState> scaffoldState = GlobalKey();
   late ILoginService loginService;
 
-  TextEditingController? emailController;
-  TextEditingController? passwordController;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
-  void setContext(BuildContext context) => this.context = context;
+  void setContext(BuildContext context) => viewModelContext = context;
+
   @override
   void init() {
     loginService = LoginService(VexanaManager.instance.networkManager);
-    emailController = TextEditingController();
-    passwordController = TextEditingController();
   }
 
   @observable
@@ -36,19 +34,37 @@ abstract class _LoginViewModelBase with Store, BaseViewModel {
   bool isLockOpen = false;
 
   @action
-  Future<void> fetchLoginSevice() async {
+  Future<void> fetchLoginService() async {
     isLoadingChange();
     if (formState.currentState!.validate()) {
-      final response = await loginService.fetchUserControl(LoginModel(email: emailController!.text, password: passwordController!.text));
+      final response = await loginService.fetchUserControl(
+        LoginModel(
+          email: emailController.text,
+          password: passwordController.text,
+        ),
+      );
 
       if (response != null) {
-        if (scaffoldState.currentState != null) {
-          scaffoldState.currentState!.showSnackBar(SnackBar(content: Text(response.token!)));
+        if (response.token?.isEmpty ?? true) return;
+        if (scaffoldState.currentContext != null) {
+          ScaffoldMessenger.of(scaffoldState.currentContext!).showSnackBar(
+            SnackBar(
+              content: Text(response.token!),
+            ),
+          );
         }
-        await localeManager.setStringValue(PreferencesKeys.TOKEN, response.token!);
+        await localeManager.setStringValue(
+          PreferencesKeys.TOKEN,
+          response.token!,
+        );
       }
     }
     isLoadingChange();
+  }
+
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
   }
 
   @action

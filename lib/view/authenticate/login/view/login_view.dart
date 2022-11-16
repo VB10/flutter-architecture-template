@@ -2,12 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import '../../../../core/base/view/base_widget.dart';
-import '../../../../core/constants/image/image_constatns.dart';
-import '../../../../core/extension/context_extension.dart';
-import '../../../../core/extension/string_extension.dart';
-import '../../../../core/init/lang/locale_keys.g.dart';
-import '../viewmodel/login_view_model.dart';
+import 'package:fluttermvvmtemplate/core/base/view/base_widget.dart';
+import 'package:fluttermvvmtemplate/core/constants/image/image_constatns.dart';
+import 'package:fluttermvvmtemplate/core/extension/context_extension.dart';
+import 'package:fluttermvvmtemplate/core/extension/string_extension.dart';
+import 'package:fluttermvvmtemplate/core/init/lang/locale_keys.g.dart';
+import 'package:fluttermvvmtemplate/view/authenticate/login/viewmodel/login_view_model.dart';
 
 class LoginView extends StatelessWidget {
   @override
@@ -38,15 +38,17 @@ class LoginView extends StatelessWidget {
 
   AnimatedContainer buildAnimatedContainer(BuildContext context) {
     return AnimatedContainer(
-        duration: context.lowDuration,
-        height: context.mediaQuery.viewInsets.bottom > 0 ? 0 : context.height * 0.3,
-        color: Colors.white,
-        child: Center(child: Image.asset(ImageConstants.instance.hotDog)));
+      duration: context.lowDuration,
+      height: context.mediaQuery.viewInsets.bottom > 0 ? 0 : context.height * 0.3,
+      color: Colors.white,
+      child: Center(child: Image.asset(ImageConstants.instance.hotDog)),
+    );
   }
 
   Container buildContainerTabBar(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.vertical(bottom: Radius.circular(50))),
+      decoration:
+          const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.vertical(bottom: Radius.circular(50))),
       child: Padding(
         padding: EdgeInsets.only(left: context.width * 0.1, right: context.width * 0.1, bottom: context.width * 0.01),
         child: buildTabBar(context),
@@ -56,16 +58,17 @@ class LoginView extends StatelessWidget {
 
   TabBar buildTabBar(BuildContext context) {
     return TabBar(
-        labelStyle: context.textTheme.headline5,
-        unselectedLabelStyle: context.textTheme.headline5,
-        labelColor: Colors.black,
-        indicatorColor: Colors.yellow,
-        indicatorWeight: 5,
-        indicatorSize: TabBarIndicatorSize.label,
-        tabs: [
-          Tab(text: '   ${LocaleKeys.login_tab1.tr()}   '),
-          Tab(text: LocaleKeys.login_tab2.tr()),
-        ]);
+      labelStyle: context.textTheme.headline5,
+      unselectedLabelStyle: context.textTheme.headline5,
+      labelColor: Colors.black,
+      indicatorColor: Colors.yellow,
+      indicatorWeight: 5,
+      indicatorSize: TabBarIndicatorSize.label,
+      tabs: [
+        Tab(text: '   ${LocaleKeys.login_tab1.tr()}   '),
+        Tab(text: LocaleKeys.login_tab2.tr()),
+      ],
+    );
   }
 
   Form buildForm(LoginViewModel value, BuildContext context) {
@@ -74,40 +77,46 @@ class LoginView extends StatelessWidget {
       autovalidateMode: AutovalidateMode.always,
       child: Column(
         children: [
-          Spacer(flex: 6),
+          const Spacer(flex: 6),
           buildTextFormFieldEmail(context, value),
           buildTextFormFieldPassword(context, value),
-          Spacer(),
+          const Spacer(),
           buildTextForgot(),
-          Spacer(flex: 6),
+          const Spacer(flex: 6),
           buildRaisedButtonLogin(context, value),
           buildWrapForgot(),
-          Spacer(),
+          const Spacer(),
         ],
       ),
     );
   }
 
   Widget buildTextFormFieldPassword(BuildContext context, LoginViewModel viewModel) {
-    return Observer(builder: (_) {
-      return TextFormField(
-        controller: viewModel.passwordController,
-        validator: (value) => value!.isNotEmpty ? null : 'This field required',
-        obscureText: viewModel.isLockOpen,
-        decoration: InputDecoration(
+    return Observer(
+      builder: (_) {
+        return TextFormField(
+          controller: viewModel.passwordController,
+          validator: (value) => value!.isNotEmpty ? null : 'This field required',
+          obscureText: viewModel.isLockOpen,
+          decoration: InputDecoration(
             labelStyle: context.textTheme.subtitle1,
             labelText: LocaleKeys.login_password.tr(),
             icon: buildContainerIconField(context, Icons.vpn_key),
-            suffixIcon: FlatButton(
-                onPressed: () {
-                  viewModel.isLockStateChange();
-                },
-                padding: EdgeInsets.zero,
-                child: Observer(builder: (_) {
+            suffixIcon: IconButton(
+              onPressed: () {
+                viewModel.isLockStateChange();
+              },
+              padding: EdgeInsets.zero,
+              icon: Observer(
+                builder: (_) {
                   return Icon(viewModel.isLockOpen ? Icons.lock : Icons.lock_open);
-                }))),
-      );
-    });
+                },
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 
   TextFormField buildTextFormFieldEmail(BuildContext context, LoginViewModel viewModel) {
@@ -126,32 +135,47 @@ class LoginView extends StatelessWidget {
     return Container(
       color: context.colors.onError,
       padding: context.paddingLow,
-      child: Icon(icon, color: context.colors.primaryVariant),
+      child: Icon(icon, color: context.colors.primaryContainer),
     );
   }
 
-  Widget buildTextForgot() => Align(alignment: Alignment.centerRight, child: Text(LocaleKeys.login_forgotText, textAlign: TextAlign.end).tr());
+  Widget buildTextForgot() => Align(
+        alignment: Alignment.centerRight,
+        child: const Text(LocaleKeys.login_forgotText, textAlign: TextAlign.end).tr(),
+      );
 
   Widget buildRaisedButtonLogin(BuildContext context, LoginViewModel viewModel) {
-    return Observer(builder: (_) {
-      return RaisedButton(
-        padding: context.paddingNormal,
-        onPressed: viewModel.isLoading
-            ? null
-            : () {
-                viewModel.fetchLoginSevice();
-              },
-        shape: StadiumBorder(),
-        child: Center(child: Text(LocaleKeys.login_login.tr(), style: context.textTheme.headline5)),
-        color: context.colors.onError,
-      );
-    });
+    return Observer(
+      builder: (_) {
+        return ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            padding: context.paddingNormal,
+            shape: const StadiumBorder(),
+            backgroundColor: context.colors.onError,
+          ),
+          onPressed: viewModel.isLoading
+              ? null
+              : () {
+                  viewModel.fetchLoginService();
+                },
+          child: Center(
+            child: Text(
+              LocaleKeys.login_login.tr(),
+              style: context.textTheme.headline5,
+            ),
+          ),
+        );
+      },
+    );
   }
 
   Wrap buildWrapForgot() {
     return Wrap(
       crossAxisAlignment: WrapCrossAlignment.center,
-      children: [Text(LocaleKeys.login_dontAccount.tr()), FlatButton(onPressed: () {}, child: Text(LocaleKeys.login_tab2.tr()))],
+      children: [
+        Text(LocaleKeys.login_dontAccount.tr()),
+        TextButton(onPressed: () {}, child: Text(LocaleKeys.login_tab2.tr()))
+      ],
     );
   }
 }

@@ -2,14 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import '../../../../core/base/state/base_state.dart';
-import '../../../../core/base/view/base_widget.dart';
-import '../../../../core/constants/enums/locale_keys_enum.dart';
-import '../../../../core/extension/string_extension.dart';
-import '../../../../core/init/cache/locale_manager.dart';
-import '../../../../core/init/lang/language_manager.dart';
-import '../../../../core/init/lang/locale_keys.g.dart';
-import '../viewmodel/test_view_model.dart';
+import 'package:fluttermvvmtemplate/core/base/state/base_state.dart';
+import 'package:fluttermvvmtemplate/core/base/view/base_widget.dart';
+import 'package:fluttermvvmtemplate/core/constants/enums/locale_keys_enum.dart';
+import 'package:fluttermvvmtemplate/core/extension/string_extension.dart';
+import 'package:fluttermvvmtemplate/core/init/cache/locale_manager.dart';
+import 'package:fluttermvvmtemplate/core/init/lang/language_manager.dart';
+import 'package:fluttermvvmtemplate/core/init/lang/locale_keys.g.dart';
+import 'package:fluttermvvmtemplate/view/authenticate/test/viewmodel/test_view_model.dart';
 
 class TestsView extends StatefulWidget {
   @override
@@ -46,10 +46,11 @@ class _TestsViewState extends BaseState<TestsView> {
 
   IconButton iconButtonChangeTheme() {
     return IconButton(
-        icon: Icon(Icons.change_history),
-        onPressed: () {
-          context.setLocale(LanguageManager.instance.enLocale);
-        });
+      icon: const Icon(Icons.change_history),
+      onPressed: () {
+        context.setLocale(LanguageManager.instance.enLocale);
+      },
+    );
   }
 
   Widget get textNumber {

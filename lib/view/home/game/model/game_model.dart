@@ -5,12 +5,6 @@ part 'game_model.g.dart';
 
 @JsonSerializable()
 class GameModel extends INetworkModel<GameModel> {
-  @JsonKey(name: '_id')
-  String? sId;
-  String? image;
-  String? name;
-  int? money;
-  int? category;
   GameModel({
     this.sId,
     this.image,
@@ -18,6 +12,12 @@ class GameModel extends INetworkModel<GameModel> {
     this.money,
     this.category,
   });
+  @JsonKey(name: '_id')
+  String? sId;
+  String? image;
+  String? name;
+  int? money;
+  int? category;
 
   @override
   GameModel fromJson(Map<String, Object?> json) {

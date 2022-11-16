@@ -6,10 +6,11 @@ part of 'burger_view_model.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BurgerViewModel on _BurgerViewModelBase, Store {
-  final _$isLoadingAtom = Atom(name: '_BurgerViewModelBase.isLoading');
+  late final _$isLoadingAtom =
+      Atom(name: '_BurgerViewModelBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -24,7 +25,8 @@ mixin _$BurgerViewModel on _BurgerViewModelBase, Store {
     });
   }
 
-  final _$isLoadingMainAtom = Atom(name: '_BurgerViewModelBase.isLoadingMain');
+  late final _$isLoadingMainAtom =
+      Atom(name: '_BurgerViewModelBase.isLoadingMain', context: context);
 
   @override
   bool get isLoadingMain {
@@ -39,8 +41,8 @@ mixin _$BurgerViewModel on _BurgerViewModelBase, Store {
     });
   }
 
-  final _$favoriteBurgerModelAtom =
-      Atom(name: '_BurgerViewModelBase.favoriteBurgerModel');
+  late final _$favoriteBurgerModelAtom =
+      Atom(name: '_BurgerViewModelBase.favoriteBurgerModel', context: context);
 
   @override
   List<BurgerModel> get favoriteBurgerModel {
@@ -55,8 +57,8 @@ mixin _$BurgerViewModel on _BurgerViewModelBase, Store {
     });
   }
 
-  final _$mainBurgerModelAtom =
-      Atom(name: '_BurgerViewModelBase.mainBurgerModel');
+  late final _$mainBurgerModelAtom =
+      Atom(name: '_BurgerViewModelBase.mainBurgerModel', context: context);
 
   @override
   List<BurgerModel> get mainBurgerModel {
@@ -71,32 +73,32 @@ mixin _$BurgerViewModel on _BurgerViewModelBase, Store {
     });
   }
 
-  final _$fetchFavoriteAsyncAction =
-      AsyncAction('_BurgerViewModelBase.fetchFavorite');
+  late final _$fetchFavoriteAsyncAction =
+      AsyncAction('_BurgerViewModelBase.fetchFavorite', context: context);
 
   @override
   Future<void> fetchFavorite() {
     return _$fetchFavoriteAsyncAction.run(() => super.fetchFavorite());
   }
 
-  final _$fetchNormalItemsAsyncAction =
-      AsyncAction('_BurgerViewModelBase.fetchNormalItems');
+  late final _$fetchNormalItemsAsyncAction =
+      AsyncAction('_BurgerViewModelBase.fetchNormalItems', context: context);
 
   @override
   Future<void> fetchNormalItems() {
     return _$fetchNormalItemsAsyncAction.run(() => super.fetchNormalItems());
   }
 
-  final _$fetchMinMaxAsyncAction =
-      AsyncAction('_BurgerViewModelBase.fetchMinMax');
+  late final _$fetchMinMaxAsyncAction =
+      AsyncAction('_BurgerViewModelBase.fetchMinMax', context: context);
 
   @override
   Future<void> fetchMinMax() {
     return _$fetchMinMaxAsyncAction.run(() => super.fetchMinMax());
   }
 
-  final _$_BurgerViewModelBaseActionController =
-      ActionController(name: '_BurgerViewModelBase');
+  late final _$_BurgerViewModelBaseActionController =
+      ActionController(name: '_BurgerViewModelBase', context: context);
 
   @override
   void _changeLoading() {

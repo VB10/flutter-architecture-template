@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermvvmtemplate/core/base/model/base_view_model.dart';
+import 'package:fluttermvvmtemplate/view/_product/_model/query/friend_query.dart';
+import 'package:fluttermvvmtemplate/view/_product/_utilty/thorottle_helper.dart';
+import 'package:fluttermvvmtemplate/view/home/social/model/social_user_model.dart';
+import 'package:fluttermvvmtemplate/view/home/social/service/ISocialService.dart';
 import 'package:mobx/mobx.dart';
-
-import '../../../../core/base/model/base_view_model.dart';
-import '../../../_product/_model/query/friend_query.dart';
-import '../../../_product/_utilty/thorottle_helper.dart';
-import '../model/social_user_model.dart';
-import '../service/ISocialService.dart';
 
 part 'social_view_model.g.dart';
 
 class SocialViewModel = _SocialViewModelBase with _$SocialViewModel;
 
 abstract class _SocialViewModelBase with Store, BaseViewModel {
+  _SocialViewModelBase(this._socialService);
   final ISocialServiceService _socialService;
   int _page = 0;
   String? _query = '';
@@ -28,10 +28,8 @@ abstract class _SocialViewModelBase with Store, BaseViewModel {
   @observable
   bool isPageLoadingLazyLoad = false;
 
-  _SocialViewModelBase(this._socialService);
-
   @override
-  void setContext(BuildContext? context) => this.context = context;
+  void setContext(BuildContext context) => viewModelContext = context;
   @override
   void init() {
     _throttleStringHelper = ThrottleStringHelper();
